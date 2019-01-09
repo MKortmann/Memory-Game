@@ -1,63 +1,87 @@
 "use strict";
 
 /*Board Construction Initialization*/
+var arrayIcons = ["arrow_back","home","delete","delete","cloud","person","close","person",
+                    "refresh","home","search","search","refresh","arrow_back","close","cloud"];
+var arraySpan = ["#span-9","#span-10","#span-11","#span-4","#span-5", "#span-13","#span-7","#span-14",
+                   "#span-1","#span-2","#span-3","#span-12","#span-6", "#span-8","#span-15","#span-16"];
 
-const arrayIcons = ["cloud","home","delete","search","refresh","person","close","arrow_back"];
-
-var arraySpan = ["#span-1","#span-2","#span-3","#span-4","#span-5", "#span-6","#span-7","#span-8",
-                   "#span-9","#span-10","#span-11","#span-12","#span-13", "#span-14","#span-15","#span-16"];
-
-var arrayNumbers = [0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7];
-var removeNumber = 0;
-
-for (let i = 15; i >= 0; i--) {
-   console.log("Printing out i = " + i);
-
-  removeNumber = Math.floor(Math.random() * i);
-  console.log(removeNumber);
-  document.querySelector(arraySpan[removeNumber]).textContent = arrayIcons[arrayNumbers[removeNumber]];
-
-  console.log(arraySpan[removeNumber]);
-  console.log(arrayIcons[arrayNumbers[removeNumber]]);
-  arrayNumbers.splice(removeNumber,1);
-  arraySpan.splice(removeNumber,1);
-  /*console.log(arrayNumbers);
-  console.log(arraySpan);*/
-
+var randomNumber = 0;
+var arrayIconsRandom = new Array(16);
+/*Creating random numbers using this forLoop and Math function*/
+for (let iLoop=arrayIcons.length-1; iLoop>= 0; iLoop--) {
+  randomNumber = Math.floor(Math.random()*iLoop);
+  arrayIconsRandom[iLoop] = arrayIcons[randomNumber];
+  arrayIcons.splice(randomNumber,1); /*to make sure it will keep the same elemtens*/
+}
+/*Game Grid Initialization*/
+for (let iLoop = 15; iLoop >= 0; iLoop--) {
+  document.querySelector(arraySpan[iLoop]).textContent = arrayIconsRandom[iLoop];
+  arrayIcons.splice(iLoop,1);
+  arraySpan.splice(iLoop,1);
 }
 
-
-
-  /*removeNumber = Math.floor(Math.random() * index);
-  console.log(removeNumber);
-  document.querySelector(arraySpan[removeNumber]).textContent = arrayIcons[arrayNumbers[removeNumber]];
-
-  console.log(arraySpan[removeNumber]);
-  console.log(arrayIcons[arrayNumbers[removeNumber]]);
-  arrayNumbers.pop(removeNumber);
-  arraySpan.pop(removeNumber); */
-
-
-
-
-
-
 document.querySelector("#div-1").addEventListener("click", function(){
-  const removeNumber = Math.floor(Math.random() * 16);
-  arrayNumbers.pop(removeNumber);
-  document.querySelector("#span-1").textContent = arrayIcons[arrayNumbers[removeNumber]];
-  console.log(removeNumber);
-  console.log(arrayNumbers);
+  document.querySelector("#span-1").classList.toggle("material-icons");
+  document.querySelector("#span-1").classList.toggle("hide");
 });
-
 document.querySelector("#div-2").addEventListener("click", function(){
-  document.querySelector("#span-2").textContent = arrayIcons[1];
+  document.querySelector("#span-2").classList.toggle("material-icons");
+  document.querySelector("#span-2").classList.toggle("hide");
 });
-
 document.querySelector("#div-3").addEventListener("click", function(){
-  document.querySelector("#span-3").textContent = arrayIcons[2];
+  document.querySelector("#span-3").classList.toggle("material-icons");
+  document.querySelector("#span-3").classList.toggle("hide");
 });
-
 document.querySelector("#div-4").addEventListener("click", function(){
-  document.querySelector("#span-4").textContent = arrayIcons[3];
+  document.querySelector("#span-4").classList.toggle("material-icons");
+  document.querySelector("#span-4").classList.toggle("hide");
+});
+document.querySelector("#div-5").addEventListener("click", function(){
+  document.querySelector("#span-5").classList.toggle("material-icons");
+  document.querySelector("#span-5").classList.toggle("hide");
+});
+document.querySelector("#div-6").addEventListener("click", function(){
+  document.querySelector("#span-6").classList.toggle("material-icons");
+  document.querySelector("#span-6").classList.toggle("hide");
+});
+document.querySelector("#div-7").addEventListener("click", function(){
+  document.querySelector("#span-7").classList.toggle("material-icons");
+  document.querySelector("#span-7").classList.toggle("hide");
+});
+document.querySelector("#div-8").addEventListener("click", function(){
+  document.querySelector("#span-8").classList.toggle("material-icons");
+  document.querySelector("#span-8").classList.toggle("hide");
+});
+document.querySelector("#div-9").addEventListener("click", function(){
+  document.querySelector("#span-9").classList.toggle("material-icons");
+  document.querySelector("#span-9").classList.toggle("hide");
+});
+document.querySelector("#div-10").addEventListener("click", function(){
+  document.querySelector("#span-10").classList.toggle("material-icons");
+  document.querySelector("#span-10").classList.toggle("hide");
+});
+document.querySelector("#div-11").addEventListener("click", function(){
+  document.querySelector("#span-11").classList.toggle("material-icons");
+  document.querySelector("#span-11").classList.toggle("hide");
+});
+document.querySelector("#div-12").addEventListener("click", function(){
+  document.querySelector("#span-12").classList.toggle("material-icons");
+  document.querySelector("#span-12").classList.toggle("hide");
+});
+document.querySelector("#div-13").addEventListener("click", function(){
+  document.querySelector("#span-13").classList.toggle("material-icons");
+  document.querySelector("#span-13").classList.toggle("hide");
+});
+document.querySelector("#div-14").addEventListener("click", function(){
+  document.querySelector("#span-14").classList.toggle("material-icons");
+  document.querySelector("#span-14").classList.toggle("hide");
+});
+document.querySelector("#div-15").addEventListener("click", function(){
+  document.querySelector("#span-15").classList.toggle("material-icons");
+  document.querySelector("#span-15").classList.toggle("hide");
+});
+document.querySelector("#div-16").addEventListener("click", function(){
+  document.querySelector("#span-16").classList.toggle("material-icons");
+  document.querySelector("#span-16").classList.toggle("hide");
 });

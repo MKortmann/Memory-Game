@@ -11,6 +11,7 @@ h1 {
   padding: 8px;
   max-width: 800px;
   margin: auto;
+  user-select: none; /*using should not select because the text will appear*/
 }
 
 #grid-container > div {
@@ -18,11 +19,11 @@ h1 {
   text-align: center;
   cursor: pointer;
   font-size: 2em;
+  min-width: 150px;
 }
 
 #grid-container > div:hover {
-  background-color: black;
-  color: white;
+
 }
 
 #grid-container > span {
@@ -30,6 +31,11 @@ h1 {
   background-color: white;
   color: blue;
 }
-.show-hide {
-  display: hide;
+/*
+#span-1 {
+  display: none;
+}*/
+
+.hide {
+  color: violet; /*make the text invisible (matching colors with the background)*/
 }
