@@ -9,6 +9,8 @@ h1 {
   background-color: slateblue;
   grid-gap: 8px;
   padding: 8px;
+  max-width: 800px;
+  margin: auto;
 }
 
 #grid-container > div {
@@ -19,7 +21,15 @@ h1 {
 }
 
 #grid-container > div:hover {
-  font-size: 2.2em;
   background-color: black;
   color: white;
+}
+
+#grid-container > span {
+  font-size: 55px;
+  background-color: white;
+  color: blue;
+}
+.show-hide {
+  display: hide;
 }
