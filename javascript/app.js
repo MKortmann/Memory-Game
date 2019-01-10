@@ -21,6 +21,17 @@ for (let iLoop = 15; iLoop >= 0; iLoop--) {
   arraySpan.splice(iLoop,1);
 }
 
+document.querySelector("#grid-container").addEventListener("click", function(evt){
+/*if(evt.target.nodeName === "SPAN") {*/
+  console.log(evt.target.textContent); /*show the symbol name*/
+  console.log(evt.currentTarget.nodeName.toLowerCase()); /*div*/
+  console.log(evt.target.children); /*get the hole element*/
+  console.log(evt.target.children[0]); /*the the span with id and class*/
+  console.log(evt.target.children[0].id); /*get the id*/
+console.log(evt);
+  console.log(evt.path[0].id); /*get the div*/
+});
+/*
 document.querySelector("#div-1").addEventListener("click", function(){
   document.querySelector("#span-1").classList.toggle("material-icons");
   document.querySelector("#span-1").classList.toggle("hide");
@@ -84,4 +95,4 @@ document.querySelector("#div-15").addEventListener("click", function(){
 document.querySelector("#div-16").addEventListener("click", function(){
   document.querySelector("#span-16").classList.toggle("material-icons");
   document.querySelector("#span-16").classList.toggle("hide");
-});
+});*/
