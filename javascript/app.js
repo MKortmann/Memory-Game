@@ -1,8 +1,8 @@
 "use strict";
 
 /*Board Construction Initialization*/
-var arrayIcons = ["arrow_back","home","delete","delete","cloud","person","close","person",
-                    "refresh","home","search","search","refresh","arrow_back","close","cloud"];
+var arrayIcons = ["3d_rotation","fingerprint","delete","delete","bug_report","extension","extension","android",
+                    "card_giftcard","fingerprint","face","face","card_giftcard","3d_rotation","android","bug_report"];
 var arraySpan = ["#span-9","#span-10","#span-11","#span-4","#span-5", "#span-13","#span-7","#span-14",
                    "#span-1","#span-2","#span-3","#span-12","#span-6", "#span-8","#span-15","#span-16"];
 

@@ -10,16 +10,20 @@ h1 {
   grid-gap: 8px;
   padding: 8px;
   max-width: 800px;
+  overflow-x: auto;
   margin: auto;
   user-select: none; /*using should not select because the text will appear*/
 }
 
 #grid-container > div {
-  background-color: violet;
+  background-color: white;
   text-align: center;
+  vertical-align: middle;
   cursor: pointer;
-  font-size: 2em;
-  min-width: 150px;
+  min-height: 64px;
+  font-size: 0.2em; /*keep it small - symetric*/
+
+
 }
 
 #grid-container > div:hover {
@@ -27,15 +31,17 @@ h1 {
 }
 
 #grid-container > span {
-  font-size: 55px;
-  background-color: white;
-  color: blue;
+
+
 }
-/*
-#span-1 {
-  display: none;
-}*/
+
+.material-icons {
+  padding-top: 10px;
+
+}
+
+.material-icons.md-48 { font-size: 48px; }
 
 .hide {
-  color: violet; /*make the text invisible (matching colors with the background)*/
+  color: white; /*make the text invisible (matching colors with the background)*/
 }
