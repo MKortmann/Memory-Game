@@ -21,16 +21,53 @@ for (let iLoop = 15; iLoop >= 0; iLoop--) {
   arraySpan.splice(iLoop,1);
 }
 
+/*Game functions variables*/
+var flipNumbers = 0; /*track the number of flip cards*/
+var arrayIconsFlipped = ["none", "none-1"]; /*store the name of icons to compare*/
+var arraySpanId = new Array(2);
+
+/*Game flip function*/
 document.querySelector("#grid-container").addEventListener("click", function(evt){
-/*if(evt.target.nodeName === "SPAN") {*/
-  console.log(evt.target.textContent); /*show the symbol name*/
-  console.log(evt.currentTarget.nodeName.toLowerCase()); /*div*/
-  console.log(evt.target.children); /*get the hole element*/
-  console.log(evt.target.children[0]); /*the the span with id and class*/
-  console.log(evt.target.children[0].id); /*get the id*/
-console.log(evt);
-  console.log(evt.path[0].id); /*get the div*/
+
+  arraySpanId[flipNumbers] = evt.target.children[0].id;
+  document.getElementById(arraySpanId[flipNumbers]).classList.toggle("material-icons");
+  document.getElementById(arraySpanId[flipNumbers]).classList.toggle("hide");
+  arrayIconsFlipped[flipNumbers] = evt.target.textContent;
+  console.log(arrayIconsFlipped);
+  flipNumbers++;
+  if (flipNumbers == 2) {
+
+    if(arrayIconsFlipped[0] === arrayIconsFlipped[1]) {
+      alert("great")
+    } else {
+      document.getElementById(arraySpanId[0]).classList.toggle("material-icons");
+      document.getElementById(arraySpanId[0]).classList.toggle("hide");
+      document.getElementById(arraySpanId[1]).classList.toggle("material-icons");
+      document.getElementById(arraySpanId[1]).classList.toggle("hide");
+    }
+
+    flipNumbers = 0;
+    arrayIconsFlipped.splice(0,2);
+    arraySpanId.splice(0,2);
+    console.log("Array erased: " + arrayIconsFlipped);
+
+  }
+
 });
+
+
+/*
+
+document.querySelector("#grid-container").addEventListener("click", function(evt){
+/*if(evt.target.nodeName === "SPAN") {
+  console.log(evt.target.textContent); /*show the symbol name
+  console.log(evt.currentTarget.nodeName.toLowerCase()); /*div
+  console.log(evt.target.children); /*get the hole element
+  console.log(evt.target.children[0]); /*the the span with id and class
+  console.log(evt.target.children[0].id); /*get the id
+console.log(evt);
+  console.log(evt.path[0].id); /*get the div
+});*/
 /*
 document.querySelector("#div-1").addEventListener("click", function(){
   document.querySelector("#span-1").classList.toggle("material-icons");
