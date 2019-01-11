@@ -58,6 +58,7 @@ function redoFlip () {
   document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
+  reset();
 
 }
 
@@ -65,6 +66,14 @@ function matchCards () {
   flipCorrectIndex++;
   document.querySelector("#spanHits").textContent = flipCorrectIndex;
   console.log(flipCorrectIndex);
+  reset();
+}
+
+function reset() {
+  /*reseting counting and arrays*/
+  flipIndex = 0;
+  arrayIconsFlipped.splice(0,2);
+  arraySpanIdFlipped.splice(0,2);
 }
 
 
@@ -91,15 +100,9 @@ document.querySelector("#grid-container").addEventListener("click", function(evt
 
     } else
     {
-      setTimeout(redoFlip(),3000);
+      setTimeout(redoFlip,1000);
       /*the problem of setTimeOut is that it will be reset after 3 ms*/
     }
-    /*reseting counting and arrays*/
-
-    flipIndex = 0;
-    arrayIconsFlipped.splice(0,2);
-    arraySpanIdFlipped.splice(0,2);
-
 
 
 
