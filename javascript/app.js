@@ -2,9 +2,12 @@
 
 /*Board Construction Initialization*/
 var arrayIcons = ["3d_rotation","fingerprint","delete","delete","bug_report","extension","extension","android",
-                    "card_giftcard","fingerprint","face","face","card_giftcard","3d_rotation","android","bug_report"];
+                  "card_giftcard","fingerprint","face","face","card_giftcard","3d_rotation","android","bug_report"];
 var arraySpan = ["#span-9","#span-10","#span-11","#span-4","#span-5", "#span-13","#span-7","#span-14",
-                   "#span-1","#span-2","#span-3","#span-12","#span-6", "#span-8","#span-15","#span-16"];
+                  "#span-1","#span-2","#span-3","#span-12","#span-6", "#span-8","#span-15","#span-16"];
+
+/*var arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
+                  "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];*/
 
 var randomNumber = 0;
 var arrayIconsRandom = new Array(16);
@@ -22,34 +25,83 @@ for (let iLoop = 15; iLoop >= 0; iLoop--) {
 }
 
 /*Game functions variables*/
-var flipNumbers = 0; /*track the number of flip cards*/
+var flipIndex = 0; /*track the number of flip cards*/
 var arrayIconsFlipped = ["none", "none-1"]; /*store the name of icons to compare*/
-var arraySpanId = new Array(2);
+var arraySpanIdFlipped = new Array(2); /*store the id of elements flipped*/
+var flipCorrectIndex = 0;
+var flipMissIndex = 0;
+var start_time = Date.now(); /*getting the start-time*/
+var flagRedoFunction = false;
+
+/*Timer Funcion*/
+function myTimer3(){
+
+    var stop_time = Date.now();
+    var diff = stop_time-start_time;
+
+    if(diff/1000 > 5){
+
+    /*DisplayReactionTime.innerText = "The reaction time was: " + (diff/1000) + " seconds";*/
+    alert( "You win and it takes: " + diff/60000 + " minutes" ) ;
+
+    }
+
+};
+
+/*Reset function*/
+function redoFlip () {
+  flipMissIndex++;
+  document.querySelector("#spanMiss").textContent = flipMissIndex;
+  console.log(arraySpanIdFlipped[0]);
+  console.log(arraySpanIdFlipped[1]);
+  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("material-icons");
+  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
+  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
+  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
+
+}
+
+function matchCards () {
+  flipCorrectIndex++;
+  document.querySelector("#spanHits").textContent = flipCorrectIndex;
+  console.log(flipCorrectIndex);
+}
+
 
 /*Game flip function*/
 document.querySelector("#grid-container").addEventListener("click", function(evt){
 
-  arraySpanId[flipNumbers] = evt.target.children[0].id;
-  document.getElementById(arraySpanId[flipNumbers]).classList.toggle("material-icons");
-  document.getElementById(arraySpanId[flipNumbers]).classList.toggle("hide");
-  arrayIconsFlipped[flipNumbers] = evt.target.textContent;
-  console.log(arrayIconsFlipped);
-  flipNumbers++;
-  if (flipNumbers == 2) {
+  arrayIconsFlipped[flipIndex] = evt.target.textContent;
+  arraySpanIdFlipped[flipIndex] = evt.target.children[0].id;
+  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("material-icons");
+  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("hide");
+  flipIndex++;
 
-    if(arrayIconsFlipped[0] === arrayIconsFlipped[1]) {
-      alert("great")
-    } else {
-      document.getElementById(arraySpanId[0]).classList.toggle("material-icons");
-      document.getElementById(arraySpanId[0]).classList.toggle("hide");
-      document.getElementById(arraySpanId[1]).classList.toggle("material-icons");
-      document.getElementById(arraySpanId[1]).classList.toggle("hide");
+  if (flipIndex == 2)
+  {
+
+    if(arrayIconsFlipped[0] === arrayIconsFlipped[1])
+    {
+      matchCards ();
+
+      if (flipCorrectIndex == 8)
+      { myTimer3();
+        alert("You Win! Congratulations");
+      }
+
+    } else
+    {
+      setTimeout(redoFlip(),3000);
+      /*the problem of setTimeOut is that it will be reset after 3 ms*/
     }
+    /*reseting counting and arrays*/
 
-    flipNumbers = 0;
+    flipIndex = 0;
     arrayIconsFlipped.splice(0,2);
-    arraySpanId.splice(0,2);
-    console.log("Array erased: " + arrayIconsFlipped);
+    arraySpanIdFlipped.splice(0,2);
+
+
+
 
   }
 
@@ -67,69 +119,4 @@ document.querySelector("#grid-container").addEventListener("click", function(evt
   console.log(evt.target.children[0].id); /*get the id
 console.log(evt);
   console.log(evt.path[0].id); /*get the div
-});*/
-/*
-document.querySelector("#div-1").addEventListener("click", function(){
-  document.querySelector("#span-1").classList.toggle("material-icons");
-  document.querySelector("#span-1").classList.toggle("hide");
-});
-document.querySelector("#div-2").addEventListener("click", function(){
-  document.querySelector("#span-2").classList.toggle("material-icons");
-  document.querySelector("#span-2").classList.toggle("hide");
-});
-document.querySelector("#div-3").addEventListener("click", function(){
-  document.querySelector("#span-3").classList.toggle("material-icons");
-  document.querySelector("#span-3").classList.toggle("hide");
-});
-document.querySelector("#div-4").addEventListener("click", function(){
-  document.querySelector("#span-4").classList.toggle("material-icons");
-  document.querySelector("#span-4").classList.toggle("hide");
-});
-document.querySelector("#div-5").addEventListener("click", function(){
-  document.querySelector("#span-5").classList.toggle("material-icons");
-  document.querySelector("#span-5").classList.toggle("hide");
-});
-document.querySelector("#div-6").addEventListener("click", function(){
-  document.querySelector("#span-6").classList.toggle("material-icons");
-  document.querySelector("#span-6").classList.toggle("hide");
-});
-document.querySelector("#div-7").addEventListener("click", function(){
-  document.querySelector("#span-7").classList.toggle("material-icons");
-  document.querySelector("#span-7").classList.toggle("hide");
-});
-document.querySelector("#div-8").addEventListener("click", function(){
-  document.querySelector("#span-8").classList.toggle("material-icons");
-  document.querySelector("#span-8").classList.toggle("hide");
-});
-document.querySelector("#div-9").addEventListener("click", function(){
-  document.querySelector("#span-9").classList.toggle("material-icons");
-  document.querySelector("#span-9").classList.toggle("hide");
-});
-document.querySelector("#div-10").addEventListener("click", function(){
-  document.querySelector("#span-10").classList.toggle("material-icons");
-  document.querySelector("#span-10").classList.toggle("hide");
-});
-document.querySelector("#div-11").addEventListener("click", function(){
-  document.querySelector("#span-11").classList.toggle("material-icons");
-  document.querySelector("#span-11").classList.toggle("hide");
-});
-document.querySelector("#div-12").addEventListener("click", function(){
-  document.querySelector("#span-12").classList.toggle("material-icons");
-  document.querySelector("#span-12").classList.toggle("hide");
-});
-document.querySelector("#div-13").addEventListener("click", function(){
-  document.querySelector("#span-13").classList.toggle("material-icons");
-  document.querySelector("#span-13").classList.toggle("hide");
-});
-document.querySelector("#div-14").addEventListener("click", function(){
-  document.querySelector("#span-14").classList.toggle("material-icons");
-  document.querySelector("#span-14").classList.toggle("hide");
-});
-document.querySelector("#div-15").addEventListener("click", function(){
-  document.querySelector("#span-15").classList.toggle("material-icons");
-  document.querySelector("#span-15").classList.toggle("hide");
-});
-document.querySelector("#div-16").addEventListener("click", function(){
-  document.querySelector("#span-16").classList.toggle("material-icons");
-  document.querySelector("#span-16").classList.toggle("hide");
 });*/

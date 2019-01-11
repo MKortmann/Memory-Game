@@ -16,7 +16,7 @@ h1 {
 }
 
 #grid-container > div {
-  background-color: white;
+  background-color: #e0ebeb;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -43,5 +43,5 @@ h1 {
 .material-icons.md-48 { font-size: 48px; }
 
 .hide {
-  color: white; /*make the text invisible (matching colors with the background)*/
+  color: #e0ebeb; /*make the text invisible (matching colors with the background)*/
 }
