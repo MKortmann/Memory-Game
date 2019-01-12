@@ -3,12 +3,45 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
+.bigger {
+  color: #3399ff; /*light-blue*/
+  font-size: 2em;
+}
+
+#spanHits {
+  color: #3399ff; /*light-blue*/
+}
+
+#spanMiss {
+  color: red;
+}
+
+#spanTimer {
+  color: #3399ff; /*light-blue*/
+}
+
+.button {
+  text-align: center;
+}
+
+button {
+  background-color: #3399ff; /*light-blue*/
+  color: white;
+  font-size: 0.2em;
+  cursor: pointer;
+  padding: 10px 20px 10px 20px;
+}
+
 #grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: slateblue;
-  grid-gap: 8px;
-  padding: 8px;
+  background-color: #3399ff; /*light-blue*/ /*slateblue;*/
+  grid-gap: 12px;
+  padding: 12px;
   max-width: 800px;
   overflow-x: auto;
   margin: auto;
@@ -23,16 +56,23 @@ h1 {
   min-height: 64px;
   font-size: 0.2em; /*keep it small - symetric*/
 
+}
+
+#grid-container .effect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
+  background-color: red;
+  transform: rotateZ(30);
+  transition: transform 1.0s ease;
 
 }
 
-#grid-container > div:hover {
-
+#grid-container .effectCorrect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
+  background-color: slateblue;
 }
 
-#grid-container > span {
-
-
+#grid-container .effectRotate {
+  /*transform: rotate(90deg);*/
+  transform: rotateY(180deg);
+  transition: transform 1.0s ease;
 }
 
 .material-icons {

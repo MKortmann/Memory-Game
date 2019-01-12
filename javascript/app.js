@@ -5,8 +5,8 @@ var arrayIcons = ["3d_rotation","fingerprint","delete","delete","bug_report","ex
                   "card_giftcard","fingerprint","face","face","card_giftcard","3d_rotation","android","bug_report"];
 var arraySpan = ["#span-9","#span-10","#span-11","#span-4","#span-5", "#span-13","#span-7","#span-14",
                   "#span-1","#span-2","#span-3","#span-12","#span-6", "#span-8","#span-15","#span-16"];
-
-/*var arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
+/*
+var arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
                   "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];*/
 
 var randomNumber = 0;
@@ -15,7 +15,7 @@ var arrayIconsRandom = new Array(16);
 for (let iLoop=arrayIcons.length-1; iLoop>= 0; iLoop--) {
   randomNumber = Math.floor(Math.random()*iLoop);
   arrayIconsRandom[iLoop] = arrayIcons[randomNumber];
-  arrayIcons.splice(randomNumber,1); /*to make sure it will keep the same elemtens*/
+  arrayIcons.splice(randomNumber,1); /*to make sure it will keep the same elements-so remove the used element*/
 }
 /*Game Grid Initialization*/
 for (let iLoop = 15; iLoop >= 0; iLoop--) {
@@ -27,64 +27,79 @@ for (let iLoop = 15; iLoop >= 0; iLoop--) {
 /*Game functions variables*/
 var flipIndex = 0; /*track the number of flip cards*/
 var arrayIconsFlipped = ["none", "none-1"]; /*store the name of icons to compare*/
-var arraySpanIdFlipped = new Array(2); /*store the id of elements flipped*/
-var flipCorrectIndex = 0;
-var flipMissIndex = 0;
-var start_time = Date.now(); /*getting the start-time*/
-var flagRedoFunction = false;
+var arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
+var arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
+var flipCorrectIndex = 0; /*to track the end of the game*/
+var flipMissIndex = 0; /*to track misses*/
+var start_time = Date.now(); /*game start with the first click*/
+var runTime = 0;
+var runMinutes = 0;
 
 /*Timer Funcion*/
-function myTimer3(){
-
-    var stop_time = Date.now();
-    var diff = stop_time-start_time;
-
-    if(diff/1000 > 5){
-
-    /*DisplayReactionTime.innerText = "The reaction time was: " + (diff/1000) + " seconds";*/
-    alert( "You win and it takes: " + diff/60000 + " minutes" ) ;
-
-    }
-
+function runTimer(){
+    runTime = Date.now() - start_time ;
+    var timeElapsedMillisec = Math.floor(runTime/1000);
+    document.querySelector("#spanTimerM").textContent = Math.floor(timeElapsedMillisec / 60);
+    document.querySelector("#spanTimerS").textContent =  timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60)*60 );
 };
 
-/*Reset function*/
-function redoFlip () {
-  flipMissIndex++;
-  document.querySelector("#spanMiss").textContent = flipMissIndex;
-  console.log(arraySpanIdFlipped[0]);
-  console.log(arraySpanIdFlipped[1]);
-  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("material-icons");
-  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
-  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
-  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
-  reset();
-
+/*Effect change of Element*/
+function effect() {
+  document.getElementById(arrayDivIdFlipped[0]).classList.add("effect");
+  document.getElementById(arrayDivIdFlipped[1]).classList.add("effect");
 }
 
-function matchCards () {
-  flipCorrectIndex++;
-  document.querySelector("#spanHits").textContent = flipCorrectIndex;
-  console.log(flipCorrectIndex);
-  reset();
+/*Effect change of Element*/
+function effectCorrect() {
+  document.getElementById(arrayDivIdFlipped[0]).classList.add("effectCorrect");
+  document.getElementById(arrayDivIdFlipped[1]).classList.add("effectCorrect");
 }
 
+/*reset to restart the round NOT THE GAME*/
 function reset() {
   /*reseting counting and arrays*/
   flipIndex = 0;
   arrayIconsFlipped.splice(0,2);
   arraySpanIdFlipped.splice(0,2);
+  arrayDivIdFlipped.splice(0,2);
+  /*Game start again! Done to avoid more than two cards flipped at once*/
+  document.querySelector("#grid-container").addEventListener("click", runGame, true);
 }
 
+/*Cards do not match*/
+function redoFlip () {
+  flipMissIndex++;
+  document.querySelector("#spanMiss").textContent = flipMissIndex;
+  console.log(arraySpanIdFlipped[0]);
+  console.log(arraySpanIdFlipped[1]);
+  document.getElementById(arrayDivIdFlipped[0]).classList.remove("effect");
+  document.getElementById(arrayDivIdFlipped[1]).classList.remove("effect");
+  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("material-icons");
+  document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
+  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
+  document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
+  reset();
+}
+/*Cards match*/
+function matchCards () {
+  flipCorrectIndex++;
+  document.querySelector("#spanHits").textContent = flipCorrectIndex;
+  effectCorrect();
+  reset();
+}
 
-/*Game flip function*/
-document.querySelector("#grid-container").addEventListener("click", function(evt){
+setInterval(runTimer, 1000); /*Start game timer*/
 
-  arrayIconsFlipped[flipIndex] = evt.target.textContent;
-  arraySpanIdFlipped[flipIndex] = evt.target.children[0].id;
-  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("material-icons");
-  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("hide");
+/*game functionality/logic function*/
+function runGame (evt) {
+  arrayIconsFlipped[flipIndex] = evt.target.textContent; /*get the name of element flipped*/
+  arraySpanIdFlipped[flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/
+  arrayDivIdFlipped[flipIndex] = evt.path[0].id; /*get the div of element flipped*/
+  document.getElementById(arrayDivIdFlipped[flipIndex]).classList.toggle("effectRotate");
+  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("material-icons"); /*display element*/
+  document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("hide"); /*display element*/
   flipIndex++;
+  console.log(arrayDivIdFlipped);
 
   if (flipIndex == 2)
   {
@@ -92,34 +107,24 @@ document.querySelector("#grid-container").addEventListener("click", function(evt
     if(arrayIconsFlipped[0] === arrayIconsFlipped[1])
     {
       matchCards ();
-
       if (flipCorrectIndex == 8)
-      { myTimer3();
-        alert("You Win! Congratulations");
+      {
+        setTimeout(location.reload(),3000);
+        /*location.reload(); /*restart the game*/
       }
-
     } else
     {
+      document.querySelector("#grid-container").removeEventListener("click", runGame, true); /*prevent the user from selecting the same card twice*/
+      effect();
       setTimeout(redoFlip,1000);
-      /*the problem of setTimeOut is that it will be reset after 3 ms*/
     }
-
-
-
   }
+}
 
+/*button functionality*/
+document.querySelector("#buttonRestart").addEventListener("click", function(){
+  location.reload()
 });
 
-
-/*
-
-document.querySelector("#grid-container").addEventListener("click", function(evt){
-/*if(evt.target.nodeName === "SPAN") {
-  console.log(evt.target.textContent); /*show the symbol name
-  console.log(evt.currentTarget.nodeName.toLowerCase()); /*div
-  console.log(evt.target.children); /*get the hole element
-  console.log(evt.target.children[0]); /*the the span with id and class
-  console.log(evt.target.children[0].id); /*get the id
-console.log(evt);
-  console.log(evt.path[0].id); /*get the div
-});*/
+/*Game start at first click*/
+document.querySelector("#grid-container").addEventListener("click", runGame, true);
