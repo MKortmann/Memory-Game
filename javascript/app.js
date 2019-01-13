@@ -70,15 +70,13 @@ function reset() {
 function redoFlip () {
   flipMissIndex++;
   document.querySelector("#spanMiss").textContent = flipMissIndex;
-  console.log(arraySpanIdFlipped[0]);
-  console.log(arraySpanIdFlipped[1]);
   document.getElementById(arrayDivIdFlipped[0]).classList.remove("effect");
   document.getElementById(arrayDivIdFlipped[1]).classList.remove("effect");
   document.getElementById(arraySpanIdFlipped[0]).classList.toggle("material-icons");
   document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
-  reset();
+  setTimeout(reset(),1000);
 }
 /*Cards match*/
 function matchCards () {
@@ -88,18 +86,12 @@ function matchCards () {
   reset();
 }
 
-setInterval(runTimer, 1000); /*Start game timer*/
-
-/*game functionality/logic function*/
-function runGame (evt) {
-  arrayIconsFlipped[flipIndex] = evt.target.textContent; /*get the name of element flipped*/
-  arraySpanIdFlipped[flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/
-  arrayDivIdFlipped[flipIndex] = evt.path[0].id; /*get the div of element flipped*/
-  document.getElementById(arrayDivIdFlipped[flipIndex]).classList.toggle("effectRotate");
+function showCards() {
   document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("material-icons"); /*display element*/
   document.getElementById(arraySpanIdFlipped[flipIndex]).classList.toggle("hide"); /*display element*/
+  document.getElementById(arrayDivIdFlipped[flipIndex]).classList.toggle("effectRotate");
+
   flipIndex++;
-  console.log(arrayDivIdFlipped);
 
   if (flipIndex == 2)
   {
@@ -119,6 +111,18 @@ function runGame (evt) {
       setTimeout(redoFlip,1000);
     }
   }
+
+}
+
+setInterval(runTimer, 1000); /*Start game timer*/
+
+/*game functionality/logic function*/
+function runGame (evt) {
+  arrayIconsFlipped[flipIndex] = evt.target.textContent; /*get the name of element flipped*/
+  arraySpanIdFlipped[flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/
+  arrayDivIdFlipped[flipIndex] = evt.path[0].id; /*get the div of element flipped*/
+  document.getElementById(arrayDivIdFlipped[flipIndex]).classList.toggle("effectRotate");
+  setTimeout(showCards,500);
 }
 
 /*button functionality*/

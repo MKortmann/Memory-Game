@@ -1,5 +1,5 @@
 h1 {
-  font-size: 3em;
+  font-size: 2.8em;
   text-align: center;
 }
 
@@ -39,10 +39,11 @@ button {
 #grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: #3399ff; /*light-blue*/ /*slateblue;*/
+  /*background-color: #3399ff; /*light-blue*/ /*slateblue;*/
+  background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
   grid-gap: 12px;
   padding: 12px;
-  max-width: 800px;
+  max-width: 375px;
   overflow-x: auto;
   margin: auto;
   user-select: none; /*using should not select because the text will appear*/
@@ -52,27 +53,34 @@ button {
   background-color: #e0ebeb;
   text-align: center;
   vertical-align: middle;
+  margin: auto;
   cursor: pointer;
+  min-width: 64px;
   min-height: 64px;
   font-size: 0.2em; /*keep it small - symetric*/
+  border-radius: 18px;
+  padding: 25px 10px 25px 10px; /*top, right, bottom, left*/
 
 }
 
 #grid-container .effect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
   background-color: red;
-  transform: rotateZ(30);
-  transition: transform 1.0s ease;
-
 }
 
 #grid-container .effectCorrect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
-  background-color: slateblue;
+  background-color: #58D68D; /*slateblue*/
 }
 
 #grid-container .effectRotate {
   /*transform: rotate(90deg);*/
   transform: rotateY(180deg);
-  transition: transform 1.0s ease;
+  transition: transform 0.7s ease;
+}
+
+#grid-container .effectRedoRotate {
+  /*transform: rotate(90deg);*/
+  transform: rotateY(180deg);
+  transition: transform 0.2s ease;
 }
 
 .material-icons {
