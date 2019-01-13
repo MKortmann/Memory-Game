@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
-  <meta charset="utf-8">
-  <meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
+    <meta charset="utf-8">
+    <meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Memory Game</title>
+  </head>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <title>Memory Game</title>
-</head>
+  <body>
 
+    <header>
+      <h1><span class="big-font">M</span>emory <span class="big-font">G</span>ame</h1>
+      <h2><span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span> <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span></h2>
+    </header>
 
-<body>
+    <div id="grid-container">
+      <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
+      <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
+      <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
+      <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
+      <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
+      <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
+      <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
+      <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
+      <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
+      <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
+      <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
+      <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
+      <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
+      <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
+      <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
+      <div id="div-16"><span class="hide md-48" id="span-16"></span></div>
+    </div>
 
-  <header>
+    <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>imer: <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
 
-  </header>
+    <div>
+      <button id="buttonRestart"><span class="material-icons md-48 smaller">refresh</span></button>
+    <div>
 
-  <h1><span class="bigger">M</span>emory <span class="bigger">G</span>ame</h1>
-  <h2><span class="bigger">H</span>its: <span id=spanHits class="bigger">0</span> <span class="bigger">M</span>iss: <span id=spanMiss class="bigger">0</span></h2>
-  <div id="grid-container">
-    <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
-    <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
-    <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
-    <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
-    <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
-    <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
-    <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
-    <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
-    <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
-    <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
-    <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
-    <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
-    <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
-    <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
-    <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
-    <div id="div-16"><span class="hide md-48" id="span-16"></span></div>
-  </div>
-
-  <h2><span class="bigger">E</span>lapsed <span class="bigger">T</span>imer: <span id=spanTimerM class="bigger">0</span> m <span id=spanTimerS class="bigger">0</span> s </h2>
-  <div class="button">
-    <button id="buttonRestart"><span class="material-icons md-48 smaller">refresh</span></button>
-  <div>
-
-  <script src="./javascript/app.js"></script>
-</body>
-
-
+    <script src="./javascript/app.js"></script>
+  </body>
 </html>

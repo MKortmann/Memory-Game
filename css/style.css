@@ -1,5 +1,5 @@
 h1 {
-  font-size: 2.8em;
+  font-size: 2.5em;
   text-align: center;
 }
 
@@ -7,25 +7,21 @@ h2 {
   text-align: center;
 }
 
-.bigger {
-  color: #3399ff; /*light-blue*/
-  font-size: 2em;
-}
-
-#spanHits {
-  color: #3399ff; /*light-blue*/
-}
-
-#spanMiss {
-  color: red;
-}
-
-#spanTimer {
-  color: #3399ff; /*light-blue*/
-}
-
-.button {
+div {
   text-align: center;
+}
+
+.big-font {
+  color: #3399ff; /*light-blue*/
+  font-size: 1.5em;
+}
+
+#span-hits {
+  color: #3399ff; /*light-blue*/
+}
+
+#span-miss {
+  color: red;
 }
 
 button {
@@ -39,18 +35,19 @@ button {
 #grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  /*background-color: #3399ff; /*light-blue*/ /*slateblue;*/
   background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
   grid-gap: 12px;
   padding: 12px;
-  max-width: 375px;
+  padding: 25px 10px 25px 10px; /*top, right, bottom, left*/
+  border-radius: 18px;
+  max-width: 500px;
   overflow-x: auto;
   margin: auto;
-  user-select: none; /*using should not select because the text will appear*/
+  border: 1.5px solid;
 }
 
 #grid-container > div {
-  background-color: #e0ebeb;
+  background: linear-gradient(to bottom right, #566573 0%, #99ccff 100%);
   text-align: center;
   vertical-align: middle;
   margin: auto;
@@ -60,36 +57,103 @@ button {
   font-size: 0.2em; /*keep it small - symetric*/
   border-radius: 18px;
   padding: 25px 10px 25px 10px; /*top, right, bottom, left*/
-
+  border: 1.5px solid;
+  box-shadow: 6px 6px gray;
 }
 
-#grid-container .effect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
-  background-color: red;
+@-webkit-keyframes swing-error /*for internet explorer*/
+{
+  15%
+  {
+      -webkit-transform: translateX(15px);
+      transform: translateX(15px);
+  }
+  30%
+  {
+      -webkit-transform: translateX(-10px);
+      transform: translateX(-10px);
+  }
+  50%
+  {
+      -webkit-transform: translateX(6px);
+      transform: translateX(6px);
+  }
+  65%
+  {
+      -webkit-transform: translateX(-3px);
+      transform: translateX(-3px);
+  }
+  80%
+  {
+      -webkit-transform: translateX(1px);
+      transform: translateX(1px);
+  }
+  100%
+  {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+  }
 }
 
-#grid-container .effectCorrect { /*here the space between id name and class name ARE VERY IMPORTANT!*/
-  background-color: #58D68D; /*slateblue*/
+@keyframes swing-error
+{
+  15%
+  {
+      -webkit-transform: translateX(15px);
+      transform: translateX(15px);
+  }
+  30%
+  {
+      -webkit-transform: translateX(-10px);
+      transform: translateX(-10px);
+  }
+  50%
+  {
+      -webkit-transform: translateX(6px);
+      transform: translateX(6px);
+  }
+  65%
+  {
+      -webkit-transform: translateX(-3px);
+      transform: translateX(-3px);
+  }
+  80%
+  {
+      -webkit-transform: translateX(1px);
+      transform: translateX(1px);
+  }
+  100%
+  {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+  }
 }
 
-#grid-container .effectRotate {
-  /*transform: rotate(90deg);*/
+#grid-container .effect-error {
+  background: red;
+  -webkit-animation: swing-error 0.9s ease;
+  animation: swing-error 0.9s ease;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+#grid-container .effect-correct {
+  background: #58D68D;
+  border: 2.5px solid;
+}
+
+#grid-container .effect-rotate {
   transform: rotateY(180deg);
   transition: transform 0.7s ease;
 }
 
-#grid-container .effectRedoRotate {
-  /*transform: rotate(90deg);*/
-  transform: rotateY(180deg);
-  transition: transform 0.2s ease;
-}
-
 .material-icons {
-  padding-top: 10px;
-
+  padding-top: 9px;
+  padding-left: 4px;
 }
 
 .material-icons.md-48 { font-size: 48px; }
 
 .hide {
-  color: #e0ebeb; /*make the text invisible (matching colors with the background)*/
+  display: none;
 }
