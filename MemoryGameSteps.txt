@@ -14,14 +14,26 @@ Programming:
   1.1.4) Winning game? Ok
   1.1.5) Reset Ok
 
-TODO: 
+
 1-NICE EFFECT TURNING THE CARD OK
 2-Background color when corrects setted OK
-3-Implement Star rating TODOOOOOOOO
+
 4-Implement running time OK
 5-Reset button OK
 ERROR: user click at same div and it counts as the same OK
 
+
+TODO: 
+
+1-Javascript Class/Object
+2-Organize the code
+3-Implement Star rating TODOOOOOOOO
+
+4-Compatibilität mit firefox
+5-Compatibilität mit internet explorer
+6-Comopatibilität mit safari
+
+7-Responsive Design!!!
 
 The following are just some of the questions that you'll experience along the way:
 
