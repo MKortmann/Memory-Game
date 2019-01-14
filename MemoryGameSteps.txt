@@ -1,4 +1,5 @@
-Tutors: William (4 stars) better than the other (3 stars)
+Tutors: William (4 stars) better than the Jai K. (3 stars)
+It takes too much time to reply
 
 1-GitHub   OK
 2-Structure: html, css, javascript OK
@@ -26,7 +27,10 @@ ERROR: user click at same div and it counts as the same OK
 TODO: 
 
 1-Javascript Class/Object
-2-Organize the code
+2-Organize the code -> Board Game would be an object with properties and functions.
+It will be easier to reread the code because the functions would be not separate int the code.
+You attached the things together. It makes sense.
+
 3-Implement Star rating TODOOOOOOOO
 
 4-Compatibilität mit firefox
@@ -34,6 +38,7 @@ TODO:
 6-Comopatibilität mit safari
 
 7-Responsive Design!!!
+8-Increase cards (tip: function map() to create and increase the array).
 
 The following are just some of the questions that you'll experience along the way:
 

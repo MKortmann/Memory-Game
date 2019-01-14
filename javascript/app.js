@@ -11,8 +11,8 @@ let arraySpan = ["#span-9","#span-10","#span-11","#span-4",
                  "#span-1","#span-2","#span-3","#span-12",
                  "#span-6", "#span-8","#span-15","#span-16"];
 /*Array below is only to test*/
-/*arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
-                  "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];*/
+arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
+                  "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];
 
 let randomNumber = 0;
 let arrayIconsRandom = new Array(16);
@@ -82,7 +82,7 @@ function redoFlip () {
   document.getElementById(arraySpanIdFlipped[0]).classList.toggle("hide");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("material-icons");
   document.getElementById(arraySpanIdFlipped[1]).classList.toggle("hide");
-  setTimeout(reset(),1000);
+  reset();
 }
 /*Cards match*/
 function matchCards () {
@@ -103,7 +103,7 @@ function showCards() {
     if( (arrayIconsFlipped[0] === arrayIconsFlipped[1]) && (arrayDivIdFlipped[0] != arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
       matchCards ();
       if (flipCorrectIndex == 8) {
-        setTimeout(location.reload,1000);
+        clearTimeout(myTimer);
         /*location.reload(); /*restart the game*/
       }
     } else {
@@ -115,7 +115,7 @@ function showCards() {
 
 }
 
-setInterval(runTimer, 1000); /*Start game timer*/
+let myTimer = setInterval(runTimer, 1000); /*Start game timer*/
 
 /*game functionality/logic function*/
 function runGame (evt) {
