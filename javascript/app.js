@@ -2,46 +2,23 @@
 
 /*Board Construction Initialization*/
 /*Array below is only to test*/
-/*arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
-              "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];*/
+let arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
+              "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];
 let oBoardInit = {
 
   randomNumber : 0,
   arrayIconsRandom : new Array(16),
-  arrayIcons : new Array ("3d_rotation",
-                          "fingerprint",
-                          "delete",
-                          "delete",
-                          "bug_report",
-                          "extension",
-                          "extension",
-                          "android",
-                          "card_giftcard",
-                          "fingerprint",
-                          "face",
-                          "face",
-                          "card_giftcard",
-                          "3d_rotation",
-                          "android",
-                          "bug_report"),
-  arraySpan : new Array ("#span-9",
-                         "#span-10",
-                         "#span-11",
-                         "#span-4",
-                         "#span-5",
-                         "#span-13",
-                         "#span-7",
-                         "#span-14",
-                         "#span-1",
-                         "#span-2",
-                         "#span-3",
-                         "#span-12",
-                         "#span-6",
-                         "#span-8",
-                         "#span-15",
-                         "#span-16"),
+  arrayIcons : new Array ("3d_rotation","fingerprint","delete","delete",
+                          "bug_report","extension","extension","android",
+                          "card_giftcard","fingerprint","face","face",
+                          "card_giftcard","3d_rotation","android","bug_report"),
+  arraySpan : new Array ("#span-9","#span-10","#span-11","#span-4",
+                         "#span-5","#span-13","#span-7","#span-14",
+                         "#span-1","#span-2","#span-3","#span-12",
+                         "#span-6","#span-8","#span-15","#span-16"),
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
-  genRandom : function () {
+  genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
+    /*this.arrayIcons = arrayIcons;*/
     for (let iLoop=this.arrayIcons.length-1; iLoop>= 0; iLoop--) {
       this.randomNumber = Math.floor(Math.random()*iLoop);
       oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[this.randomNumber];
@@ -49,7 +26,7 @@ let oBoardInit = {
     };
   },
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
-  gridInit : function () {
+  gridInit() {
     for (let iLoop = 15; iLoop >= 0; iLoop--) {
       document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
       this.arrayIcons.splice(iLoop,1);
@@ -61,6 +38,35 @@ let oBoardInit = {
 oBoardInit.genRandom(); /*generate an array of random numbers*/
 oBoardInit.gridInit(); /*write the respective cards to the board*/
 
+/*oTimer Literal Object*/
+let oTimer = {
+
+ timeNow: 0,
+ timeGameStart: 0,
+ runTime: 0,
+ elapsedTimer: 0,
+
+ /*Start Timer*/
+ startTimer() {
+    this.timeGameStart = Date.now();
+    console.log(this.timeGameStart);
+    this.elapsedTimer = setInterval(this.displayTimer, 1000); /*Start game timer*/
+  },
+
+/*Calculate and write the timer*/
+ displayTimer() {
+    this.runTime = Date.now() - oTimer.timeGameStart;
+    console.log(oTimer.timeGameStart);
+    let timeElapsedMillisec = Math.floor(this.runTime/1000);
+    document.querySelector("#span-timer-m").textContent = Math.floor(timeElapsedMillisec / 60);
+    document.querySelector("#span-timer-s").textContent =  timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60)*60 );
+  }
+
+};
+
+/*let myTimer = setInterval(runTimer, 1000); /*Start game timer*/
+oTimer.startTimer(); /*Start game timer*/
+
 /*Game functions variables*/
 let flipIndex = 0; /*track the number of flip cards*/
 let arrayIconsFlipped = ["none", "none-1"];/*store the name of icons to compare*/
@@ -68,16 +74,6 @@ let arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
 let arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
 let flipCorrectIndex = 0; /*to track the end of the game*/
 let flipMissIndex = 0; /*to track misses*/
-let startTime = Date.now(); /*game start with the first click*/
-let runTime = 0;
-
-/*Timer Funcion*/
-function runTimer(){
-    runTime = Date.now() - startTime ;
-    let timeElapsedMillisec = Math.floor(runTime/1000);
-    document.querySelector("#span-timer-m").textContent = Math.floor(timeElapsedMillisec / 60);
-    document.querySelector("#span-timer-s").textContent =  timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60)*60 );
-}
 
 /*Effect change of Element*/
 function effectError() {
@@ -133,7 +129,7 @@ function showCards() {
     if( (arrayIconsFlipped[0] === arrayIconsFlipped[1]) && (arrayDivIdFlipped[0] != arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
       matchCards ();
       if (flipCorrectIndex == 8) {
-        clearTimeout(myTimer);
+        clearTimeout(oTimer.elapsedTimer);
         /*location.reload(); /*restart the game*/
       }
     } else {
@@ -144,8 +140,6 @@ function showCards() {
   }
 
 }
-
-let myTimer = setInterval(runTimer, 1000); /*Start game timer*/
 
 /*game functionality/logic function*/
 function runGame (evt) {
