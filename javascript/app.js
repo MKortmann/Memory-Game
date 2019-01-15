@@ -1,35 +1,65 @@
 "use strict";
 
 /*Board Construction Initialization*/
-let arrayIcons = ["3d_rotation","fingerprint","delete","delete",
-                  "bug_report","extension","extension","android",
-                  "card_giftcard","fingerprint","face","face",
-                  "card_giftcard","3d_rotation","android","bug_report"];
-
-let arraySpan = ["#span-9","#span-10","#span-11","#span-4",
-                 "#span-5","#span-13","#span-7","#span-14",
-                 "#span-1","#span-2","#span-3","#span-12",
-                 "#span-6", "#span-8","#span-15","#span-16"];
 /*Array below is only to test*/
-arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
-                  "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];
+/*arrayIcons = ["3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation",
+              "3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation","3d_rotation"];*/
+let oBoardInit = {
 
-let randomNumber = 0;
-let arrayIconsRandom = new Array(16);
-
-/*Creating random numbers using this forLoop and Math function*/
-for (let iLoop=arrayIcons.length-1; iLoop>= 0; iLoop--) {
-  randomNumber = Math.floor(Math.random()*iLoop);
-  arrayIconsRandom[iLoop] = arrayIcons[randomNumber];
-  arrayIcons.splice(randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
+  randomNumber : 0,
+  arrayIconsRandom : new Array(16),
+  arrayIcons : new Array ("3d_rotation",
+                          "fingerprint",
+                          "delete",
+                          "delete",
+                          "bug_report",
+                          "extension",
+                          "extension",
+                          "android",
+                          "card_giftcard",
+                          "fingerprint",
+                          "face",
+                          "face",
+                          "card_giftcard",
+                          "3d_rotation",
+                          "android",
+                          "bug_report"),
+  arraySpan : new Array ("#span-9",
+                         "#span-10",
+                         "#span-11",
+                         "#span-4",
+                         "#span-5",
+                         "#span-13",
+                         "#span-7",
+                         "#span-14",
+                         "#span-1",
+                         "#span-2",
+                         "#span-3",
+                         "#span-12",
+                         "#span-6",
+                         "#span-8",
+                         "#span-15",
+                         "#span-16"),
+  /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
+  genRandom : function () {
+    for (let iLoop=this.arrayIcons.length-1; iLoop>= 0; iLoop--) {
+      this.randomNumber = Math.floor(Math.random()*iLoop);
+      oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[this.randomNumber];
+      this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
+    };
+  },
+  /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
+  gridInit : function () {
+    for (let iLoop = 15; iLoop >= 0; iLoop--) {
+      document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
+      this.arrayIcons.splice(iLoop,1);
+      this.arraySpan.splice(iLoop,1);
+    };
+  }
 };
 
-/*Game Grid Initialization*/
-for (let iLoop = 15; iLoop >= 0; iLoop--) {
-  document.querySelector(arraySpan[iLoop]).textContent = arrayIconsRandom[iLoop];
-  arrayIcons.splice(iLoop,1);
-  arraySpan.splice(iLoop,1);
-};
+oBoardInit.genRandom(); /*generate an array of random numbers*/
+oBoardInit.gridInit(); /*write the respective cards to the board*/
 
 /*Game functions variables*/
 let flipIndex = 0; /*track the number of flip cards*/
