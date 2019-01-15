@@ -142,7 +142,7 @@ function runGame(evt) {
     /*oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.path[0].id; /*get the div of element flipped: WORKS ONLY IN GOOGLE CHROME*/
     oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.target.id; /*this works in IE, Google Chrome and Firefox*/
     document.getElementById(oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex]).classList.toggle("effect-rotate");
-    setTimeout(oMemoryGame.showCards,500);
+    setTimeout(oMemoryGame.showCards,400); /*delay because it takes time to make the animation*/
   }
 }
 

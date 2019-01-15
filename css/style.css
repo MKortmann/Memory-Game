@@ -144,7 +144,7 @@ button {
 
 #grid-container .effect-rotate {
   transform: rotateY(180deg);
-  transition: transform 0.7s ease;
+  transition: transform 0.5s ease;
 }
 
 .material-icons {

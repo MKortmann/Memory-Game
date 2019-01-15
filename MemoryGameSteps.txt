@@ -27,21 +27,18 @@ Programming:
 5-Reset button OK
 ERROR: user click at same div and it counts as the same OK
 
+1-Javascript Class/Object OK
+2-Organize the code -> Board Game would be an object with properties and functions. OK
+It will be easier to reread the code because the functions would be not separate int the code. OK
+You attached the things together. It makes sense. OK
+4-Compatibilität mit firefox OK
+5-Compatibilität mit internet explorer OK
+6-Comopatibilität mit safari OK
 
-TODO: 
-
-1-Javascript Class/Object
-2-Organize the code -> Board Game would be an object with properties and functions.
-It will be easier to reread the code because the functions would be not separate int the code.
-You attached the things together. It makes sense.
-
-3-Implement Star rating TODOOOOOOOO
-
-4-Compatibilität mit firefox
-5-Compatibilität mit internet explorer
-6-Comopatibilität mit safari
-
-7-Responsive Design!!!
+TODO:
+1-Implement Star rating TODOOOOOOOO
+2-Responsive Design!!!
+3-Professional Comments!!
 8-Increase cards (tip: function map() to create and increase the array).
 
 The following are just some of the questions that you'll experience along the way:
