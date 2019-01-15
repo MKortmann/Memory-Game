@@ -128,7 +128,7 @@ let oMemoryGame = {
   },
 }
 
-/*STARTING*/
+/*STARTING THE GAME*/
 
 oBoardInit.genRandom(); /*generate an array of random numbers*/
 oBoardInit.gridInit(); /*write the respective cards to the board*/
@@ -138,7 +138,7 @@ oTimer.startTimer(); /*Start game timer*/
 function runGame(evt) {
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/
-  oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.path[0].id; /*get the div of element flipped*/
+  /*oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.path[0].id; /*get the div of element flipped: WORKS ONLY IN GOOGLE CHROME*/
   document.getElementById(oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex]).classList.toggle("effect-rotate");
   setTimeout(oMemoryGame.showCards,500);
 }
