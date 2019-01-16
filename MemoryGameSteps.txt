@@ -40,6 +40,7 @@ TODO:
 2-Responsive Design!!!
 3-Professional Comments!!
 8-Increase cards (tip: function map() to create and increase the array).
+9-Sound!!!
 
 The following are just some of the questions that you'll experience along the way:
 
