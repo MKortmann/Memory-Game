@@ -31,16 +31,19 @@ ERROR: user click at same div and it counts as the same OK
 2-Organize the code -> Board Game would be an object with properties and functions. OK
 It will be easier to reread the code because the functions would be not separate int the code. OK
 You attached the things together. It makes sense. OK
-4-Compatibilität mit firefox OK
-5-Compatibilität mit internet explorer OK
-6-Comopatibilität mit safari OK
+4-Compatibilitï¿½t mit firefox OK
+5-Compatibilitï¿½t mit internet explorer OK
+6-Comopatibilitï¿½t mit safari OK
 
 TODO:
-1-Implement Star rating TODOOOOOOOO
-2-Responsive Design!!!
+1-Implement Star rating TODOOOOOOOO OK
+2-Responsive Design!!! OK
 3-Professional Comments!!
 8-Increase cards (tip: function map() to create and increase the array).
 9-Sound!!!
+10-Random Cards
+
+stars: DONE, reponsive design: DONE. Missing: Professional comments, code beautiful test
 
 The following are just some of the questions that you'll experience along the way:
 
@@ -49,5 +52,3 @@ How many files do I need?
 Do I modify the HTML first or the CSS?
 How many JavaScript functions do I need?
 Should my function be this many lines of code?
-
-

@@ -65,6 +65,9 @@ let oMemoryGame = {
   arrayIconsFlipped: new Array("none", "none-1"),/*store the name of icons to compare*/
   arraySpanIdFlipped: new Array(2), /*store the id of span elements flipped*/
   arrayDivIdFlipped: new Array(2), /*store the div of elements flipped*/
+  arrayIdStars: new Array("star1","star2","star3","star4"),
+  starRemoved: new Array("star5","star6","star7"),
+  starIndex: 0, /*track number in the array (arrayIdStars)*/
   flipCorrectIndex: 0, /*to track the end of the game*/
   flipMissIndex: 0, /*to track misses*/
   /*Effect change of Element*/
@@ -89,6 +92,12 @@ let oMemoryGame = {
   /*Cards do not match*/
   redoFlip() {
     oMemoryGame.flipMissIndex++;
+    if ( (oMemoryGame.flipMissIndex % 3 === 0) && (oMemoryGame.arrayIdStars.length > 1) ) { /*I want always 1 star there*/
+      oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1;
+      document.getElementById(oMemoryGame.arrayIdStars[oMemoryGame.starIndex]).classList.add("hide");
+      oMemoryGame.starRemoved[oMemoryGame.starRemoved.length] = oMemoryGame.arrayIdStars.pop();
+    }
+    console.log(oMemoryGame.starRemoved);
     document.querySelector("#span-miss").textContent = oMemoryGame.flipMissIndex;
     document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.remove("effect-error");
     document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.remove("effect-error");
@@ -101,6 +110,12 @@ let oMemoryGame = {
 /*Cards match*/
   matchCards() {
     this.flipCorrectIndex++;
+    if ( oMemoryGame.starRemoved.length >= 1 ) {
+      document.getElementById(oMemoryGame.starRemoved[oMemoryGame.starRemoved.length-1]).classList.remove("hide");
+      oMemoryGame.arrayIdStars.push(oMemoryGame.starRemoved.pop());
+      console.log("StarRemoved" + oMemoryGame.starRemoved);
+      console.log("arrayIdStars" + oMemoryGame.arrayIdStars);
+    }
     document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
     this.effectCorrect();
     this.reset();

@@ -15,16 +15,21 @@
 
     <header>
       <h1><span class="big-font">M</span>emory <span class="big-font">G</span>ame</h1>
-      <h2><span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span> <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span></h2>
+      <h2><span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
+          <span>
+              <button id="buttonRestart"><span class="material-icons md-36">refresh</span></button>    
+          </span>
+          <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span></h2>
     </header>
 
-    <div>
-      <img id="star1" src="./img/star6.svg" alt="star">
-      <img id="star2" src="./img/star6.svg" alt="star">
-      <img id="star3" src="./img/star6.svg" alt="star">
-      <img id="star4" src="./img/star6.svg" alt="star">
-      <img id="star5" src="./img/star6.svg" alt="star">
-      <img id="star6" src="./img/star6.svg" alt="star">
+    <div id="stars">
+        <img id="star1" src="./img/star6.svg" alt="star">
+        <img id="star2" src="./img/star6.svg" alt="star">
+        <img id="star3" src="./img/star6.svg" alt="star">
+        <img id="star4" src="./img/star6.svg" alt="star">
+        <img id="star5" class="hide" src="./img/star6.svg" alt="star">
+        <img id="star6" class="hide" class="hide" src="./img/star6.svg" alt="star">
+        <img id="star7" class="hide" src="./img/star6.svg" alt="star">
     </div>
 
     <div id="grid-container">
@@ -46,11 +51,8 @@
       <div id="div-16"><span class="hide md-48" id="span-16"></span></div>
     </div>
 
-    <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>ime: <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
-
-    <div>
-      <button id="buttonRestart"><span class="material-icons md-48 smaller">refresh</span></button>
-    </div>
+    <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
+        <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
 
     <script src="./javascript/app.js"></script>
   </body>
