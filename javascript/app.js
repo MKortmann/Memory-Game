@@ -204,7 +204,7 @@ let oMemoryGame = {
 
       if( (oMemoryGame.arrayIconsFlipped[0] === oMemoryGame.arrayIconsFlipped[1]) && (oMemoryGame.arrayDivIdFlipped[0] != oMemoryGame.arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
         oMemoryGame.matchCards ();
-        if (oMemoryGame.flipCorrectIndex == 8) {
+        if (oMemoryGame.flipCorrectIndex == diffCards) {
           clearTimeout(oTimer.elapsedTimer);
           /*location.reload(); /*restart the game*/
         }
