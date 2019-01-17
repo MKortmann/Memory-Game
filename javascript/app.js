@@ -15,21 +15,32 @@ let containerIcons = ["format_shapes","bubble_chart","border_right","attach_mone
                       "schedule", "rowing","restore_page","room",
                       "pets","pan_tool","motorcycle","language",
                       "invert_colors","line_weight","loyalty","gravel"];
-let Cards = 16;
+let totalCards = 16;
+let diffCards = 8;
 let oBoardInit = {
   randomNumber: 0,
   arrayIconsRandom: new Array(),
   arrayIcons: new Array (),
+  arraySpan: new Array(),/*
   arraySpan: new Array ("#span-9","#span-10","#span-11","#span-4",
                          "#span-5","#span-13","#span-7","#span-14",
                          "#span-1","#span-2","#span-3","#span-12",
-                         "#span-6","#span-8","#span-15","#span-16"),
+                         "#span-6","#span-8","#span-15","#span-16"),*/
+
   genArrayIcons() { /*do not let the game repetitive with the same icons*/
-    oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* (containerIcons.length-8) ) , 8 );
-    for(let index=8; index <= 15; index++) {
-      oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-8];
+    oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* (containerIcons.length-diffCards) ) , diffCards );
+    for(let index=diffCards; index < totalCards; index++) {
+      oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-diffCards];
     }
-    console.log("arrayIcons:" + oBoardInit.arrayIcons);
+  },
+
+  genSpanArray() {
+    let getSpan;
+    for (let index=0; index <= totalCards-1; index++) {
+      getSpan = "#span-" + index;
+      this.arraySpan[index] = getSpan;
+    }
+    console.log("Printing Array Span: " + this.arraySpan);
   },
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
   genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
@@ -39,14 +50,22 @@ let oBoardInit = {
       oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[oBoardInit.randomNumber];
       this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
     };
-    console.log("arrayIconsRandom:" + this.arrayIconsRandom);
+    console.log("Printing Array Icons Random: " + this.arrayIconsRandom);
+  },
+  /*Check how many cards we need and then increase the board*/
+  addHtmlElements() {
+
   },
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
   gridInit() {
-    for (let iLoop = 15; iLoop >= 0; iLoop--) {
-      console.log(iLoop);
-      console.log(this.arrayIconsRandom[iLoop]);
+    console.log("Printing Array Icons Length: " + this.arrayIconsRandom.length);
+    console.log("Printing Icons Random Length: " + this.arrayIconsRandom.length);
+
+    for (let iLoop = totalCards-1; iLoop >= 0; iLoop--) {
+      console.log(iLoop + ":" + this.arraySpan[iLoop]);
+      console.log(iLoop + ":" + this.arrayIconsRandom[iLoop]);
       document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
+      console.log("Printing Query Selector: " + document.querySelector(this.arraySpan[iLoop]).textContent);
       this.arrayIcons.splice(iLoop,1);
       this.arraySpan.splice(iLoop,1);
     };
@@ -161,7 +180,9 @@ let oMemoryGame = {
   },
 }
 
+
 oBoardInit.genArrayIcons();
+oBoardInit.genSpanArray();
 
 /*STARTING THE GAME*/
 
