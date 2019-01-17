@@ -130,9 +130,22 @@ let oMemoryGame = {
     oMemoryGame.flipCorrectIndex = 0; /*to track the end of the game*/
     oMemoryGame.flipMissIndex = 0; /*to track misses*/
 
-    document.se
+    let container = document.querySelector("#grid-container");
+    let listSpans = container.querySelectorAll("span");
+    let listDivs = container.querySelectorAll("div");
+    for(let i = 0; i < listSpans.length; i++) {
+      listSpans[i].classList.add("hide");
+      listSpans[i].classList.remove("material-icons");
+      listDivs[i].classList.remove("effect-correct");
+    }
 
-  }
+    let containerStars = document.querySelector("#stars");
+    let listStars = containerStars.querySelectorAll("img");
+    console.log(listStars);
+    for(let i = 0; i < 3; i++) {
+      listStars[i].classList.remove("hide");
+    }
+  },
   /*Effect change of Element*/
   effectError() {
     document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.add("effect-error");
@@ -214,6 +227,7 @@ oBoardInit.genSpanArray();
 oBoardInit.genRandom(); /*generate an array of random numbers*/
 oBoardInit.gridInit(); /*write the respective cards to the board*/
 
+oMemoryGame.totalReset();
 
 
 /*STARTING THE GAME*/
