@@ -16,17 +16,13 @@ let containerIcons = ["format_shapes","bubble_chart","border_right","attach_mone
                       "pets","pan_tool","motorcycle","language",
                       "invert_colors","line_weight","loyalty","gravel"];
 let totalCards = 16;
-let diffCards = 8;
+const diffCards = totalCards/2;
+const standardNumberofCards = 16;
 let oBoardInit = {
   randomNumber: 0,
   arrayIconsRandom: new Array(),
   arrayIcons: new Array (),
-  arraySpan: new Array(),/*
-  arraySpan: new Array ("#span-9","#span-10","#span-11","#span-4",
-                         "#span-5","#span-13","#span-7","#span-14",
-                         "#span-1","#span-2","#span-3","#span-12",
-                         "#span-6","#span-8","#span-15","#span-16"),*/
-
+  arraySpan: new Array(),
   genArrayIcons() { /*do not let the game repetitive with the same icons*/
     oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* (containerIcons.length-diffCards) ) , diffCards );
     for(let index=diffCards; index < totalCards; index++) {
@@ -40,7 +36,6 @@ let oBoardInit = {
       getSpan = "#span-" + index;
       this.arraySpan[index] = getSpan;
     }
-    console.log("Printing Array Span: " + this.arraySpan);
   },
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
   genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
@@ -50,22 +45,35 @@ let oBoardInit = {
       oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[oBoardInit.randomNumber];
       this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
     };
-    console.log("Printing Array Icons Random: " + this.arrayIconsRandom);
   },
   /*Check how many cards we need and then increase the board*/
-  addHtmlElements() {
+  updateHtmlElements() {
+    let numbersOfDivs = document.body.children[2].children.length;
+    /*Adding or removing div*/
+
+    const fragment = document.createDocumentFragment();  // ← uses a DocumentFragment instead of a <div>
+    for (let i = 0; i < (totalCards-standardNumberofCards); i++) {
+      const newElementDiv = document.createElement("div");
+      const newElementSpan = document.createElement("span");
+      /*newElement.innerText = 'This is paragraph number ' + i;*/
+      newElementDiv.setAttribute("id", "div-" + (standardNumberofCards+i) )
+      newElementSpan.setAttribute("id", "span-" + (standardNumberofCards+i) )
+      newElementSpan.setAttribute("class", "hide md-48")
+      fragment.appendChild(newElementDiv);
+      newElementDiv.appendChild(newElementSpan);
+    }
+    document.getElementById("grid-container").appendChild(fragment); // reflow and repaint here -- once!
+
+      for (let i=0; i < (numbersOfDivs-standardNumberofCards); i++) {
+        let remElement = document.getElementById("div-" + (standardNumberofCards+i));
+        remElement.parentNode.removeChild(remElement);
+      }
 
   },
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
   gridInit() {
-    console.log("Printing Array Icons Length: " + this.arrayIconsRandom.length);
-    console.log("Printing Icons Random Length: " + this.arrayIconsRandom.length);
-
     for (let iLoop = totalCards-1; iLoop >= 0; iLoop--) {
-      console.log(iLoop + ":" + this.arraySpan[iLoop]);
-      console.log(iLoop + ":" + this.arrayIconsRandom[iLoop]);
       document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
-      console.log("Printing Query Selector: " + document.querySelector(this.arraySpan[iLoop]).textContent);
       this.arrayIcons.splice(iLoop,1);
       this.arraySpan.splice(iLoop,1);
     };
@@ -107,6 +115,24 @@ let oMemoryGame = {
   starIndex: 0, /*track number in the array (arrayIdStars)*/
   flipCorrectIndex: 0, /*to track the end of the game*/
   flipMissIndex: 0, /*to track misses*/
+
+  /*Total Reset For New Start*/
+  totalReset() {
+    /*Total Reset for oMemoryGame*/
+    /*Game functions variables*/
+    oMemoryGame.flipIndex = 0; /*track the number of flip cards*/
+    oMemoryGame.arrayIconsFlipped = new Array("none", "none-1");/*store the name of icons to compare*/
+    oMemoryGame.arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
+    oMemoryGame.arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
+    oMemoryGame.arrayIdStars = new Array("star1","star2","star3","star4");
+    oMemoryGame.starRemoved = new Array("star5","star6","star7");
+    oMemoryGame.starIndex = 0; /*track number in the array (arrayIdStars)*/
+    oMemoryGame.flipCorrectIndex = 0; /*to track the end of the game*/
+    oMemoryGame.flipMissIndex = 0; /*to track misses*/
+
+    document.se
+
+  }
   /*Effect change of Element*/
   effectError() {
     document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.add("effect-error");
@@ -150,8 +176,6 @@ let oMemoryGame = {
     if ( oMemoryGame.starRemoved.length >= 1 ) {
       document.getElementById(oMemoryGame.starRemoved[oMemoryGame.starRemoved.length-1]).classList.remove("hide");
       oMemoryGame.arrayIdStars.push(oMemoryGame.starRemoved.pop());
-      console.log("StarRemoved" + oMemoryGame.starRemoved);
-      console.log("arrayIdStars" + oMemoryGame.arrayIdStars);
     }
     document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
     this.effectCorrect();
@@ -180,16 +204,25 @@ let oMemoryGame = {
   },
 }
 
+function startGame(levelDifficult) {
 
+/*Setting the Board*/
+totalCards = levelDifficult;
+oBoardInit.updateHtmlElements();
 oBoardInit.genArrayIcons();
 oBoardInit.genSpanArray();
-
-/*STARTING THE GAME*/
-
 oBoardInit.genRandom(); /*generate an array of random numbers*/
 oBoardInit.gridInit(); /*write the respective cards to the board*/
 
+
+
+/*STARTING THE GAME*/
+
 oTimer.startTimer(); /*Start game timer*/
+
+};
+
+startGame(16);
 
 function runGame(evt) {
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
@@ -207,5 +240,17 @@ document.querySelector("#grid-container").addEventListener("click", runGame, tru
 
 /*button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function(){
-  location.reload()
+  /*location.reload();*/
+  startGame(24);
+});
+
+/*button increase level and refresh page*/
+document.querySelector("#buttonLevelHard").addEventListener("click", function(){
+  /*location.reload();*/
+  startGame(32);
+});
+/*button increase level and refresh page*/
+document.querySelector("#buttonLevelEasy").addEventListener("click", function(){
+  /*location.reload();*/
+  startGame(16);
 });
