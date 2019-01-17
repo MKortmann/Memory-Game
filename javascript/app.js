@@ -2,7 +2,7 @@
 
 /*Board Construction Initialization*/
 /*Array below is only to test fast the end of the game*/
-let containerIcons = ["format_shapes","bubble_chart","border_right","attach_money",
+/*let containerIcons = ["format_shapes","bubble_chart","border_right","attach_money",
                       "graphic_eq","waves","delete_sweep","duo",
                       "contact_phone","business","sort_by_alpha","snooze",
                       "queue_music","note","library_books","games",
@@ -14,28 +14,65 @@ let containerIcons = ["format_shapes","bubble_chart","border_right","attach_mone
                       "card_giftcard","extension","android","face",
                       "schedule", "rowing","restore_page","room",
                       "pets","pan_tool","motorcycle","language",
-                      "invert_colors","line_weight","loyalty","gravel"];
-let totalCards = 16;
-const diffCards = totalCards/2;
-const standardNumberofCards = 16;
+                      "invert_colors","line_weight","loyalty","gravel"];*/
+
 let oBoardInit = {
+  totalCards: 24,
+  standardNumberofCards: 16,
   randomNumber: 0,
   arrayIconsRandom: new Array(),
   arrayIcons: new Array (),
   arraySpan: new Array(),
+  containerIcons :  new Array ("format_shapes","bubble_chart","border_right","attach_money",
+                      "graphic_eq","waves","delete_sweep","duo",
+                      "contact_phone","business","sort_by_alpha","snooze",
+                      "queue_music","note","library_books","games",
+                      "apps","rate_review","satellite","terrain",
+                      "traffic","tram","zoom_out_map","local_see",
+                      "fastfood","flight","hotel","layers",
+                      "directions","grain","flash_auto","collections",
+                      "3d_rotation","fingerprint","delete","bug_report",
+                       "card_giftcard","extension","android","face",
+                      "schedule", "rowing","restore_page","room",
+                      "pets","pan_tool","motorcycle","language",
+                      "invert_colors","line_weight","loyalty","gravel"),
+  totalReset() {
+  oBoardInit.containerIcons =  new Array ("format_shapes","bubble_chart","border_right","attach_money",
+                      "graphic_eq","waves","delete_sweep","duo",
+                      "contact_phone","business","sort_by_alpha","snooze",
+                      "queue_music","note","library_books","games",
+                      "apps","rate_review","satellite","terrain",
+                      "traffic","tram","zoom_out_map","local_see",
+                      "fastfood","flight","hotel","layers",
+                      "directions","grain","flash_auto","collections",
+                      "3d_rotation","fingerprint","delete","bug_report",
+                       "card_giftcard","extension","android","face",
+                      "schedule", "rowing","restore_page","room",
+                      "pets","pan_tool","motorcycle","language",
+                      "invert_colors","line_weight","loyalty","gravel"),
+    oBoardInit.randomNumber = 0;
+    oBoardInit.arrayIconsRandom = new Array();
+    oBoardInit.arrayIcons = new Array ();
+    oBoardInit.arraySpan = new Array();
+  },
   genArrayIcons() { /*do not let the game repetitive with the same icons*/
-    oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* (containerIcons.length-diffCards) ) , diffCards );
-    for(let index=diffCards; index < totalCards; index++) {
-      oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-diffCards];
+    oBoardInit.arrayIcons = oBoardInit.containerIcons.splice( Math.floor( Math.random()* (oBoardInit.containerIcons.length-(oBoardInit.totalCards/2)) ) , oBoardInit.totalCards/2 );
+    /*oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* 20 ) , 12 );*/
+    console.log("genArrayIcons:" + oBoardInit.arrayIcons);
+    for(let index=(oBoardInit.totalCards/2); index < oBoardInit.totalCards; index++) {
+      oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-(oBoardInit.totalCards/2)];
     }
+    console.log("genArrayIcons:" + oBoardInit.arrayIcons);
+    console.log("genArrayIconsLength:" + oBoardInit.genArrayIcons.length);
   },
 
   genSpanArray() {
     let getSpan;
-    for (let index=0; index <= totalCards-1; index++) {
+    for (let index=0; index <= oBoardInit.totalCards-1; index++) {
       getSpan = "#span-" + index;
       this.arraySpan[index] = getSpan;
     }
+    console.log("genSpanArray:" + oBoardInit.arraySpan);
   },
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
   genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
@@ -45,6 +82,7 @@ let oBoardInit = {
       oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[oBoardInit.randomNumber];
       this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
     };
+    console.log("genRandom:" + oBoardInit.randomNumber);
   },
   /*Check how many cards we need and then increase the board*/
   updateHtmlElements() {
@@ -52,27 +90,27 @@ let oBoardInit = {
     /*Adding or removing div*/
 
     const fragment = document.createDocumentFragment();  // ← uses a DocumentFragment instead of a <div>
-    for (let i = 0; i < (totalCards-standardNumberofCards); i++) {
+    for (let i = 0; i < (oBoardInit.totalCards-oBoardInit.standardNumberofCards); i++) {
       const newElementDiv = document.createElement("div");
       const newElementSpan = document.createElement("span");
       /*newElement.innerText = 'This is paragraph number ' + i;*/
-      newElementDiv.setAttribute("id", "div-" + (standardNumberofCards+i) )
-      newElementSpan.setAttribute("id", "span-" + (standardNumberofCards+i) )
+      newElementDiv.setAttribute("id", "div-" + (oBoardInit.standardNumberofCards+i) )
+      newElementSpan.setAttribute("id", "span-" + (oBoardInit.standardNumberofCards+i) )
       newElementSpan.setAttribute("class", "hide md-48")
       fragment.appendChild(newElementDiv);
       newElementDiv.appendChild(newElementSpan);
     }
     document.getElementById("grid-container").appendChild(fragment); // reflow and repaint here -- once!
 
-      for (let i=0; i < (numbersOfDivs-standardNumberofCards); i++) {
-        let remElement = document.getElementById("div-" + (standardNumberofCards+i));
+      for (let i=0; i < (numbersOfDivs-oBoardInit.standardNumberofCards); i++) {
+        let remElement = document.getElementById("div-" + (oBoardInit.standardNumberofCards+i));
         remElement.parentNode.removeChild(remElement);
       }
 
   },
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
   gridInit() {
-    for (let iLoop = totalCards-1; iLoop >= 0; iLoop--) {
+    for (let iLoop = oBoardInit.totalCards-1; iLoop >= 0; iLoop--) {
       document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
       this.arrayIcons.splice(iLoop,1);
       this.arraySpan.splice(iLoop,1);
@@ -203,8 +241,8 @@ let oMemoryGame = {
     if (oMemoryGame.flipIndex == 2) {
 
       if( (oMemoryGame.arrayIconsFlipped[0] === oMemoryGame.arrayIconsFlipped[1]) && (oMemoryGame.arrayDivIdFlipped[0] != oMemoryGame.arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
-        oMemoryGame.matchCards ();
-        if (oMemoryGame.flipCorrectIndex == diffCards) {
+        oMemoryGame.matchCards();
+        if (oMemoryGame.flipCorrectIndex == (oBoardInit.totalCards/2)) {
           clearTimeout(oTimer.elapsedTimer);
           /*location.reload(); /*restart the game*/
         }
@@ -220,7 +258,8 @@ let oMemoryGame = {
 function startGame(levelDifficult) {
 
 /*Setting the Board*/
-totalCards = levelDifficult;
+oBoardInit.totalCards = levelDifficult;
+oBoardInit.totalReset();
 oBoardInit.updateHtmlElements();
 oBoardInit.genArrayIcons();
 oBoardInit.genSpanArray();
@@ -236,7 +275,7 @@ oTimer.startTimer(); /*Start game timer*/
 
 };
 
-startGame(16);
+startGame(24);
 
 function runGame(evt) {
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
