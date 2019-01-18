@@ -31,10 +31,21 @@
   margin: 0;
   padding: 0;
 }
+
 .style-background-red {
   color: red;
   margin: 0;
   padding: 0;
+}
+.style-background {
+  color: #3399ff;
+}
+.style-background-green {
+  color: green;
+}
+.style-background-red {
+  color: red;
+
 }
 
 h1 {
