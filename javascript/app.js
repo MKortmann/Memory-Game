@@ -1,5 +1,18 @@
 "use strict";
 
+
+var openFile = function(event) {
+  var input = event.target;
+
+  var reader = new FileReader();
+  reader.onload = function(){
+    var text = reader.result;
+    console.log(reader.result.substring(0, 200));
+  };
+  reader.readAsText(input.files[0]);
+};
+
+
 /*Board Construction Initialization*/
 let oBoardInit = {
   totalCards: 24,
@@ -20,7 +33,9 @@ let oBoardInit = {
                        "card_giftcard","extension","android","face",
                       "schedule", "rowing","restore_page","room",
                       "pets","pan_tool","motorcycle","language",
-                      "invert_colors","line_weight","loyalty","gravel"),
+                      "invert_colors","line_weight","loyalty","backup",
+                      "scanner","school","router","ring_volume",
+                      "report_problem","repeat_one","redeem","radio_button_checked"),
   totalReset() {
   oBoardInit.containerIcons =  new Array ("format_shapes","bubble_chart","border_right","attach_money",
                       "graphic_eq","waves","delete_sweep","duo",
@@ -34,7 +49,9 @@ let oBoardInit = {
                        "card_giftcard","extension","android","face",
                       "schedule", "rowing","restore_page","room",
                       "pets","pan_tool","motorcycle","language",
-                      "invert_colors","line_weight","loyalty","gravel"),
+                      "invert_colors","line_weight","loyalty","backup",
+                      "scanner","school","router","ring_volume",
+                      "report_problem","repeat_one","redeem","radio_button_checked"),
     oBoardInit.randomNumber = 0;
     oBoardInit.arrayIconsRandom = new Array();
     oBoardInit.arrayIcons = new Array ();
@@ -244,6 +261,11 @@ function startGame(levelDifficult) {
 
 /*Setting the Board*/
 oBoardInit.totalCards = levelDifficult;
+if(levelDifficult > 16) {
+  document.querySelector("#grid-container").classList.add("wide");
+} else {
+  document.querySelector("#grid-container").classList.remove("wide");
+}
 oBoardInit.totalReset();
 oBoardInit.updateHtmlElements();
 oBoardInit.genArrayIcons();
@@ -286,19 +308,26 @@ document.querySelector("#buttonRestart").addEventListener("click", function(){
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelHard").addEventListener("click", function(){
   /*location.reload();*/
-  /*clearTimeout(oTimer.elapsedTimer);*/
+  clearTimeout(oTimer.elapsedTimer);
   if (oBoardInit.totalCards === 16) {
     startGame(24);
-  } else {
+  } else if (oBoardInit.totalCards === 24) {
     startGame(32);
+  } else if (oBoardInit.totalCards === 32) {
+    startGame(40);
+  } else {
+    startGame(48);
   }
-
 });
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelEasy").addEventListener("click", function(){
   /*location.reload();*/
   clearTimeout(oTimer.elapsedTimer);
-  if (oBoardInit.totalCards === 32) {
+  if (oBoardInit.totalCards === 48) {
+    startGame(40);
+  } else if (oBoardInit.totalCards === 40) {
+    startGame(32);
+  } else if (oBoardInit.totalCards === 32) {
     startGame(24);
   } else {
     startGame(16);
