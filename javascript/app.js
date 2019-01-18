@@ -1,21 +1,6 @@
 "use strict";
 
 /*Board Construction Initialization*/
-/*Array below is only to test fast the end of the game*/
-/*let containerIcons = ["format_shapes","bubble_chart","border_right","attach_money",
-                      "graphic_eq","waves","delete_sweep","duo",
-                      "contact_phone","business","sort_by_alpha","snooze",
-                      "queue_music","note","library_books","games",
-                      "apps","rate_review","satellite","terrain",
-                      "traffic","tram","zoom_out_map","local_see",
-                      "fastfood","flight","hotel","layers",
-                      "directions","grain","flash_auto","collections",
-                      "3d_rotation","fingerprint","delete","bug_report",
-                      "card_giftcard","extension","android","face",
-                      "schedule", "rowing","restore_page","room",
-                      "pets","pan_tool","motorcycle","language",
-                      "invert_colors","line_weight","loyalty","gravel"];*/
-
 let oBoardInit = {
   totalCards: 24,
   standardNumberofCards: 16,
@@ -275,7 +260,7 @@ oTimer.startTimer(); /*Start game timer*/
 
 };
 
-startGame(24);
+startGame(16);
 
 function runGame(evt) {
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
@@ -293,20 +278,29 @@ document.querySelector("#grid-container").addEventListener("click", runGame, tru
 
 /*button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function(){
-  /*location.reload();*/
-  clearTimeout(oTimer.elapsedTimer);
-  startGame(24);
+  location.reload();
+  /*clearTimeout(oTimer.elapsedTimer);
+  startGame(24);*/
 });
 
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelHard").addEventListener("click", function(){
   /*location.reload();*/
-  clearTimeout(oTimer.elapsedTimer);
-  startGame(32);
+  /*clearTimeout(oTimer.elapsedTimer);*/
+  if (oBoardInit.totalCards === 16) {
+    startGame(24);
+  } else {
+    startGame(32);
+  }
+
 });
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelEasy").addEventListener("click", function(){
   /*location.reload();*/
   clearTimeout(oTimer.elapsedTimer);
-  startGame(16);
+  if (oBoardInit.totalCards === 32) {
+    startGame(24);
+  } else {
+    startGame(16);
+  }
 });
