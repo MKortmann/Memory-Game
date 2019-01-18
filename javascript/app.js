@@ -1,18 +1,7 @@
 "use strict";
 
 
-var openFile = function(event) {
-  var input = event.target;
-
-  var reader = new FileReader();
-  reader.onload = function(){
-    var text = reader.result;
-    console.log(reader.result.substring(0, 200));
-  };
-  reader.readAsText(input.files[0]);
-};
-
-
+let flagMusicTurnOff = false;
 /*Board Construction Initialization*/
 let oBoardInit = {
   totalCards: 24,
@@ -35,7 +24,7 @@ let oBoardInit = {
                       "pets","pan_tool","motorcycle","language",
                       "invert_colors","line_weight","loyalty","backup",
                       "scanner","school","router","ring_volume",
-                      "report_problem","repeat_one","redeem","radio_button_checked"),
+                      "report_problem","repeat_one","all_out","radio_button_checked"),
   totalReset() {
   oBoardInit.containerIcons =  new Array ("format_shapes","bubble_chart","border_right","attach_money",
                       "graphic_eq","waves","delete_sweep","duo",
@@ -51,7 +40,7 @@ let oBoardInit = {
                       "pets","pan_tool","motorcycle","language",
                       "invert_colors","line_weight","loyalty","backup",
                       "scanner","school","router","ring_volume",
-                      "report_problem","repeat_one","redeem","radio_button_checked"),
+                      "report_problem","repeat_one","all_out","radio_button_checked"),
     oBoardInit.randomNumber = 0;
     oBoardInit.arrayIconsRandom = new Array();
     oBoardInit.arrayIcons = new Array ();
@@ -188,6 +177,7 @@ let oMemoryGame = {
   },
   /*Effect change of Element*/
   effectError() {
+    document.querySelector("#musicError").play();
     document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.add("effect-error");
     document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.add("effect-error");
   },
@@ -208,7 +198,7 @@ let oMemoryGame = {
   /*Cards do not match*/
   redoFlip() {
     oMemoryGame.flipMissIndex++;
-    if ( (oMemoryGame.flipMissIndex % 3 === 0) && (oMemoryGame.arrayIdStars.length > 1) ) { /*I want always 1 star there*/
+    if ( (oMemoryGame.flipMissIndex % 2 === 0) && (oMemoryGame.arrayIdStars.length > 1) ) { /*I want always 1 star there*/
       oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1;
       document.getElementById(oMemoryGame.arrayIdStars[oMemoryGame.starIndex]).classList.add("hide");
       oMemoryGame.starRemoved[oMemoryGame.starRemoved.length] = oMemoryGame.arrayIdStars.pop();
@@ -244,8 +234,11 @@ let oMemoryGame = {
 
       if( (oMemoryGame.arrayIconsFlipped[0] === oMemoryGame.arrayIconsFlipped[1]) && (oMemoryGame.arrayDivIdFlipped[0] != oMemoryGame.arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
         oMemoryGame.matchCards();
+        document.querySelector("#musicBackground").pause();
+        document.querySelector("#musicMatch").play();
         if (oMemoryGame.flipCorrectIndex == (oBoardInit.totalCards/2)) {
           clearTimeout(oTimer.elapsedTimer);
+          document.querySelector("body").classList.add("wingame");
           /*location.reload(); /*restart the game*/
         }
       } else {
@@ -280,11 +273,19 @@ oMemoryGame.totalReset();
 
 oTimer.startTimer(); /*Start game timer*/
 
+/*document.querySelector("#musicBackground").play();*/
+/*document.getElementById('musicBackground').play();*/
+
 };
 
 startGame(16);
 
+
 function runGame(evt) {
+  if (!flagMusicTurnOff)
+  {
+  document.querySelector("#musicBackground").play();
+  }
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   if( evt.target.children.length != 0 ) { /*avoid errors when clicking at same element*/
     oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/
@@ -303,6 +304,34 @@ document.querySelector("#buttonRestart").addEventListener("click", function(){
   location.reload();
   /*clearTimeout(oTimer.elapsedTimer);
   startGame(24);*/
+});
+
+/*turn music off*/
+document.querySelector("#buttonTurnMusicOff").addEventListener("click", function(){
+  flagMusicTurnOff = true;
+  document.querySelector("#musicBackground").pause();
+  document.querySelector("#buttonTurnMusicOn").classList.remove("active");
+  document.querySelector("#buttonTurnMusicOff").classList.add("active");
+})
+/*turn music on*/
+document.querySelector("#buttonTurnMusicOn").addEventListener("click", function(){
+  flagMusicTurnOff = false;
+  document.querySelector("#musicBackground").play();
+  document.querySelector("#buttonTurnMusicOn").classList.add("active");
+  document.querySelector("#buttonTurnMusicOff").classList.remove("active");
+})
+/*button zoomIn*/
+document.querySelector("#buttonZoomIn").addEventListener("click", function(){
+  document.body.style.zoom = 1.0; /*this line is compatible only with chrome and edge*/
+  document.querySelector("body").classList.add("zoomIn");
+  document.querySelector("body").classList.remove("zoomOut");
+});
+
+/*button zoomOut*/
+document.querySelector("#buttonZoomOut").addEventListener("click", function(){
+  document.body.style.zoom = 0.7; /*this line is compatible only with chrome and edge*/
+  document.querySelector("body").classList.add("zoomOut");
+  document.querySelector("body").classList.remove("zoomIn");
 });
 
 /*button increase level and refresh page*/

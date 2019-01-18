@@ -1,3 +1,40 @@
+/*zoom compatible with firefox browsers!!*/
+.zoomIn {
+  zoom: 1.2;
+  -moz-transform: scale(1.2);
+  -moz-transform-origin: 50% 0;
+}
+.zoomOut {
+  zoom: .7;
+  -moz-transform: scale(0.7);
+  -moz-transform-origin: 50% 0;
+}
+.active {
+  color: #3399ff;
+  border: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+.wingame {
+  background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
+}
+
+.style-background {
+  color: #3399ff;
+}
+.style-background-green {
+  color: green;
+}
+.style-background-red {
+  color: red;
+}
+
 h1 {
   font-size: 2.5em;
   text-align: center;
@@ -29,7 +66,7 @@ div {
   border-radius: 0;
   margin: 0;
   padding: 4px 4px 4px 4px; /*top, right, bottom, left*/
-  font-size: 4em;
+  font-size: 6em;
   /*Setting the position of the tip and effect */
   position: absolute;
   z-index: 1;
@@ -296,9 +333,4 @@ button {
     background: #58D68D;
     border: 1.2px solid;
   }
-}
-
-
-
-
 }

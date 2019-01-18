@@ -18,20 +18,30 @@
       <h2><span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
           <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span></h2>
       <div>
-          <button id="buttonLevelHard" class="tip">
-            <span class="material-icons md-36">trending_up</span>
-            <span class="tip-text">Increase cards up to 48</span>
-          </button>
-
-          <button id="buttonRestart" class="tip">
-            <span class="material-icons md-36">refresh</span>
-            <span class="tip-text">Refresh</span>
-          </button>
-
-          <button id="buttonLevelEasy" class="tip">
-            <span class="material-icons md-36">trending_down</span>
-            <span class="tip-text">Decrease cards down to 48</span>
-          </button>
+        <button id="buttonTurnMusicOn" class="active">
+          <span class="material-icons md-36">music_note</span>
+        </button>
+        <button id="buttonZoomIn" class="style-background">
+          <span class="material-icons md-36">zoom_in</span>
+        </button>
+        <button id="buttonLevelHard" class="tip style-background-red">
+          <span class="material-icons md-36">trending_up</span>
+          <span class="tip-text">Increase cards up to 48</span>
+        </button>
+        <button id="buttonRestart" class="tip style-background">
+          <span class="material-icons md-36">refresh</span>
+          <span class="tip-text">Refresh</span>
+        </button>
+        <button id="buttonLevelEasy" class="tip style-background-green">
+          <span class="material-icons md-36">trending_down</span>
+          <span class="tip-text">Decrease cards down to 48</span>
+        </button>
+        <button id="buttonZoomOut" class="style-background">
+          <span class="material-icons md-36">zoom_out</span>
+        </button>
+        <button id="buttonTurnMusicOff">
+          <span class="material-icons md-36">music_off</span>
+        </button>
       </div>
     </header>
 
@@ -67,6 +77,17 @@
     <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
         <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
 
+  <div>
+    <audio id="musicBackground" controls="controls" align="center">
+      <source src="./sounds/Bit Quest.mp3" type="audio/mp3"/>
+    </audio>
+  </div>
+  <audio id="musicMatch" class="hide">
+    <source src="./sounds/Ditch_Diggin_Sting.mp3" type="audio/mp3"/>
+  </audio>
+  <audio id="musicError" class="hide">
+    <source src="./sounds/error.wav" type="audio/wav"/>
+  </audio>
     <script src="./javascript/app.js"></script>
   </body>
 </html>
