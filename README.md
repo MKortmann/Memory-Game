@@ -32,15 +32,13 @@ You can also:
   - Export documents as Markdown, HTML and PDF
 ## Documentation
 
-In progress...
+TODO!
 
 ## Installation
 
-It is very simple. Download/clone the project from gitHub.
-
-**1-** First you have to create a directory in the desire location
-**2-** git init
-**3-** git clone <address from git hub> 
+1. First you have to create a directory in the desire location
+2. git init
+3. git clone <address from git hub> 
 
 ### More Information
 
