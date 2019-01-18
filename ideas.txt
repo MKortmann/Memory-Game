@@ -1,0 +1,16 @@
+TODO: readme for github
+      try to fix commit comments
+
+code improvement: HTML, CSS 
+javascript do classes
+code test beautiful: javascript
+
+
+MUSIC WHEN THE GAME IS OVER: Bayou_State_of_Mind_Sting
+when correct some write: how luck!
+nice!
+congratulations!
+
+the starts also!
+
+if you win with 16 cards, restart automatically with a new board with 24 cards and so on! progressing step improvements!

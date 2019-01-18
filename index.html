@@ -14,9 +14,13 @@
   <body>
 
     <header>
-      <h1><span class="big-font">M</span>emory <span class="big-font">G</span>ame</h1>
-      <h2><span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
-          <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span></h2>
+      <h1>
+        <span class="big-font">M</span>emory <span class="big-font">G</span>ame
+      </h1>
+      <h2>
+          <span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
+          <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span>
+      </h2>
       <div>
         <button id="buttonTurnMusicOn" class="active">
           <span class="material-icons md-36">music_note</span>
@@ -45,34 +49,34 @@
       </div>
     </header>
 
-    <div id="stars">
-        <img id="star1" src="./img/star6.svg" alt="star">
-        <img id="star2" src="./img/star6.svg" alt="star">
-        <img id="star3" src="./img/star6.svg" alt="star">
-        <img id="star4" src="./img/star6.svg" alt="star">
-        <img id="star5" class="hide" src="./img/star6.svg" alt="star">
-        <img id="star6" class="hide" class="hide" src="./img/star6.svg" alt="star">
-        <img id="star7" class="hide" src="./img/star6.svg" alt="star">
-    </div>
+  <div id="stars">
+    <img id="star1" src="./img/star6.svg" alt="star">
+    <img id="star2" src="./img/star6.svg" alt="star">
+    <img id="star3" src="./img/star6.svg" alt="star">
+    <img id="star4" src="./img/star6.svg" alt="star">
+    <img id="star5" class="hide" src="./img/star6.svg" alt="star">
+    <img id="star6" class="hide" class="hide" src="./img/star6.svg" alt="star">
+    <img id="star7" class="hide" src="./img/star6.svg" alt="star">
+  </div>
 
-    <div id="grid-container">
-      <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
-      <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
-      <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
-      <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
-      <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
-      <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
-      <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
-      <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
-      <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
-      <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
-      <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
-      <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
-      <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
-      <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
-      <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
-      <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
-    </div>
+  <div id="grid-container">
+    <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
+    <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
+    <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
+    <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
+    <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
+    <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
+    <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
+    <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
+    <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
+    <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
+    <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
+    <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
+    <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
+    <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
+    <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
+    <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
+  </div>
 
     <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
         <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
@@ -87,6 +91,9 @@
   </audio>
   <audio id="musicError" class="hide">
     <source src="./sounds/error.wav" type="audio/wav"/>
+  </audio>
+  <audio id="musicWin" class="hide">
+    <source src="./sounds/Bayou_State_of_Mind_Sting.mp3" type="audio/mp3"/>
   </audio>
     <script src="./javascript/app.js"></script>
   </body>

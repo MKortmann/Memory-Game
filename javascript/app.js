@@ -238,7 +238,8 @@ let oMemoryGame = {
         document.querySelector("#musicMatch").play();
         if (oMemoryGame.flipCorrectIndex == (oBoardInit.totalCards/2)) {
           clearTimeout(oTimer.elapsedTimer);
-          document.querySelector("body").classList.add("wingame");
+          document.querySelector("#musicBackground").pause();
+          document.querySelector("#musicWin").play();
           /*location.reload(); /*restart the game*/
         }
       } else {
@@ -271,7 +272,7 @@ oMemoryGame.totalReset();
 
 /*STARTING THE GAME*/
 
-oTimer.startTimer(); /*Start game timer*/
+
 
 /*document.querySelector("#musicBackground").play();*/
 /*document.getElementById('musicBackground').play();*/
@@ -286,6 +287,7 @@ function runGame(evt) {
   {
   document.querySelector("#musicBackground").play();
   }
+  oTimer.startTimer(); /*Start game timer*/
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   if( evt.target.children.length != 0 ) { /*avoid errors when clicking at same element*/
     oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/

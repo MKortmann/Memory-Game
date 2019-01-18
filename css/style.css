@@ -21,18 +21,20 @@
                                 supported by Chrome and Opera */
 }
 
-.wingame {
-  background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
-}
-
 .style-background {
   color: #3399ff;
+  margin: 0;
+  padding: 0;
 }
 .style-background-green {
   color: green;
+  margin: 0;
+  padding: 0;
 }
 .style-background-red {
   color: red;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -241,6 +243,37 @@ button {
 }
 
 /*Responsive Design*/
+@media screen and (max-width: 1000px) {
+  #grid-container {
+    grid-gap: 1px;
+    padding: 6px 2px 6px 2px; /*top, right, bottom, left*/
+    border-radius: 6px;
+    overflow-x: auto;
+    max-width: 300px;
+  }
+  #grid-container > div {
+    max-width: 12px;
+    max-height: 24px;
+    margin: auto;
+    border-radius: 6px;
+    padding: 3px 21px 18px 3px; /*top, right, bottom, left*/
+    border: 0.7px solid;
+    box-shadow: 1px 1px gray;
+  }
+  .material-icons.md-48 {
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  .material-icons.md-36 {
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  #grid-container .effect-correct {
+    background: #58D68D;
+    border: 1.2px solid;
+  }
+}
+
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 1.5em;
