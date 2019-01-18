@@ -294,16 +294,19 @@ document.querySelector("#grid-container").addEventListener("click", runGame, tru
 /*button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function(){
   /*location.reload();*/
+  clearTimeout(oTimer.elapsedTimer);
   startGame(24);
 });
 
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelHard").addEventListener("click", function(){
   /*location.reload();*/
+  clearTimeout(oTimer.elapsedTimer);
   startGame(32);
 });
 /*button increase level and refresh page*/
 document.querySelector("#buttonLevelEasy").addEventListener("click", function(){
   /*location.reload();*/
+  clearTimeout(oTimer.elapsedTimer);
   startGame(16);
 });
