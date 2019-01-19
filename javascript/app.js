@@ -2,6 +2,7 @@
 
 
 let flagMusicTurnOff = false;
+let flagstartTimer = false;
 /*Board Construction Initialization*/
 let oBoardInit = {
   totalCards: 24,
@@ -269,11 +270,7 @@ oBoardInit.gridInit(); /*write the respective cards to the board*/
 
 oMemoryGame.totalReset();
 
-
-/*STARTING THE GAME*/
-
-
-
+flagstartTimer = false;
 /*document.querySelector("#musicBackground").play();*/
 /*document.getElementById('musicBackground').play();*/
 
@@ -283,11 +280,15 @@ startGame(16);
 
 
 function runGame(evt) {
+  if(!flagstartTimer) {
+    oTimer.startTimer(); /*Start game timer*/
+    flagstartTimer = true;
+  }
   if (!flagMusicTurnOff)
   {
   document.querySelector("#musicBackground").play();
   }
-  oTimer.startTimer(); /*Start game timer*/
+
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   if( evt.target.children.length != 0 ) { /*avoid errors when clicking at same element*/
     oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex] = evt.target.children[0].id; /*get the span of element flipped*/

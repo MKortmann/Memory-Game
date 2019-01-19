@@ -1,12 +1,14 @@
-TODO: readme for github
-      try to fix commit comments
+TODO: readme for github OK
+      try to fix commit comments OK
 
+fix timer
 code improvement: HTML, CSS 
 javascript do classes
 code test beautiful: javascript
 
+Stars Background BLACK WHEN YOU LOST IT!!!
 
-MUSIC WHEN THE GAME IS OVER: Bayou_State_of_Mind_Sting
+
 when correct some write: how luck!
 nice!
 congratulations!
