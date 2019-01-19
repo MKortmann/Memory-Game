@@ -26,6 +26,10 @@
   margin: 0;
   padding: 0;
 }
+
+.color-star {
+  background-color: blue;
+}
 .style-background-green {
   color: green;
   margin: 0;

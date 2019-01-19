@@ -142,6 +142,8 @@ let oMemoryGame = {
   arrayDivIdFlipped: new Array(2), /*store the div of elements flipped*/
   arrayIdStars: new Array("star1","star2","star3","star4"),
   starRemoved: new Array("star5","star6","star7"),
+  arrayIdStarsBlack: new Array("star5b","star6b","star7b"),
+  starRemovedBlack: new Array("star1b","star2b","star3b","star4b"),
   starIndex: 0, /*track number in the array (arrayIdStars)*/
   flipCorrectIndex: 0, /*to track the end of the game*/
   flipMissIndex: 0, /*to track misses*/
@@ -156,6 +158,8 @@ let oMemoryGame = {
     oMemoryGame.arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
     oMemoryGame.arrayIdStars = new Array("star1","star2","star3","star4");
     oMemoryGame.starRemoved = new Array("star5","star6","star7");
+    oMemoryGame.arrayIdStarsBlack = new Array("star7b","star6b","star5b");
+    oMemoryGame.starRemovedBlack = new Array("star1b","star2b","star3b","star4b");
     oMemoryGame.starIndex = 0; /*track number in the array (arrayIdStars)*/
     oMemoryGame.flipCorrectIndex = 0; /*to track the end of the game*/
     oMemoryGame.flipMissIndex = 0; /*to track misses*/
@@ -199,10 +203,17 @@ let oMemoryGame = {
   /*Cards do not match*/
   redoFlip() {
     oMemoryGame.flipMissIndex++;
-    if ( (oMemoryGame.flipMissIndex % 2 === 0) && (oMemoryGame.arrayIdStars.length > 1) ) { /*I want always 1 star there*/
-      oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1;
+    if ( (oMemoryGame.flipMissIndex % 2 === 0) && (oMemoryGame.arrayIdStars.length > 0) ) { /*I want always 1 star there*/
+      /*for yellow star*/
+      oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1; /*maybe copy it below*/
       document.getElementById(oMemoryGame.arrayIdStars[oMemoryGame.starIndex]).classList.add("hide");
       oMemoryGame.starRemoved[oMemoryGame.starRemoved.length] = oMemoryGame.arrayIdStars.pop();
+
+      /*for black star*/
+      oMemoryGame.starIndex = oMemoryGame.starRemovedBlack.length-1; /*e.x.: get star4b*/
+      document.getElementById(oMemoryGame.starRemovedBlack[oMemoryGame.starIndex]).classList.remove("hide");
+      oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length] = oMemoryGame.starRemovedBlack.pop();
+
     }
     console.log(oMemoryGame.starRemoved);
     document.querySelector("#span-miss").textContent = oMemoryGame.flipMissIndex;
@@ -220,6 +231,13 @@ let oMemoryGame = {
     if ( oMemoryGame.starRemoved.length >= 1 ) {
       document.getElementById(oMemoryGame.starRemoved[oMemoryGame.starRemoved.length-1]).classList.remove("hide");
       oMemoryGame.arrayIdStars.push(oMemoryGame.starRemoved.pop());
+
+      /*oMemoryGame.arrayIdStarsBlack = new Array("star7b","star6b","star5b");
+      oMemoryGame.starRemovedBlack = new Array("star1b","star2b","star3b","star4b");*/
+      /*for black star*/
+      document.getElementById(oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length-1]).classList.add("hide");
+      oMemoryGame.starRemovedBlack[oMemoryGame.starRemovedBlack.length] = oMemoryGame.arrayIdStarsBlack.pop();
+  
     }
     document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
     this.effectCorrect();
