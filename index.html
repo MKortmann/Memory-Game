@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"><!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
     <meta charset="utf-8">
     <meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,87 +21,95 @@
           <span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
           <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span>
       </h2>
-      <div>
-        <button id="buttonTurnMusicOn" class="active">
-          <span class="material-icons md-36">music_note</span>
-        </button>
-        <button id="buttonZoomIn" class="style-background">
-          <span class="material-icons md-36">zoom_in</span>
-        </button>
-        <button id="buttonLevelHard" class="tip style-background-red">
-          <span class="material-icons md-36">trending_up</span>
-          <span class="tip-text">Increase cards up to 48</span>
-        </button>
-        <button id="buttonRestart" class="tip style-background">
-          <span class="material-icons md-36">refresh</span>
-          <span class="tip-text">Refresh</span>
-        </button>
-        <button id="buttonLevelEasy" class="tip style-background-green">
-          <span class="material-icons md-36">trending_down</span>
-          <span class="tip-text">Decrease cards down to 48</span>
-        </button>
-        <button id="buttonZoomOut" class="style-background">
-          <span class="material-icons md-36">zoom_out</span>
-        </button>
-        <button id="buttonTurnMusicOff">
-          <span class="material-icons md-36">music_off</span>
-        </button>
-      </div>
     </header>
 
-  <div id="stars">
-    <img id="star1" src="./img/star6.svg" alt="star">
-    <img id="star2" src="./img/star6.svg" alt="star">
-    <img id="star3" src="./img/star6.svg" alt="star">
-    <img id="star4" src="./img/star6.svg" alt="star">
-    <img id="star5"  class="hide" src="./img/star6.svg" alt="star">
-    <img id="star6"  class="hide" src="./img/star6.svg" alt="star">
-    <img id="star7"  class="hide" src="./img/star6.svg" alt="star">
-    <img id="star1b" class="hide" src="./img/star6black.svg" alt="star">
-    <img id="star2b" class="hide" src="./img/star6black.svg" alt="star">
-    <img id="star3b" class="hide" src="./img/star6black.svg" alt="star">
-    <img id="star4b" class="hide" src="./img/star6black.svg" alt="star">
-    <img id="star5b" src="./img/star6black.svg" alt="star">
-    <img id="star6b" src="./img/star6black.svg" alt="star">
-    <img id="star7b" src="./img/star6black.svg" alt="star">
-  </div>
+    <div>
+      <button id="buttonTurnMusicOn" class="active">
+        <span class="material-icons md-36">music_note</span>
+      </button>
+      <button id="buttonZoomIn" class="style-background">
+        <span class="material-icons md-36">zoom_in</span>
+      </button>
+      <button id="buttonLevelHard" class="tip style-background-red">
+        <span class="material-icons md-36">trending_up</span>
+        <span class="tip-text">Increase cards up to 48</span>
+      </button>
+      <button id="buttonRestart" class="tip style-background">
+        <span class="material-icons md-36">refresh</span>
+        <span class="tip-text">Refresh</span>
+      </button>
+      <button id="buttonLevelEasy" class="tip style-background-green">
+        <span class="material-icons md-36">trending_down</span>
+        <span class="tip-text">Decrease cards down to 48</span>
+      </button>
+      <button id="buttonZoomOut" class="style-background">
+        <span class="material-icons md-36">zoom_out</span>
+      </button>
+      <button id="buttonTurnMusicOff">
+        <span class="material-icons md-36">music_off</span>
+      </button>
+    </div>
 
-  <div id="grid-container">
-    <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
-    <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
-    <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
-    <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
-    <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
-    <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
-    <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
-    <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
-    <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
-    <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
-    <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
-    <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
-    <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
-    <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
-    <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
-    <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
-  </div>
+    <div id="stars">
+      <img id="star1" src="./img/star6.svg" alt="Yellow star">
+      <img id="star2" src="./img/star6.svg" alt="Yellow star">
+      <img id="star3" src="./img/star6.svg" alt="Yellow star">
+      <img id="star4" src="./img/star6.svg" alt="Yellow star">
+      <img id="star5"  class="hide" src="./img/star6.svg" alt="Yellow star">
+      <img id="star6"  class="hide" src="./img/star6.svg" alt="Yellow star">
+      <img id="star7"  class="hide" src="./img/star6.svg" alt="Yellow star">
+      <img id="star1b" class="hide" src="./img/star6Black.svg" alt="Black star">
+      <img id="star2b" class="hide" src="./img/star6Black.svg" alt="Black star">
+      <img id="star3b" class="hide" src="./img/star6Black.svg" alt="Black star">
+      <img id="star4b" class="hide" src="./img/star6Black.svg" alt="Black star">
+      <img id="star5b" src="./img/star6Black.svg" alt="Black star">
+      <img id="star6b" src="./img/star6Black.svg" alt="Black star">
+      <img id="star7b" src="./img/star6Black.svg" alt="Black star">
+    </div>
 
-    <h2><span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
-        <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s </h2>
+    <div id="grid-container">
+      <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
+      <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
+      <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
+      <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
+      <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
+      <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
+      <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
+      <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
+      <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
+      <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
+      <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
+      <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
+      <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
+      <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
+      <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
+      <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
+    </div>
 
-  <div>
-    <audio id="musicBackground" controls="controls" align="center">
-      <source src="./sounds/Bit Quest.mp3" type="audio/mp3"/>
-    </audio>
-  </div>
-  <audio id="musicMatch" class="hide">
-    <source src="./sounds/Ditch_Diggin_Sting.mp3" type="audio/mp3"/>
-  </audio>
-  <audio id="musicError" class="hide">
-    <source src="./sounds/error.wav" type="audio/wav"/>
-  </audio>
-  <audio id="musicWin" class="hide">
-    <source src="./sounds/Bayou_State_of_Mind_Sting.mp3" type="audio/mp3"/>
-  </audio>
+    <h2>
+      <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
+      <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s
+    </h2>
+
+    <div>
+      <audio id="musicBackground" controls="controls" align="center">
+        <source src="./sounds/Bit Quest.mp3" type="audio/mp3"/>
+      </audio>
+    </div>
+
+    <div class="hide">
+      <audio id="musicMatch">
+        <source src="./sounds/Ditch_Diggin_Sting.mp3" type="audio/mp3"/>
+      </audio>
+      <audio id="musicError">
+        <source src="./sounds/error.wav" type="audio/wav"/>
+      </audio>
+      <audio id="musicWin">
+        <source src="./sounds/Bayou_State_of_Mind_Sting.mp3" type="audio/mp3"/>
+      </audio>
+    </div>
+
     <script src="./javascript/app.js"></script>
+
   </body>
 </html>

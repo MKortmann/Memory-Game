@@ -1,6 +1,5 @@
 "use strict";
 
-
 let flagMusicTurnOff = false;
 let flagstartTimer = false;
 /*Board Construction Initialization*/
@@ -50,21 +49,16 @@ let oBoardInit = {
   genArrayIcons() { /*do not let the game repetitive with the same icons*/
     oBoardInit.arrayIcons = oBoardInit.containerIcons.splice( Math.floor( Math.random()* (oBoardInit.containerIcons.length-(oBoardInit.totalCards/2)) ) , oBoardInit.totalCards/2 );
     /*oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* 20 ) , 12 );*/
-    console.log("genArrayIcons:" + oBoardInit.arrayIcons);
     for(let index=(oBoardInit.totalCards/2); index < oBoardInit.totalCards; index++) {
       oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-(oBoardInit.totalCards/2)];
     }
-    console.log("genArrayIcons:" + oBoardInit.arrayIcons);
-    console.log("genArrayIconsLength:" + oBoardInit.genArrayIcons.length);
   },
-
   genSpanArray() {
     let getSpan;
     for (let index=0; index <= oBoardInit.totalCards-1; index++) {
       getSpan = "#span-" + index;
       this.arraySpan[index] = getSpan;
     }
-    console.log("genSpanArray:" + oBoardInit.arraySpan);
   },
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
   genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
@@ -74,13 +68,11 @@ let oBoardInit = {
       oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[oBoardInit.randomNumber];
       this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
     };
-    console.log("genRandom:" + oBoardInit.randomNumber);
   },
   /*Check how many cards we need and then increase the board*/
   updateHtmlElements() {
     let numbersOfDivs = document.body.children[2].children.length;
     /*Adding or removing div*/
-
     const fragment = document.createDocumentFragment();  // ← uses a DocumentFragment instead of a <div>
     for (let i = 0; i < (oBoardInit.totalCards-oBoardInit.standardNumberofCards); i++) {
       const newElementDiv = document.createElement("div");
@@ -93,12 +85,10 @@ let oBoardInit = {
       newElementDiv.appendChild(newElementSpan);
     }
     document.getElementById("grid-container").appendChild(fragment); // reflow and repaint here -- once!
-
       for (let i=0; i < (numbersOfDivs-oBoardInit.standardNumberofCards); i++) {
         let remElement = document.getElementById("div-" + (oBoardInit.standardNumberofCards+i));
         remElement.parentNode.removeChild(remElement);
       }
-
   },
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
   gridInit() {
@@ -112,18 +102,15 @@ let oBoardInit = {
 
 /*oTimer Literal Object*/
 let oTimer = {
-
- timeNow: 0,
- timeGameStart: 0,
- runTime: 0,
- elapsedTimer: 0,
-
+  timeNow: 0,
+  timeGameStart: 0,
+  runTime: 0,
+  elapsedTimer: 0,
  /*Start Timer*/
  startTimer() {
     this.timeGameStart = Date.now();
     this.elapsedTimer = setInterval(this.displayTimer, 1000); /*Start game timer*/
   },
-
 /*Calculate and write the timer*/
  displayTimer() {
     this.runTime = Date.now() - oTimer.timeGameStart;
@@ -131,7 +118,6 @@ let oTimer = {
     document.querySelector("#span-timer-m").textContent = Math.floor(timeElapsedMillisec / 60);
     document.querySelector("#span-timer-s").textContent =  timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60)*60 );
   }
-
 };
 
 let oMemoryGame = {
@@ -175,7 +161,6 @@ let oMemoryGame = {
 
     let containerStars = document.querySelector("#stars");
     let listStars = containerStars.querySelectorAll("img");
-    console.log(listStars);
     for(let i = 0; i < 3; i++) {
       listStars[i].classList.remove("hide");
     }
@@ -208,14 +193,12 @@ let oMemoryGame = {
       oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1; /*maybe copy it below*/
       document.getElementById(oMemoryGame.arrayIdStars[oMemoryGame.starIndex]).classList.add("hide");
       oMemoryGame.starRemoved[oMemoryGame.starRemoved.length] = oMemoryGame.arrayIdStars.pop();
-
       /*for black star*/
       oMemoryGame.starIndex = oMemoryGame.starRemovedBlack.length-1; /*e.x.: get star4b*/
       document.getElementById(oMemoryGame.starRemovedBlack[oMemoryGame.starIndex]).classList.remove("hide");
       oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length] = oMemoryGame.starRemovedBlack.pop();
 
     }
-    console.log(oMemoryGame.starRemoved);
     document.querySelector("#span-miss").textContent = oMemoryGame.flipMissIndex;
     document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.remove("effect-error");
     document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.remove("effect-error");
@@ -231,13 +214,9 @@ let oMemoryGame = {
     if ( oMemoryGame.starRemoved.length >= 1 ) {
       document.getElementById(oMemoryGame.starRemoved[oMemoryGame.starRemoved.length-1]).classList.remove("hide");
       oMemoryGame.arrayIdStars.push(oMemoryGame.starRemoved.pop());
-
-      /*oMemoryGame.arrayIdStarsBlack = new Array("star7b","star6b","star5b");
-      oMemoryGame.starRemovedBlack = new Array("star1b","star2b","star3b","star4b");*/
       /*for black star*/
       document.getElementById(oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length-1]).classList.add("hide");
       oMemoryGame.starRemovedBlack[oMemoryGame.starRemovedBlack.length] = oMemoryGame.arrayIdStarsBlack.pop();
-  
     }
     document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
     this.effectCorrect();
@@ -285,27 +264,22 @@ oBoardInit.genArrayIcons();
 oBoardInit.genSpanArray();
 oBoardInit.genRandom(); /*generate an array of random numbers*/
 oBoardInit.gridInit(); /*write the respective cards to the board*/
-
 oMemoryGame.totalReset();
 
 flagstartTimer = false;
-/*document.querySelector("#musicBackground").play();*/
-/*document.getElementById('musicBackground').play();*/
-
 };
 
 startGame(16);
 
 
 function runGame(evt) {
+
   if(!flagstartTimer) {
     oTimer.startTimer(); /*Start game timer*/
     flagstartTimer = true;
   }
-  if (!flagMusicTurnOff)
-  {
-  document.querySelector("#musicBackground").play();
-  }
+
+  flagMusicTurnOff === false ? document.querySelector("#musicBackground").play() : document.querySelector("#musicBackground").pause()
 
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   if( evt.target.children.length != 0 ) { /*avoid errors when clicking at same element*/
@@ -319,12 +293,9 @@ function runGame(evt) {
 
 /*Game start at first click*/
 document.querySelector("#grid-container").addEventListener("click", runGame, true);
-
 /*button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function(){
   location.reload();
-  /*clearTimeout(oTimer.elapsedTimer);
-  startGame(24);*/
 });
 
 /*turn music off*/
