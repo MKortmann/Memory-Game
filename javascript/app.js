@@ -1,16 +1,15 @@
 "use strict";
 
-let flagMusicTurnOff = false;
-let flagstartTimer = false;
 /*Board Construction Initialization*/
-let oBoardInit = {
-  totalCards: 24,
-  standardNumberofCards: 16,
-  randomNumber: 0,
-  arrayIconsRandom: new Array(),
-  arrayIcons: new Array (),
-  arraySpan: new Array(),
-  containerIcons :  new Array ("format_shapes","bubble_chart","border_right","attach_money",
+class Board {
+  constructor (numberOfCards) {
+  this.totalCards = numberOfCards;
+  this.standardNumberofCards = 16;
+  this.randomNumber = 0;
+  this.arrayIconsRandom = new Array();
+  this.arrayIcons = new Array ();
+  this.arraySpan = new Array();
+  this.containerIcons  =  new Array ("format_shapes","bubble_chart","border_right","attach_money",
                       "graphic_eq","waves","delete_sweep","duo",
                       "contact_phone","business","sort_by_alpha","snooze",
                       "queue_music","note","library_books","games",
@@ -24,132 +23,114 @@ let oBoardInit = {
                       "pets","pan_tool","motorcycle","language",
                       "invert_colors","line_weight","loyalty","backup",
                       "scanner","school","router","ring_volume",
-                      "report_problem","repeat_one","all_out","radio_button_checked"),
-  totalReset() {
-  oBoardInit.containerIcons =  new Array ("format_shapes","bubble_chart","border_right","attach_money",
-                      "graphic_eq","waves","delete_sweep","duo",
-                      "contact_phone","business","sort_by_alpha","snooze",
-                      "queue_music","note","library_books","games",
-                      "apps","rate_review","satellite","terrain",
-                      "traffic","tram","zoom_out_map","local_see",
-                      "fastfood","flight","hotel","layers",
-                      "directions","grain","flash_auto","collections",
-                      "3d_rotation","fingerprint","delete","bug_report",
-                       "card_giftcard","extension","android","face",
-                      "schedule", "rowing","restore_page","room",
-                      "pets","pan_tool","motorcycle","language",
-                      "invert_colors","line_weight","loyalty","backup",
-                      "scanner","school","router","ring_volume",
-                      "report_problem","repeat_one","all_out","radio_button_checked"),
-    oBoardInit.randomNumber = 0;
-    oBoardInit.arrayIconsRandom = new Array();
-    oBoardInit.arrayIcons = new Array ();
-    oBoardInit.arraySpan = new Array();
-  },
+                      "report_problem","repeat_one","all_out","radio_button_checked");
+  /*Setting the Board*/
+  numberOfCards > 16 ? document.querySelector("#grid-container").classList.add("wide") :
+                      document.querySelector("#grid-container").classList.remove("wide")
+  this.updateHtmlElements();
+  this.genArrayIcons();
+  this.genSpanArray();
+  this.genRandom(); /*generate an array of random numbers*/
+  this.gridInit(); /*write the respective cards to the board*/
+  };
   genArrayIcons() { /*do not let the game repetitive with the same icons*/
-    oBoardInit.arrayIcons = oBoardInit.containerIcons.splice( Math.floor( Math.random()* (oBoardInit.containerIcons.length-(oBoardInit.totalCards/2)) ) , oBoardInit.totalCards/2 );
-    /*oBoardInit.arrayIcons = containerIcons.splice( Math.floor( Math.random()* 20 ) , 12 );*/
-    for(let index=(oBoardInit.totalCards/2); index < oBoardInit.totalCards; index++) {
-      oBoardInit.arrayIcons[index] = oBoardInit.arrayIcons[index-(oBoardInit.totalCards/2)];
-    }
-  },
+    this.arrayIcons = this.containerIcons.splice( Math.floor( Math.random()* (this.containerIcons.length-(this.totalCards/2)) ) , this.totalCards/2 );
+    for(let index=(this.totalCards/2); index < this.totalCards; index++) {
+      this.arrayIcons[index] = this.arrayIcons[index-(this.totalCards/2)];
+    };
+  }
   genSpanArray() {
     let getSpan;
-    for (let index=0; index <= oBoardInit.totalCards-1; index++) {
+    for (let index=0; index <= this.totalCards-1; index++) {
       getSpan = "#span-" + index;
       this.arraySpan[index] = getSpan;
-    }
-  },
+    };
+  }
   /*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
   genRandom() { /*from ES6 you can instead write: genRandom : function () write as it written*/
     /*this.arrayIcons = arrayIcons;Only for testing*/
     for (let iLoop=this.arrayIcons.length-1; iLoop>= 0; iLoop--) {
       this.randomNumber = Math.floor(Math.random()*iLoop);
-      oBoardInit.arrayIconsRandom[iLoop] = this.arrayIcons[oBoardInit.randomNumber];
+      this.arrayIconsRandom[iLoop] = this.arrayIcons[this.randomNumber];
       this.arrayIcons.splice(this.randomNumber,1);/*to make sure it will keep the same elements-so remove the used element*/
     };
-  },
+  }
   /*Check how many cards we need and then increase the board*/
   updateHtmlElements() {
-    let numbersOfDivs = document.body.children[2].children.length;
+    let numbersOfDivs = document.body.children[3].children.length;
     /*Adding or removing div*/
     const fragment = document.createDocumentFragment();  // ← uses a DocumentFragment instead of a <div>
-    for (let i = 0; i < (oBoardInit.totalCards-oBoardInit.standardNumberofCards); i++) {
+    for (let i = 0; i < (this.totalCards-this.standardNumberofCards); i++) {
       const newElementDiv = document.createElement("div");
       const newElementSpan = document.createElement("span");
       /*newElement.innerText = 'This is paragraph number ' + i;*/
-      newElementDiv.setAttribute("id", "div-" + (oBoardInit.standardNumberofCards+i) )
-      newElementSpan.setAttribute("id", "span-" + (oBoardInit.standardNumberofCards+i) )
+      newElementDiv.setAttribute("id", "div-" + (this.standardNumberofCards+i) )
+      newElementSpan.setAttribute("id", "span-" + (this.standardNumberofCards+i) )
       newElementSpan.setAttribute("class", "hide md-48")
       fragment.appendChild(newElementDiv);
       newElementDiv.appendChild(newElementSpan);
-    }
+    };
     document.getElementById("grid-container").appendChild(fragment); // reflow and repaint here -- once!
-      for (let i=0; i < (numbersOfDivs-oBoardInit.standardNumberofCards); i++) {
-        let remElement = document.getElementById("div-" + (oBoardInit.standardNumberofCards+i));
+      for (let i=0; i < (numbersOfDivs-this.standardNumberofCards); i++) {
+        let remElement = document.getElementById("div-" + (this.standardNumberofCards+i));
         remElement.parentNode.removeChild(remElement);
-      }
-  },
+      };
+  }
   /*Game Grid Initialization: passing the random Array (arrayIconsRandom) to the Grid (arraySpan)*/
   gridInit() {
-    for (let iLoop = oBoardInit.totalCards-1; iLoop >= 0; iLoop--) {
+    for (let iLoop = this.totalCards-1; iLoop >= 0; iLoop--) {
       document.querySelector(this.arraySpan[iLoop]).textContent = this.arrayIconsRandom[iLoop];
       this.arrayIcons.splice(iLoop,1);
       this.arraySpan.splice(iLoop,1);
     };
   }
-};
-
+}
 /*oTimer Literal Object*/
 let oTimer = {
   timeNow: 0,
   timeGameStart: 0,
   runTime: 0,
   elapsedTimer: 0,
- /*Start Timer*/
- startTimer() {
+  /*Start Timer*/
+  startTimer() {
     this.timeGameStart = Date.now();
-    this.elapsedTimer = setInterval(this.displayTimer, 1000); /*Start game timer*/
+    this.elapsedTimer = setInterval(this.displayTimer, 1000);/*Start game timer*/
   },
-/*Calculate and write the timer*/
- displayTimer() {
+  	/*Calculate and write the timer*/
+  displayTimer() {
     this.runTime = Date.now() - oTimer.timeGameStart;
     let timeElapsedMillisec = Math.floor(this.runTime/1000);
     document.querySelector("#span-timer-m").textContent = Math.floor(timeElapsedMillisec / 60);
     document.querySelector("#span-timer-s").textContent =  timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60)*60 );
   }
 };
-
-let oMemoryGame = {
-  /*Game functions variables*/
-  flipIndex: 0, /*track the number of flip cards*/
-  arrayIconsFlipped: new Array("none", "none-1"),/*store the name of icons to compare*/
-  arraySpanIdFlipped: new Array(2), /*store the id of span elements flipped*/
-  arrayDivIdFlipped: new Array(2), /*store the div of elements flipped*/
-  arrayIdStars: new Array("star1","star2","star3","star4"),
-  starRemoved: new Array("star5","star6","star7"),
-  arrayIdStarsBlack: new Array("star5b","star6b","star7b"),
-  starRemovedBlack: new Array("star1b","star2b","star3b","star4b"),
-  starIndex: 0, /*track number in the array (arrayIdStars)*/
-  flipCorrectIndex: 0, /*to track the end of the game*/
-  flipMissIndex: 0, /*to track misses*/
-
-  /*Total Reset For New Start*/
-  totalReset() {
+/*Game*/
+class Game {
+  constructor(numberOfCards) {
+    /*Game variables*/
+    this.flagMusicTurnOff = false;
+    this.flagstartTimer = false;
+    oBoardInit = new Board(numberOfCards);
+    /*Initialization*/
+    this.flipIndex = 0; /*track the number of flip cards*/
+    this.arrayIconsFlipped = new Array("none", "none-1");/*store the name of icons to compare*/
+    this.arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
+    this.arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
+    this.arrayIdStars = new Array("star1","star2","star3","star4");
+    this.starRemoved = new Array("star5","star6","star7");
+    this.arrayIdStarsBlack = new Array("star5b","star6b","star7b");
+    this.starRemovedBlack = new Array("star1b","star2b","star3b","star4b");
+    this.starIndex = 0; /*track number in the array (arrayIdStars)*/
+    this.flipCorrectIndex = 0; /*to track the end of the game*/
+    this.flipMissIndex = 0; /*to track misses*/
+    this.destructor(); /*reset/restart the game*/
+  }
+  destructor() {
     /*Total Reset for oMemoryGame*/
-    /*Game functions variables*/
-    oMemoryGame.flipIndex = 0; /*track the number of flip cards*/
-    oMemoryGame.arrayIconsFlipped = new Array("none", "none-1");/*store the name of icons to compare*/
-    oMemoryGame.arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
-    oMemoryGame.arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
-    oMemoryGame.arrayIdStars = new Array("star1","star2","star3","star4");
-    oMemoryGame.starRemoved = new Array("star5","star6","star7");
-    oMemoryGame.arrayIdStarsBlack = new Array("star7b","star6b","star5b");
-    oMemoryGame.starRemovedBlack = new Array("star1b","star2b","star3b","star4b");
-    oMemoryGame.starIndex = 0; /*track number in the array (arrayIdStars)*/
-    oMemoryGame.flipCorrectIndex = 0; /*to track the end of the game*/
-    oMemoryGame.flipMissIndex = 0; /*to track misses*/
-
+    /*restart music buttons*/
+    document.querySelector("#buttonTurnMusicOn").classList.add("active");
+    document.querySelector("#buttonTurnMusicOff").classList.remove("active");
+    /*Reseting the grid board*/
     let container = document.querySelector("#grid-container");
     let listSpans = container.querySelectorAll("span");
     let listDivs = container.querySelectorAll("div");
@@ -158,128 +139,122 @@ let oMemoryGame = {
       listSpans[i].classList.remove("material-icons");
       listDivs[i].classList.remove("effect-correct");
     }
-
+    /*Reseting the stars*/
+    /*yellow stars*/
     let containerStars = document.querySelector("#stars");
     let listStars = containerStars.querySelectorAll("img");
-    for(let i = 0; i < 3; i++) {
-      listStars[i].classList.remove("hide");
+    for(let i = 0; i <= 3; i++) {
+      listStars[i].classList.remove("hide"); /*show yellow stars*/
     }
-  },
+    for(let i = 11; i < 14; i++) {
+      listStars[i].classList.remove("hide"); /*show black stars*/
+    }
+    for(let i = 4; i < 11; i++) {
+      listStars[i].classList.add("hide"); /*hide yellow & black stars*/
+    }
+    /*restart body timer*/
+    document.querySelector("#span-timer-m").textContent = 0;
+    document.querySelector("#span-timer-s").textContent =  0;
+  }
   /*Effect change of Element*/
   effectError() {
     document.querySelector("#musicError").play();
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.add("effect-error");
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.add("effect-error");
-  },
+    document.getElementById(this.arrayDivIdFlipped[0]).classList.add("effect-error");
+    document.getElementById(this.arrayDivIdFlipped[1]).classList.add("effect-error");
+  }
   /*Effect change of Element*/
   effectCorrect() {
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.add("effect-correct");
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.add("effect-correct");
-  },
+    document.getElementById(this.arrayDivIdFlipped[0]).classList.add("effect-correct");
+    document.getElementById(this.arrayDivIdFlipped[1]).classList.add("effect-correct");
+  }
   /*reset to restart the round NOT THE GAME*/
   reset() {
-    oMemoryGame.flipIndex = 0;
-    oMemoryGame.arrayIconsFlipped.splice(0,2);
-    oMemoryGame.arraySpanIdFlipped.splice(0,2);
-    oMemoryGame.arrayDivIdFlipped.splice(0,2);
+    this.flipIndex = 0;
+    this.arrayIconsFlipped.splice(0,2);
+    this.arraySpanIdFlipped.splice(0,2);
+    this.arrayDivIdFlipped.splice(0,2);
     /*Game start again! Done to avoid more than two cards flipped at once*/
     document.querySelector("#grid-container").addEventListener("click", runGame, true);
-  },
+  }
   /*Cards do not match*/
   redoFlip() {
-    oMemoryGame.flipMissIndex++;
-    if ( (oMemoryGame.flipMissIndex % 2 === 0) && (oMemoryGame.arrayIdStars.length > 0) ) { /*I want always 1 star there*/
-      /*for yellow star*/
-      oMemoryGame.starIndex = oMemoryGame.arrayIdStars.length-1; /*maybe copy it below*/
-      document.getElementById(oMemoryGame.arrayIdStars[oMemoryGame.starIndex]).classList.add("hide");
-      oMemoryGame.starRemoved[oMemoryGame.starRemoved.length] = oMemoryGame.arrayIdStars.pop();
-      /*for black star*/
-      oMemoryGame.starIndex = oMemoryGame.starRemovedBlack.length-1; /*e.x.: get star4b*/
-      document.getElementById(oMemoryGame.starRemovedBlack[oMemoryGame.starIndex]).classList.remove("hide");
-      oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length] = oMemoryGame.starRemovedBlack.pop();
-
-    }
-    document.querySelector("#span-miss").textContent = oMemoryGame.flipMissIndex;
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[0]).classList.remove("effect-error");
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[1]).classList.remove("effect-error");
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[0]).classList.toggle("material-icons");
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[0]).classList.toggle("hide");
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[1]).classList.toggle("material-icons");
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[1]).classList.toggle("hide");
-    oMemoryGame.reset();
-  },
+    /*VERY important:
+    t's because this in the setTimeout handler is referring to window.*/
+    setTimeout(()=> {
+      this.flipMissIndex++;
+      if ( (this.flipMissIndex % 2 === 0) && (this.arrayIdStars.length > 0) ) { /*I want always 1 star there*/
+        /*for yellow star*/
+        this.starIndex = this.arrayIdStars.length-1; /*maybe copy it below*/
+        document.getElementById(this.arrayIdStars[this.starIndex]).classList.add("hide");
+        this.starRemoved[this.starRemoved.length] = this.arrayIdStars.pop();
+        /*for black star*/
+        this.starIndex = this.starRemovedBlack.length-1; /*e.x.: get star4b*/
+        document.getElementById(this.starRemovedBlack[this.starIndex]).classList.remove("hide");
+        this.arrayIdStarsBlack[this.arrayIdStarsBlack.length] = this.starRemovedBlack.pop();
+      }
+      document.querySelector("#span-miss").textContent = this.flipMissIndex;
+      document.getElementById(this.arrayDivIdFlipped[0]).classList.remove("effect-error");
+      document.getElementById(this.arrayDivIdFlipped[1]).classList.remove("effect-error");
+      document.getElementById(this.arraySpanIdFlipped[0]).classList.toggle("material-icons");
+      document.getElementById(this.arraySpanIdFlipped[0]).classList.toggle("hide");
+      document.getElementById(this.arraySpanIdFlipped[1]).classList.toggle("material-icons");
+      document.getElementById(this.arraySpanIdFlipped[1]).classList.toggle("hide");
+      this.reset();
+    },1000);
+  }
 /*Cards match*/
   matchCards() {
     this.flipCorrectIndex++;
-    if ( oMemoryGame.starRemoved.length >= 1 ) {
-      document.getElementById(oMemoryGame.starRemoved[oMemoryGame.starRemoved.length-1]).classList.remove("hide");
-      oMemoryGame.arrayIdStars.push(oMemoryGame.starRemoved.pop());
+    if ( this.starRemoved.length >= 1 ) {
+      document.getElementById(this.starRemoved[this.starRemoved.length-1]).classList.remove("hide");
+      this.arrayIdStars.push(this.starRemoved.pop());
       /*for black star*/
-      document.getElementById(oMemoryGame.arrayIdStarsBlack[oMemoryGame.arrayIdStarsBlack.length-1]).classList.add("hide");
-      oMemoryGame.starRemovedBlack[oMemoryGame.starRemovedBlack.length] = oMemoryGame.arrayIdStarsBlack.pop();
+      document.getElementById(this.arrayIdStarsBlack[this.arrayIdStarsBlack.length-1]).classList.add("hide");
+      this.starRemovedBlack[this.starRemovedBlack.length] = this.arrayIdStarsBlack.pop();
     }
     document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
     this.effectCorrect();
     this.reset();
-  },
+  }
   showCards() {
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex]).classList.toggle("material-icons"); /*display element*/
-    document.getElementById(oMemoryGame.arraySpanIdFlipped[oMemoryGame.flipIndex]).classList.toggle("hide"); /*display element*/
-    document.getElementById(oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex]).classList.toggle("effect-rotate");
-    oMemoryGame.flipIndex++;
-
-    if (oMemoryGame.flipIndex == 2) {
-
-      if( (oMemoryGame.arrayIconsFlipped[0] === oMemoryGame.arrayIconsFlipped[1]) && (oMemoryGame.arrayDivIdFlipped[0] != oMemoryGame.arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
-        oMemoryGame.matchCards();
-        document.querySelector("#musicBackground").pause();
-        document.querySelector("#musicMatch").play();
-        if (oMemoryGame.flipCorrectIndex == (oBoardInit.totalCards/2)) {
-          clearTimeout(oTimer.elapsedTimer);
+    setTimeout(()=> {
+      document.getElementById(this.arraySpanIdFlipped[this.flipIndex]).classList.toggle("material-icons"); /*display element*/
+      document.getElementById(this.arraySpanIdFlipped[this.flipIndex]).classList.toggle("hide"); /*display element*/
+      document.getElementById(this.arrayDivIdFlipped[this.flipIndex]).classList.toggle("effect-rotate");
+      this.flipIndex++;
+      if (this.flipIndex == 2) {
+        if( (this.arrayIconsFlipped[0] === this.arrayIconsFlipped[1]) && (this.arrayDivIdFlipped[0] != this.arrayDivIdFlipped[1]) ) { /*avoid to count at same card*/
+          this.matchCards();
           document.querySelector("#musicBackground").pause();
-          document.querySelector("#musicWin").play();
-          /*location.reload(); /*restart the game*/
+          document.querySelector("#musicMatch").play();
+          if (this.flipCorrectIndex == (oBoardInit.totalCards/2)) {
+            clearTimeout(oTimer.elapsedTimer);
+            document.querySelector("#musicBackground").pause();
+            document.querySelector("#musicWin").play();
+          }
+        } else {
+          document.querySelector("#grid-container").removeEventListener("click", runGame, true); /*prevent the user from selecting the same card twice*/
+          this.effectError();
+          this.redoFlip();
         }
-      } else {
-        document.querySelector("#grid-container").removeEventListener("click", runGame, true); /*prevent the user from selecting the same card twice*/
-        oMemoryGame.effectError();
-        setTimeout(oMemoryGame.redoFlip,1000);
       }
-    }
-  },
+    },400); /*delay because it takes time to make the animation*/
+  }
 }
+/*Global variables & objects*/
+const numberOfCards = 16;
+let oBoardInit = new Board;
+let oMemoryGame = new Game(numberOfCards);
 
-function startGame(levelDifficult) {
-
-/*Setting the Board*/
-oBoardInit.totalCards = levelDifficult;
-if(levelDifficult > 16) {
-  document.querySelector("#grid-container").classList.add("wide");
-} else {
-  document.querySelector("#grid-container").classList.remove("wide");
-}
-oBoardInit.totalReset();
-oBoardInit.updateHtmlElements();
-oBoardInit.genArrayIcons();
-oBoardInit.genSpanArray();
-oBoardInit.genRandom(); /*generate an array of random numbers*/
-oBoardInit.gridInit(); /*write the respective cards to the board*/
-oMemoryGame.totalReset();
-
-flagstartTimer = false;
-};
-
-startGame(16);
-
-
+/*Main Function Important To Track Mouse Event*/
 function runGame(evt) {
 
-  if(!flagstartTimer) {
+  if(!oMemoryGame.flagstartTimer) {
     oTimer.startTimer(); /*Start game timer*/
-    flagstartTimer = true;
+    oMemoryGame.flagstartTimer = true;
   }
 
-  flagMusicTurnOff === false ? document.querySelector("#musicBackground").play() : document.querySelector("#musicBackground").pause()
+  oMemoryGame.flagMusicTurnOff === false ? document.querySelector("#musicBackground").play() : document.querySelector("#musicBackground").pause()
 
   oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent; /*get the name of element flipped*/
   if( evt.target.children.length != 0 ) { /*avoid errors when clicking at same element*/
@@ -287,70 +262,69 @@ function runGame(evt) {
     /*oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.path[0].id; /*get the div of element flipped: WORKS ONLY IN GOOGLE CHROME*/
     oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex] = evt.target.id; /*this works in IE, Google Chrome and Firefox*/
     document.getElementById(oMemoryGame.arrayDivIdFlipped[oMemoryGame.flipIndex]).classList.toggle("effect-rotate");
-    setTimeout(oMemoryGame.showCards,400); /*delay because it takes time to make the animation*/
+    oMemoryGame.showCards();
   }
 }
 
-/*Game start at first click*/
+/*GAME START AT FIRST CLICK*/
 document.querySelector("#grid-container").addEventListener("click", runGame, true);
-/*button refresh page*/
+
+/*Homepage Buttons*/
+/*Button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function(){
   location.reload();
 });
-
-/*turn music off*/
+/*Button turn music off*/
 document.querySelector("#buttonTurnMusicOff").addEventListener("click", function(){
-  flagMusicTurnOff = true;
+  oMemoryGame.flagMusicTurnOff = true;
   document.querySelector("#musicBackground").pause();
   document.querySelector("#buttonTurnMusicOn").classList.remove("active");
   document.querySelector("#buttonTurnMusicOff").classList.add("active");
 })
-/*turn music on*/
+/*Button turn music on*/
 document.querySelector("#buttonTurnMusicOn").addEventListener("click", function(){
-  flagMusicTurnOff = false;
+  oMemoryGame.flagMusicTurnOff = false;
   document.querySelector("#musicBackground").play();
   document.querySelector("#buttonTurnMusicOn").classList.add("active");
   document.querySelector("#buttonTurnMusicOff").classList.remove("active");
 })
-/*button zoomIn*/
+/*Button button zoomIn*/
 document.querySelector("#buttonZoomIn").addEventListener("click", function(){
   document.body.style.zoom = 1.0; /*this line is compatible only with chrome and edge*/
   document.querySelector("body").classList.add("zoomIn");
   document.querySelector("body").classList.remove("zoomOut");
 });
-
-/*button zoomOut*/
+/*Button zoomOut*/
 document.querySelector("#buttonZoomOut").addEventListener("click", function(){
   document.body.style.zoom = 0.7; /*this line is compatible only with chrome and edge*/
   document.querySelector("body").classList.add("zoomOut");
   document.querySelector("body").classList.remove("zoomIn");
 });
-
-/*button increase level and refresh page*/
+/*Button increase board and restart game*/
 document.querySelector("#buttonLevelHard").addEventListener("click", function(){
   /*location.reload();*/
   clearTimeout(oTimer.elapsedTimer);
   if (oBoardInit.totalCards === 16) {
-    startGame(24);
+    oMemoryGame = new Game(24);
   } else if (oBoardInit.totalCards === 24) {
-    startGame(32);
+    oMemoryGame = new Game(32);
   } else if (oBoardInit.totalCards === 32) {
-    startGame(40);
+    oMemoryGame = new Game(40);
   } else {
-    startGame(48);
+    oMemoryGame = new Game(48);
   }
 });
-/*button increase level and refresh page*/
+/*Button decrease board and restart game*/
 document.querySelector("#buttonLevelEasy").addEventListener("click", function(){
   /*location.reload();*/
   clearTimeout(oTimer.elapsedTimer);
   if (oBoardInit.totalCards === 48) {
-    startGame(40);
+    oMemoryGame = new Game(40);
   } else if (oBoardInit.totalCards === 40) {
-    startGame(32);
+    oMemoryGame = new Game(32);
   } else if (oBoardInit.totalCards === 32) {
-    startGame(24);
+    oMemoryGame = new Game(24);
   } else {
-    startGame(16);
+    oMemoryGame = new Game(16);
   }
 });

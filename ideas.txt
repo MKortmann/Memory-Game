@@ -1,12 +1,16 @@
 TODO: readme for github OK
       try to fix commit comments OK
 
-fix timer
-code improvement: HTML, CSS 
+fix timer OK
+code improvement: HTML, CSS OK
 javascript do classes
 code test beautiful: javascript
 
-Stars Background BLACK WHEN YOU LOST IT!!!
+Stars Background BLACK WHEN YOU LOST IT!!! OK
+Show Number of cards turned on the right side below!!
+Do a level 1 to level 12. It start with 4 cards and goes to 48 cards.
+
+Do a hard mode ... That if you make one correct match, the cards will be reorganized in the screen.
 
 
 when correct some write: how luck!

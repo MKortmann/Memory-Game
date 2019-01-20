@@ -1,5 +1,5 @@
-Tutors: William (4 stars) better than the Jai K. (3 stars)
-It takes too much time to reply
+﻿Tutors: William (4 stars) better than the Jai K. (2 stars)
+It takes too much time to reply -> Jai K. around 3 days
 Hi Mentors! I am still wondering if The Memory Game should work in all browsers? Is
  it ok if it works only in Google Chrome? Should it be also responsive? These informations I did not find in the project specifications documents.
 
@@ -39,9 +39,9 @@ TODO:
 1-Implement Star rating TODOOOOOOOO OK
 2-Responsive Design!!! OK
 3-Professional Comments!!
-8-Increase cards (tip: function map() to create and increase the array).
-9-Sound!!!
-10-Random Cards
+8-Increase cards (tip: function map() to create and increase the array). OK
+9-Sound!!! OK
+10-Random Cards OK
 
 stars: DONE, reponsive design: DONE. Missing: Professional comments, code beautiful test
 
