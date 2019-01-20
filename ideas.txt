@@ -3,20 +3,19 @@ TODO: readme for github OK
 
 fix timer OK
 code improvement: HTML, CSS OK
-javascript do classes
-code test beautiful: javascript
+javascript do classes OK
+code test beautiful: javascript ok
 
 Stars Background BLACK WHEN YOU LOST IT!!! OK
-Show Number of cards turned on the right side below!!
-Do a level 1 to level 12. It start with 4 cards and goes to 48 cards.
+Show Number of cards turned on the right side below!! ok MISS
+TODO: Professional comments
+TODO: Do a level 1 to level 12. It start with 4 cards and goes to 48 cards.
+TODO: Do a hard mode ... That if you make one correct match, the cards will be reorganized in the screen.
 
-Do a hard mode ... That if you make one correct match, the cards will be reorganized in the screen.
-
-
+if you win with 16 cards, restart automatically with a new board with 24 cards and so on! progressing step improvements!
 when correct some write: how luck!
 nice!
 congratulations!
 
 the starts also!
 
-if you win with 16 cards, restart automatically with a new board with 24 cards and so on! progressing step improvements!

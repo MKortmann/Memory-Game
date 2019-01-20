@@ -4,16 +4,16 @@ div {
 }
 
 button {
-  background-color: white; /**/#3399ff; /*light-blue*/
+  background-color: white;
   color: black;
   font-size: 0.2em;
   cursor: pointer;
-  padding: 10px 20px 10px 20px; /*top, right, bottom, left*/
+  padding: 10px 20px 10px 20px;/*top, right, bottom, left*/
   border: 0;
 }
 
 .big-font {
-  color: #3399ff; /*light-blue*/
+  color: #3399ff;/*light-blue*/
   font-size: 1.5em;
 }
 
