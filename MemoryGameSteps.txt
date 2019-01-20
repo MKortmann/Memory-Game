@@ -1,11 +1,4 @@
-﻿Tutors: William (4 stars) better than the Jai K. (2 stars)
-It takes too much time to reply -> Jai K. around 3 days
-Hi Mentors! I am still wondering if The Memory Game should work in all browsers? Is
- it ok if it works only in Google Chrome? Should it be also responsive? These informations I did not find in the project specifications documents.
-
-
-
-1-GitHub   OK
+﻿1-GitHub   OK
 2-Structure: html, css, javascript OK
 3-Images OK
 
