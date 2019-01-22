@@ -27,10 +27,9 @@ body {
   background: white;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 5%;
-  margin-right:   5%;
+  margin-left: 120px;
+  margin-right: 120px;
   /*border-radius: 20px;*/
-
 }
 
 .big-font {
@@ -277,6 +276,7 @@ h2 {
 .material-icons.md-36 {
   font-size: 36px;
 }
+
 /* Part 4: sidenav */
 .sidenav {
   top: 0;
@@ -359,6 +359,15 @@ h2 {
 
 /* Part 5: Responsive Design*/
 @media screen and (max-width: 1000px) {
+  body {
+    height: 100%; /*important because it full the page*/
+    background: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 60px;
+    margin-right: 60px;
+    /*border-radius: 20px;*/
+  }
   #grid-container {
     grid-gap: 1px;
     padding: 6px 2px 6px 2px;/*top, right, bottom, left*/
@@ -376,7 +385,7 @@ h2 {
     box-shadow: 1px 1px gray;
   }
 
-  .stars > img {
+  .container-stars > img {
     max-width: 30px;
     max-height: 30px;
   }
@@ -397,6 +406,17 @@ h2 {
   }
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    height: 100%; /*important because it full the page*/
+    background: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    /*border-radius: 20px;*/
+  }
+}
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 1.5em;
@@ -408,7 +428,17 @@ h2 {
     text-align: center;
   }
 
-  .stars > img {
+  body {
+    height: 100%; /*important because it full the page*/
+    background: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    /*border-radius: 20px;*/
+  }
+
+  .container-stars > img {
     max-width: 16px;
     max-height: 16px;
   }
@@ -417,8 +447,7 @@ h2 {
     grid-gap: 1px;
     padding: 6px 2px 6px 2px;/*top, right, bottom, left*/
     border-radius: 6px;
-    overflow-x: auto;
-    max-width: 300px;
+    width: 100%;
   }
 
   #grid-container > div {
@@ -447,6 +476,20 @@ h2 {
   }
 }
 
+@media screen and (max-width: 460px) {
+  body {
+    height: 100%; /*important because it full the page*/
+    background: white;
+    margin: auto;
+    /*border-radius: 20px;*/
+  }
+
+  html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+}
 /*Responsive Design*/
 @media screen and (max-width: 330px) {
   h1 {
@@ -459,7 +502,14 @@ h2 {
     text-align: center;
   }
 
-  .stars > img {
+  body {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    /*border-radius: 20px;*/
+  }
+  .container-stars > img {
     max-width: 16px;
     max-height: 16px;
   }
@@ -468,8 +518,7 @@ h2 {
     grid-gap: 1px;
     padding: 6px 2px 6px 2px;/*top, right, bottom, left*/
     border-radius: 6px;
-    overflow-x: auto;
-    max-width: 300px;
+    width: 100%;
   }
 
   #grid-container > div {
@@ -496,4 +545,5 @@ h2 {
     background: #58D68D;
     border: 1.2px solid;
   }
+
 }
