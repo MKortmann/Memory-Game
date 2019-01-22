@@ -68,7 +68,7 @@ class Board {
 			/*newElement.innerText = 'This is paragraph number ' + i;*/
 			newElementDiv.setAttribute("id", "div-" + (this.standardNumberofCards + i))
 			newElementSpan.setAttribute("id", "span-" + (this.standardNumberofCards + i))
-			newElementSpan.setAttribute("class", "hide md-48")
+			newElementSpan.setAttribute("class", "hide icon-size")
 			fragment.appendChild(newElementDiv);
 			newElementDiv.appendChild(newElementSpan);
 		};
