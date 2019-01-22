@@ -376,15 +376,19 @@ document.querySelector("#buttonLevelHard").addEventListener("click", function() 
 		oMemoryGame = new Game(32);
 	} else if (oBoardInit.totalCards === 32) {
 		oMemoryGame = new Game(40);
-	} else {
+	} else if (oBoardInit.totalCards === 40){
 		oMemoryGame = new Game(48);
+	} else {
+		oMemoryGame = new Game(56);
 	}
 });
 /*Button decrease board and restart game*/
 document.querySelector("#buttonLevelEasy").addEventListener("click", function() {
 	/*location.reload();*/
 	clearTimeout(oTimer.elapsedTimer);
-	if (oBoardInit.totalCards === 48) {
+	if (oBoardInit.totalCards === 56) {
+		oMemoryGame = new Game(48);
+	} else if (oBoardInit.totalCards === 48) {
 		oMemoryGame = new Game(40);
 	} else if (oBoardInit.totalCards === 40) {
 		oMemoryGame = new Game(32);
