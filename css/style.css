@@ -120,6 +120,11 @@ h2 {
   text-align: center;
 }
 
+#stars > img {
+  max-width: 48px;
+  max-height: 48px;
+}
+
 /* Part 3: Grid Container, Cards*/
 #grid-container {
   display: grid;
@@ -249,9 +254,72 @@ h2 {
 .material-icons.md-36 {
   font-size: 36px;
 }
+/* Part 4: sidenav */
+.sidenav {
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  height: 50%;
+  position: fixed; /*NOT ABSOLUTE:very important because of the main:Y-Scroll*/
+  transform: translate(-100%,-500px);
+  /*animation (optionally)*/
+  transition: transform 0.3s ease;
+  z-index: +1;
+}
+
+.sidenav.open {
+  top: 33%;
+  right: 25%;
+  background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
+  border-radius: 120px;
+  transform: translate(0,0);
+  transition: transform 0.3s ease; /*animation (optionally)*/
+  font-size: 2em;
+}
+
+.sidenav a {
+  padding: 32px 8px 8px 32px;
+  text-decoration: none;
+  color: white; /*gray*/
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: black;
+  font-size: 2em;
+}
+
+.sidenav .close-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 56px;
+}
+
+.sidenav .close-btn:hover {
+  cursor: pointer;
+  color: black;
+  font-size: 4em;
+}
+
+.hamburger {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  font-size: 3.0em;
+  cursor: pointer;
+  z-index: +1;
+  color: #3399ff;
+}
+
+.hamburger.open {
+  display: none;
+}
 
 
-/* Part 4: Responsive Design*/
+/* Part 5: Responsive Design*/
 @media screen and (max-width: 1000px) {
   #grid-container {
     grid-gap: 1px;
@@ -269,6 +337,11 @@ h2 {
     padding: 3px 21px 18px 3px;/*top, right, bottom, left*/
     border: 0.7px solid;
     box-shadow: 1px 1px gray;
+  }
+
+  #stars > img {
+    max-width: 24px;
+    max-height: 24px;
   }
 
   .material-icons.md-48 {
@@ -298,9 +371,9 @@ h2 {
     text-align: center;
   }
 
-  img {
-    max-width: 10%;
-    max-height: 10%;
+  #stars > img {
+    max-width: 24px;
+    max-height: 24px;
   }
 
   #grid-container {
@@ -349,9 +422,9 @@ h2 {
     text-align: center;
   }
 
-  img {
-    max-width: 10%;
-    max-height: 10%;
+  #stars > img {
+    max-width: 16px;
+    max-height: 16px;
   }
 
   #grid-container {

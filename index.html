@@ -20,8 +20,44 @@
       <h2>
           <span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
           <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span>
+          <span class="big-font">F</span>lipped: <span id=span-flipped class="big-font">0</span>
       </h2>
     </header>
+
+    <div id="id-sidenav" class="sidenav"> <!--id for javascript-->
+      <a class="close-btn" onclick="closeNav()">&times;</a>
+      <p>CONGRATULATIONS<p>
+        <span class="big-font">H</span>its: <span id=sidenav-span-hits class="big-font">0</span>
+        <span class="big-font">M</span>iss: <span id=sidenav-span-miss class="big-font">0</span>
+        <span class="big-font">F</span>lipped: <span id=sidenav-span-flipped class="big-font">0</span>
+      <div id="stars">
+        <img id="star1"  src="./img/star6.svg" alt="Yellow star">
+        <img id="star2"  src="./img/star6.svg" alt="Yellow star">
+        <img id="star3"  src="./img/star6.svg" alt="Yellow star">
+        <img id="star4"  src="./img/star6.svg" alt="Yellow star">
+        <img id="star5"  class="hide" src="./img/star6.svg" alt="Yellow star">
+        <img id="star6"  class="hide" src="./img/star6.svg" alt="Yellow star">
+        <img id="star7"  class="hide" src="./img/star6.svg" alt="Yellow star">
+        <img id="star8"  class="hide" src="./img/star6.svg" alt="Yellow star">
+        <img id="star1b" class="hide" src="./img/star6Black.svg" alt="Black star">
+        <img id="star2b" class="hide" src="./img/star6Black.svg" alt="Black star">
+        <img id="star3b" class="hide" src="./img/star6Black.svg" alt="Black star">
+        <img id="star4b" class="hide" src="./img/star6Black.svg" alt="Black star">
+        <img id="star5b" src="./img/star6Black.svg" alt="Black star">
+        <img id="star6b" src="./img/star6Black.svg" alt="Black star">
+        <img id="star7b" src="./img/star6Black.svg" alt="Black star">
+        <img id="star8b" src="./img/star6Black.svg" alt="Black star">
+      </div>
+      <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
+      <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s
+
+      <a href="./projects/contactMe.html">Restart Game</a>
+      <a href="./projects/contactMe.html">Contact</a>
+      <a href="./projects/aboutProject.html">Project</a>
+      <a href="./projects/contactMe.html">Close</a>
+    </div>
+    <!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
+    <div onclick="openNav()" class="hamburger" id="id-hamburger">&#9776;</div>
 
     <div>
       <button id="buttonTurnMusicOn" class="active">
@@ -51,13 +87,14 @@
     </div>
 
     <div id="stars">
-      <img id="star1" src="./img/star6.svg" alt="Yellow star">
-      <img id="star2" src="./img/star6.svg" alt="Yellow star">
-      <img id="star3" src="./img/star6.svg" alt="Yellow star">
-      <img id="star4" src="./img/star6.svg" alt="Yellow star">
+      <img id="star1"  src="./img/star6.svg" alt="Yellow star">
+      <img id="star2"  src="./img/star6.svg" alt="Yellow star">
+      <img id="star3"  src="./img/star6.svg" alt="Yellow star">
+      <img id="star4"  src="./img/star6.svg" alt="Yellow star">
       <img id="star5"  class="hide" src="./img/star6.svg" alt="Yellow star">
       <img id="star6"  class="hide" src="./img/star6.svg" alt="Yellow star">
       <img id="star7"  class="hide" src="./img/star6.svg" alt="Yellow star">
+      <img id="star8"  class="hide" src="./img/star6.svg" alt="Yellow star">
       <img id="star1b" class="hide" src="./img/star6Black.svg" alt="Black star">
       <img id="star2b" class="hide" src="./img/star6Black.svg" alt="Black star">
       <img id="star3b" class="hide" src="./img/star6Black.svg" alt="Black star">
@@ -65,6 +102,7 @@
       <img id="star5b" src="./img/star6Black.svg" alt="Black star">
       <img id="star6b" src="./img/star6Black.svg" alt="Black star">
       <img id="star7b" src="./img/star6Black.svg" alt="Black star">
+      <img id="star8b" src="./img/star6Black.svg" alt="Black star">
     </div>
 
     <div id="grid-container">
