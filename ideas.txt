@@ -15,10 +15,13 @@ ask if they want to play again. It should also tell the user how much time it to
 
 TODO: Move (total movements) OK!!!!
 TODO: see if you could let const to all variables.
+TODO: see if you can remove hardcode 0,1,2 to flexible variables SCALABILITY
 TODO: Professional comments
 TODO: Do a level 1 to level 12. It start with 4 cards and goes to 48 cards.
 TODO: Do a hard mode ... That if you make one correct match, the cards will be reorganized in the screen.
 TODO: Save and display the last games points...
+TODO: Stars effect displacing
+TODO: Check git github by udacity
 
 if you win with 16 cards, restart automatically with a new board with 24 cards and so on! progressing step improvements!
 when correct some write: how luck!

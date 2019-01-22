@@ -6,14 +6,37 @@ div {
 button {
   background-color: white;
   color: black;
-  font-size: 0.2em;
+  font-size: 1.0em;
   cursor: pointer;
   padding: 10px 20px 10px 20px;/*top, right, bottom, left*/
   border: 0;
 }
 
+html {
+  background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
+    zoom: 0.98;
+    -moz-transform: scale(0.98);
+    -moz-transform-origin: 50% 0;
+  overflow: hidden;
+  height: 100%; /*important so it will always display one html page,
+  it does not matter if you make it responsive. It shows only one.*/
+}
+
+body {
+  height: 100%; /*important because it full the page*/
+  background: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5%;
+  margin-right:   5%;
+  /*border-radius: 20px;*/
+
+}
+
 .big-font {
-  color: #3399ff;/*light-blue*/
+  background: -webkit-linear-gradient(#3399ff, #00ff99);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 1.5em;
 }
 
@@ -62,7 +85,7 @@ h2 {
 }
 
 .zoomOut {
-  zoom: .7;
+  zoom: .8;
   -moz-transform: scale(0.7);
   -moz-transform-origin: 50% 0;
 }
@@ -92,7 +115,7 @@ h2 {
   border-radius: 0;
   margin: 0;
   padding: 4px 4px 4px 4px; /*top, right, bottom, left*/
-  font-size: 6em;
+  font-size: 2em;
   /*Setting the position of the tip and effect */
   position: absolute;
   z-index: 1;
@@ -106,21 +129,21 @@ h2 {
   opacity: 0.8;
 }
 
-#span-hits {
+.span-hits {
   color: #3399ff; /*light-blue*/
 }
 
-#span-miss {
+.span-miss {
   color: red;
 }
 
 /* Part 3: Stars*/
 
-#stars {
+.stars {
   text-align: center;
 }
 
-#stars > img {
+.stars > img {
   max-width: 48px;
   max-height: 48px;
 }
@@ -258,26 +281,41 @@ h2 {
 .sidenav {
   top: 0;
   margin: 0;
-  padding: 0;
+  padding-top: 10%;
   width: 50%;
-  height: 50%;
+  height: 100%;
   position: fixed; /*NOT ABSOLUTE:very important because of the main:Y-Scroll*/
-  transform: translate(-100%,-500px);
+  transform: translate(0,-10000px);
   /*animation (optionally)*/
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   z-index: +1;
 }
 
 .sidenav.open {
-  top: 33%;
+  top: 0;
   right: 25%;
   background: linear-gradient(to bottom right, #3399ff 0%, #00ff99 100%);
-  border-radius: 120px;
+  color: white;
   transform: translate(0,0);
   transition: transform 0.3s ease; /*animation (optionally)*/
   font-size: 2em;
 }
 
+.big-font-sidenav {
+  color: red;
+}
+
+.button-sidenav {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.button-sidenav:hover {
+  background-color: red;
+  color: white;
+}
 .sidenav a {
   padding: 32px 8px 8px 32px;
   text-decoration: none;
@@ -325,7 +363,6 @@ h2 {
     grid-gap: 1px;
     padding: 6px 2px 6px 2px;/*top, right, bottom, left*/
     border-radius: 6px;
-    overflow-x: auto;
     max-width: 300px;
   }
 
@@ -339,9 +376,9 @@ h2 {
     box-shadow: 1px 1px gray;
   }
 
-  #stars > img {
-    max-width: 24px;
-    max-height: 24px;
+  .stars > img {
+    max-width: 30px;
+    max-height: 30px;
   }
 
   .material-icons.md-48 {
@@ -371,9 +408,9 @@ h2 {
     text-align: center;
   }
 
-  #stars > img {
-    max-width: 24px;
-    max-height: 24px;
+  .stars > img {
+    max-width: 16px;
+    max-height: 16px;
   }
 
   #grid-container {
@@ -400,7 +437,7 @@ h2 {
   }
 
   .material-icons.md-36 {
-    font-size: 24px;
+    font-size: 22px;
     vertical-align: middle;
   }
 
@@ -422,7 +459,7 @@ h2 {
     text-align: center;
   }
 
-  #stars > img {
+  .stars > img {
     max-width: 16px;
     max-height: 16px;
   }

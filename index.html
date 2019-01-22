@@ -12,142 +12,147 @@
   </head>
 
   <body>
+      <header>
+        <h1>
+          <span class="big-font">M</span>emory <span class="big-font">G</span>ame
+        </h1>
+        <h2>
+            <span class="big-font">H</span>its: <span class=span-hits class="big-font">0</span>
+            <span class="big-font">M</span>iss: <span class=span-miss class="big-font">0</span>
+            <span class="big-font">F</span>lipped: <span class=span-flipped class="big-font">0</span>
+        </h2>
+      </header>
 
-    <header>
-      <h1>
-        <span class="big-font">M</span>emory <span class="big-font">G</span>ame
-      </h1>
-      <h2>
-          <span class="big-font">H</span>its: <span id=span-hits class="big-font">0</span>
-          <span class="big-font">M</span>iss: <span id=span-miss class="big-font">0</span>
-          <span class="big-font">F</span>lipped: <span id=span-flipped class="big-font">0</span>
-      </h2>
-    </header>
-
-    <div id="id-sidenav" class="sidenav"> <!--id for javascript-->
-      <a class="close-btn" onclick="closeNav()">&times;</a>
-      <p>CONGRATULATIONS<p>
-        <span class="big-font">H</span>its: <span id=sidenav-span-hits class="big-font">0</span>
-        <span class="big-font">M</span>iss: <span id=sidenav-span-miss class="big-font">0</span>
-        <span class="big-font">F</span>lipped: <span id=sidenav-span-flipped class="big-font">0</span>
-      <div id="stars">
-        <img id="star1"  src="./img/star6.svg" alt="Yellow star">
-        <img id="star2"  src="./img/star6.svg" alt="Yellow star">
-        <img id="star3"  src="./img/star6.svg" alt="Yellow star">
-        <img id="star4"  src="./img/star6.svg" alt="Yellow star">
-        <img id="star5"  class="hide" src="./img/star6.svg" alt="Yellow star">
-        <img id="star6"  class="hide" src="./img/star6.svg" alt="Yellow star">
-        <img id="star7"  class="hide" src="./img/star6.svg" alt="Yellow star">
-        <img id="star8"  class="hide" src="./img/star6.svg" alt="Yellow star">
-        <img id="star1b" class="hide" src="./img/star6Black.svg" alt="Black star">
-        <img id="star2b" class="hide" src="./img/star6Black.svg" alt="Black star">
-        <img id="star3b" class="hide" src="./img/star6Black.svg" alt="Black star">
-        <img id="star4b" class="hide" src="./img/star6Black.svg" alt="Black star">
-        <img id="star5b" src="./img/star6Black.svg" alt="Black star">
-        <img id="star6b" src="./img/star6Black.svg" alt="Black star">
-        <img id="star7b" src="./img/star6Black.svg" alt="Black star">
-        <img id="star8b" src="./img/star6Black.svg" alt="Black star">
+      <!--SIDENAV-->
+      <div id="id-sidenav-win" class="sidenav"> <!--id for javascript-->
+        <a class="close-btn" onclick="closeNav()">&times;</a>
+        <p class="big-font-sidenav">CONGRATULATIONS<p>
+        <div class="container-stars-sidenav">
+          <img class=""  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+          <img class="hide"  src="./img/star6.svg" alt="Yellow star">
+        </div>
+        <!--Hits, Miss, Cards flipped-->
+        <p>
+          <span class="big-font-sidenav">H</span>its: <span class=span-hits class="big-font-sidenav">0</span>
+        </p>
+        <p>
+          <span class="big-font-sidenav">M</span>iss: <span class=span-miss class="big-font-sidenav">0</span>
+        </p>
+        <p>
+          <span class="big-font-sidenav">F</span>lipped: <span class=span-flipped class="big-font-sidenav">0</span>
+        </p>
+        <!--Time-->
+        <div>
+          <span class="big-font-sidenav">E</span>lapsed <span class="big-font-sidenav">T</span>ime:
+          <span class=span-timer-m class="big-font-sidenav">0</span> m <span class=span-timer-s class="big-font-sidenav">0</span> s
+        </div>
+        <div>
+          <p>
+            <button class="button-sidenav" id="b-restart">Restart Game</button>
+          </p>
+          <p>
+            <button class="button-sidenav" id="b-cancel">Cancel</button>
+          </p>
+        </div>
       </div>
-      <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
-      <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s
+      <!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
+      <div onclick="openNav()" class="hamburger" id="id-hamburger-win">&#9776;</div>
 
-      <a href="./projects/contactMe.html">Restart Game</a>
-      <a href="./projects/contactMe.html">Contact</a>
-      <a href="./projects/aboutProject.html">Project</a>
-      <a href="./projects/contactMe.html">Close</a>
-    </div>
-    <!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
-    <div onclick="openNav()" class="hamburger" id="id-hamburger">&#9776;</div>
+      <div class="container-buttons">
+        <button id="buttonTurnMusicOn" class="active">
+          <span class="material-icons md-36">music_note</span>
+        </button>
+        <button id="buttonZoomIn" class="style-background">
+          <span class="material-icons md-36">zoom_in</span>
+        </button>
+        <button id="buttonLevelHard" class="tip style-background-red">
+          <span class="material-icons md-36">trending_up</span>
+          <span class="tip-text">Increase cards up to 48</span>
+        </button>
+        <button id="buttonRestart" class="tip style-background">
+          <span class="material-icons md-36">refresh</span>
+          <span class="tip-text">Refresh</span>
+        </button>
+        <button id="buttonLevelEasy" class="tip style-background-green">
+          <span class="material-icons md-36">trending_down</span>
+          <span class="tip-text">Decrease cards down to 48</span>
+        </button>
+        <button id="buttonZoomOut" class="style-background">
+          <span class="material-icons md-36">zoom_out</span>
+        </button>
+        <button id="buttonTurnMusicOff">
+          <span class="material-icons md-36">music_off</span>
+        </button>
+      </div>
 
-    <div>
-      <button id="buttonTurnMusicOn" class="active">
-        <span class="material-icons md-36">music_note</span>
-      </button>
-      <button id="buttonZoomIn" class="style-background">
-        <span class="material-icons md-36">zoom_in</span>
-      </button>
-      <button id="buttonLevelHard" class="tip style-background-red">
-        <span class="material-icons md-36">trending_up</span>
-        <span class="tip-text">Increase cards up to 48</span>
-      </button>
-      <button id="buttonRestart" class="tip style-background">
-        <span class="material-icons md-36">refresh</span>
-        <span class="tip-text">Refresh</span>
-      </button>
-      <button id="buttonLevelEasy" class="tip style-background-green">
-        <span class="material-icons md-36">trending_down</span>
-        <span class="tip-text">Decrease cards down to 48</span>
-      </button>
-      <button id="buttonZoomOut" class="style-background">
-        <span class="material-icons md-36">zoom_out</span>
-      </button>
-      <button id="buttonTurnMusicOff">
-        <span class="material-icons md-36">music_off</span>
-      </button>
-    </div>
+      <div class="container-stars">
+        <img class="star1"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star2"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star3"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star4 hide"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star5 hide"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star6 hide"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star7 hide"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star8 hide"  src="./img/star6.svg" alt="Yellow star">
+        <img class="star1b hide" src="./img/star6Black.svg" alt="Black star">
+        <img class="star2b hide" src="./img/star6Black.svg" alt="Black star">
+        <img class="star3b hide" src="./img/star6Black.svg" alt="Black star">
+        <img class="star4b hide" src="./img/star6Black.svg" alt="Black star">
+        <img class="star5b" src="./img/star6Black.svg" alt="Black star">
+        <img class="star6b" src="./img/star6Black.svg" alt="Black star">
+        <img class="star7b" src="./img/star6Black.svg" alt="Black star">
+        <img class="star8b" src="./img/star6Black.svg" alt="Black star">
+      </div>
 
-    <div id="stars">
-      <img id="star1"  src="./img/star6.svg" alt="Yellow star">
-      <img id="star2"  src="./img/star6.svg" alt="Yellow star">
-      <img id="star3"  src="./img/star6.svg" alt="Yellow star">
-      <img id="star4"  src="./img/star6.svg" alt="Yellow star">
-      <img id="star5"  class="hide" src="./img/star6.svg" alt="Yellow star">
-      <img id="star6"  class="hide" src="./img/star6.svg" alt="Yellow star">
-      <img id="star7"  class="hide" src="./img/star6.svg" alt="Yellow star">
-      <img id="star8"  class="hide" src="./img/star6.svg" alt="Yellow star">
-      <img id="star1b" class="hide" src="./img/star6Black.svg" alt="Black star">
-      <img id="star2b" class="hide" src="./img/star6Black.svg" alt="Black star">
-      <img id="star3b" class="hide" src="./img/star6Black.svg" alt="Black star">
-      <img id="star4b" class="hide" src="./img/star6Black.svg" alt="Black star">
-      <img id="star5b" src="./img/star6Black.svg" alt="Black star">
-      <img id="star6b" src="./img/star6Black.svg" alt="Black star">
-      <img id="star7b" src="./img/star6Black.svg" alt="Black star">
-      <img id="star8b" src="./img/star6Black.svg" alt="Black star">
-    </div>
+      <div id="grid-container">
+        <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
+        <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
+        <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
+        <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
+        <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
+        <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
+        <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
+        <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
+        <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
+        <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
+        <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
+        <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
+        <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
+        <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
+        <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
+        <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
+      </div>
 
-    <div id="grid-container">
-      <div id="div-0"><span class="hide md-48" id="span-0"></span></div>
-      <div id="div-1"><span class="hide md-48" id="span-1"></span></div>
-      <div id="div-2"><span class="hide md-48" id="span-2"></span></div>
-      <div id="div-3"><span class="hide md-48" id="span-3"></span></div>
-      <div id="div-4"><span class="hide md-48" id="span-4"></span></div>
-      <div id="div-5"><span class="hide md-48" id="span-5"></span></div>
-      <div id="div-6"><span class="hide md-48" id="span-6"></span></div>
-      <div id="div-7"><span class="hide md-48" id="span-7"></span></div>
-      <div id="div-8"><span class="hide md-48" id="span-8"></span></div>
-      <div id="div-9"><span class="hide md-48" id="span-9"></span></div>
-      <div id="div-10"><span class="hide md-48" id="span-10"></span></div>
-      <div id="div-11"><span class="hide md-48" id="span-11"></span></div>
-      <div id="div-12"><span class="hide md-48" id="span-12"></span></div>
-      <div id="div-13"><span class="hide md-48" id="span-13"></span></div>
-      <div id="div-14"><span class="hide md-48" id="span-14"></span></div>
-      <div id="div-15"><span class="hide md-48" id="span-15"></span></div>
-    </div>
+      <h2>
+        <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
+        <span class=span-timer-m class="big-font">0</span> m <span class=span-timer-s class="big-font">0</span> s
+      </h2>
 
-    <h2>
-      <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
-      <span id=span-timer-m class="big-font">0</span> m <span id=span-timer-s class="big-font">0</span> s
-    </h2>
+      <div>
+        <audio id="musicBackground" controls="controls">
+          <source src="./sounds/background-music.mp3" type="audio/mp3"/>
+        </audio>
+      </div>
 
-    <div>
-      <audio id="musicBackground" controls="controls">
-        <source src="./sounds/background-music.mp3" type="audio/mp3"/>
-      </audio>
-    </div>
+      <div class="hide">
+        <audio id="musicMatch">
+          <source src="./sounds/match-sound.mp3" type="audio/mp3"/>
+        </audio>
+        <audio id="musicError">
+          <source src="./sounds/error.wav" type="audio/wav"/>
+        </audio>
+        <audio id="musicWin">
+          <source src="./sounds/end-game-sound.mp3" type="audio/mp3"/>
+        </audio>
+      </div>
 
-    <div class="hide">
-      <audio id="musicMatch">
-        <source src="./sounds/match-sound.mp3" type="audio/mp3"/>
-      </audio>
-      <audio id="musicError">
-        <source src="./sounds/error.wav" type="audio/wav"/>
-      </audio>
-      <audio id="musicWin">
-        <source src="./sounds/end-game-sound.mp3" type="audio/mp3"/>
-      </audio>
-    </div>
-
-    <script src="./javascript/app.js"></script>
+      <script src="./javascript/app.js"></script>
 
   </body>
 </html>

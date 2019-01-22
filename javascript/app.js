@@ -59,7 +59,7 @@ class Board {
 	}
 	/*Check how many cards we need and then increase the board*/
 	updateHtmlElements() {
-		let numbersOfDivs = document.body.children[3].children.length;
+		let numbersOfDivs = document.body.children["grid-container"].children.length;
 		/*Adding or removing div*/
 		const fragment = document.createDocumentFragment(); // ← uses a DocumentFragment instead of a <div>
 		for (let i = 0; i < (this.totalCards - this.standardNumberofCards); i++) {
@@ -102,8 +102,13 @@ let oTimer = {
 	displayTimer() {
 		this.runTime = Date.now() - oTimer.timeGameStart;
 		let timeElapsedMillisec = Math.floor(this.runTime / 1000);
-		document.querySelector("#span-timer-m").textContent = Math.floor(timeElapsedMillisec / 60);
-		document.querySelector("#span-timer-s").textContent = timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60) * 60);
+		document.querySelectorAll(".span-timer-m").forEach(function(val){
+			val.textContent = Math.floor(timeElapsedMillisec / 60);
+		});
+		document.querySelectorAll(".span-timer-s").forEach(function(val){
+			val.textContent = timeElapsedMillisec - (Math.floor(timeElapsedMillisec / 60) * 60);
+		});
+
 	}
 };
 /*Game*/
@@ -119,10 +124,10 @@ class Game {
 		this.arrayIconsFlipped = new Array("none", "none-1"); /*store the name of icons to compare*/
 		this.arraySpanIdFlipped = new Array(2); /*store the id of span elements flipped*/
 		this.arrayDivIdFlipped = new Array(2); /*store the div of elements flipped*/
-		this.arrayIdStars = new Array("star1", "star2", "star3", "star4");
-		this.starRemoved = new Array("star5", "star6", "star7", "star8");
-		this.arrayIdStarsBlack = new Array("star5b", "star6b", "star7b", "star8b");
-		this.starRemovedBlack = new Array("star1b", "star2b", "star3b", "star4b");
+		this.arrayIdStars = new Array(".star1", ".star2", ".star3");
+		this.starRemoved = new Array(".star8",".star7", ".star6", ".star5", ".star4");
+		this.arrayIdStarsBlack = new Array(".star8b",".star7b", ".star6b", ".star5b", ".star4b");
+		this.starRemovedBlack = new Array(".star1b", ".star2b", ".star3b");
 		this.starIndex = 0; /*track number in the array (arrayIdStars)*/
 		this.flipCorrectIndex = 0; /*to track the end of the game*/
 		this.flipMissIndex = 0; /*to track misses*/
@@ -132,9 +137,17 @@ class Game {
 		/*Total Reset for oMemoryGame*/
 		/*Restart Hits, Miss and Flippped*/
 
-		document.querySelector("#span-flipped").textContent = 0;
-		document.querySelector("#span-hits").textContent = 0;
-		document.querySelector("#span-miss").textContent = 0;
+		document.querySelectorAll(".span-flipped").forEach(function(val){
+			val = 0;
+		});
+		document.querySelectorAll(".span-hits").forEach(function(val){
+			val = 0;
+		});
+		document.querySelectorAll(".span-miss").forEach(function(val){
+			val = 0;
+		});
+
+
 		/*restart music buttons*/
 		document.querySelector("#buttonTurnMusicOn").classList.add("active");
 		document.querySelector("#buttonTurnMusicOff").classList.remove("active");
@@ -149,20 +162,29 @@ class Game {
 		}
 		/*Reseting the stars*/
 		/*yellow stars*/
-		let containerStars = document.querySelector("#stars");
-		let listStars = containerStars.querySelectorAll("img");
-		for (let i = 0; i <= 4; i++) {
-			listStars[i].classList.remove("hide"); /*show yellow stars*/
-		}
-		for (let i = 11; i < 15; i++) {
-			listStars[i].classList.remove("hide"); /*show black stars*/
-		}
-		for (let i = 4; i < 12; i++) {
-			listStars[i].classList.add("hide"); /*hide yellow & black stars*/
-		}
+		let containerStars = document.querySelector(".container-stars");
+		let index = 1;
+		containerStars.querySelectorAll("img").forEach(function(star){
+
+			if (index <= 3) {
+				star.classList.remove("hide"); /*show yellow stars*/
+			} else if (index <= 11) {
+				star.classList.add("hide"); /*hide yellow & black stars*/
+			} else {
+				star.classList.remove("hide"); /*show black stars*/
+			}
+			index++;
+		});
+		console.log(index);
 		/*restart body timer*/
-		document.querySelector("#span-timer-m").textContent = 0;
-		document.querySelector("#span-timer-s").textContent = 0;
+		document.querySelectorAll(".span-timer-m").forEach(function(val){
+			val.textContent = 0;
+		});
+
+		document.querySelectorAll(".span-timer-s").forEach(function(val){
+			val.textContent = 0;
+		});
+
 	}
 	/*Effect change of Element*/
 	effectError() {
@@ -194,14 +216,19 @@ class Game {
 				/*I want always 1 star there*/
 				/*for yellow star*/
 				this.starIndex = this.arrayIdStars.length - 1; /*maybe copy it below*/
-				document.getElementById(this.arrayIdStars[this.starIndex]).classList.add("hide");
+				document.querySelector(this.arrayIdStars[this.starIndex]).classList.add("hide");
+				/*document.getElementById(this.arrayIdStars[this.starIndex]).classList.add("hide");*/
 				this.starRemoved[this.starRemoved.length] = this.arrayIdStars.pop();
 				/*for black star*/
 				this.starIndex = this.starRemovedBlack.length - 1; /*e.x.: get star4b*/
-				document.getElementById(this.starRemovedBlack[this.starIndex]).classList.remove("hide");
+				/*document.getElementById(this.starRemovedBlack[this.starIndex]).classList.remove("hide");*/
+				document.querySelector(this.starRemovedBlack[this.starIndex]).classList.remove("hide");
 				this.arrayIdStarsBlack[this.arrayIdStarsBlack.length] = this.starRemovedBlack.pop();
 			}
-			document.querySelector("#span-miss").textContent = this.flipMissIndex;
+			const local_object = this;
+			document.querySelectorAll(".span-miss").forEach(function(val){
+				val.textContent = local_object.flipMissIndex;
+			});
 			document.getElementById(this.arrayDivIdFlipped[0]).classList.remove("effect-error");
 			document.getElementById(this.arrayDivIdFlipped[1]).classList.remove("effect-error");
 			document.getElementById(this.arraySpanIdFlipped[0]).classList.toggle("material-icons");
@@ -215,13 +242,19 @@ class Game {
 	matchCards() {
 		this.flipCorrectIndex++;
 		if (this.starRemoved.length >= 1) {
-			document.getElementById(this.starRemoved[this.starRemoved.length - 1]).classList.remove("hide");
+			document.querySelector(this.starRemoved[this.starRemoved.length - 1]).classList.remove("hide");
 			this.arrayIdStars.push(this.starRemoved.pop());
+			/*document.getElementById(this.arrayIdStarsBlack[this.arrayIdStarsBlack.length - 1]).classList.add("hide");*/
+			document.querySelector(this.arrayIdStarsBlack[this.arrayIdStarsBlack.length - 1]).classList.add("hide");
 			/*for black star*/
-			document.getElementById(this.arrayIdStarsBlack[this.arrayIdStarsBlack.length - 1]).classList.add("hide");
+			document.querySelector(this.arrayIdStarsBlack[this.arrayIdStarsBlack.length - 1]).classList.add("hide");
 			this.starRemovedBlack[this.starRemovedBlack.length] = this.arrayIdStarsBlack.pop();
 		}
-		document.querySelector("#span-hits").textContent = this.flipCorrectIndex;
+		const local_object = this; /*important here*/
+		document.querySelectorAll(".span-hits").forEach(function(val) {
+			val.textContent = local_object.flipCorrectIndex;
+		});
+
 		this.effectCorrect();
 		this.reset();
 	}
@@ -230,20 +263,17 @@ class Game {
 		clearTimeout(oTimer.elapsedTimer);
 		document.querySelector("#musicBackground").pause();
 		document.querySelector("#musicWin").play();
-		const flipped = document.querySelector("#span-flipped").textContent;
-		document.querySelector("#sidenav-span-hits").textContent = document.querySelector("#span-hits").textContent;
-		document.querySelector("#sidenav-sspan-miss").textContent = document.querySelector("#span-miss").textContent;
-		const min = document.querySelector("#span-timer-m").textContent;
-		const sec = document.querySelector("#span-timer-s").textContent;
-		const stars = this.arrayIdStars.length;
-		const localGame = confirm ("Congratulations! You Win!\n" +
-		"Hits: " + hits + ". Miss: " + miss + ". Cards Flipped: " + flipped +".\n" +
-		"You got " + stars + " stars!" + "\n" +
-		"It takes: " + min + " minutes and " + sec + " seconds." + "\n\n" +
-		"Press OK to restart the game.");
 
-		localGame == true ? location.reload() : "";
+		/*I want to show the number of stars that he has*/
+		let numberOfYellowStars = this.arrayIdStars.length; /*I got the number*/
+		let containerStars = document.querySelector(".container-stars-sidenav"); /*I get the sidenav container*/
+		let listStars = containerStars.querySelectorAll("img"); /*list*/
+		for (let i = 0; i < numberOfYellowStars; i++) {
+			listStars[i].classList.remove("hide"); /*showing*/
+		};
 
+		document.getElementById("id-sidenav-win").classList.toggle("open");
+		document.getElementById("id-hamburger-win").classList.toggle("open");
 
 	}
 
@@ -284,7 +314,10 @@ function runGame(evt) {
 		oTimer.startTimer(); /*Start game timer*/
 		oMemoryGame.flagstartTimer = true;
 	}
-	document.querySelector("#span-flipped").textContent = ++oMemoryGame.flipped;
+	oMemoryGame.flipped++;
+	document.querySelectorAll(".span-flipped").forEach(function(val){
+		val.textContent = oMemoryGame.flipped;
+	});
 
 	oMemoryGame.flagMusicTurnOff === false ? document.querySelector("#musicBackground").play() : document.querySelector("#musicBackground").pause()
 
@@ -364,16 +397,19 @@ document.querySelector("#buttonLevelEasy").addEventListener("click", function() 
 
 /*sidenav*/
 function openNav() {
-  /*  let hamburger = document.getElementById("id-hamburger");
-    hamburger.classList.toggle("open"); */
-    /*Udacity:
-    or ease of use you can use it as
-     document.getElementById("id-hamburger").classList.toggle("open");*/
-  document.getElementById("id-sidenav").classList.toggle("open");
-  document.getElementById("id-hamburger").classList.toggle("open");
+  document.getElementById("id-sidenav-win").classList.toggle("open");
+  document.getElementById("id-hamburger-win").classList.toggle("open");
 }
-
 function closeNav() {
-  document.getElementById("id-sidenav").classList.toggle("open");
-  document.getElementById("id-hamburger").classList.toggle("open");
+  document.getElementById("id-sidenav-win").classList.toggle("open");
+  document.getElementById("id-hamburger-win").classList.toggle("open");
 }
+/*Button refresh page*/
+document.querySelector("#b-restart").addEventListener("click", function() {
+	location.reload();
+});
+/*Button close side nav*/
+document.querySelector("#b-cancel").addEventListener("click", function() {
+	document.getElementById("id-sidenav-win").classList.toggle("open");
+	document.getElementById("id-hamburger-win").classList.toggle("open");
+});
