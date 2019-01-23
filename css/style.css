@@ -484,4 +484,13 @@ h2 {
   #musicBackground {
     max-width: 250px;
   }
+  .sidenav.open {
+    line-height: normal;
+    font-size: 1.6em;
+    right: 0;
+  }
+  .sidenav {
+    /*padding-top: 0;*/
+    width: 100%;
+  }
 }

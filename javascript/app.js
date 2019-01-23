@@ -2,16 +2,16 @@
 /**
  * The code is composed and written in the order below:
  * PART 1: INITIALIZATION/SETUP/LOGIC:
- * Class Board (create the board with cards)
+ * Class Board: create the board with cards
  * oTimer: literal object that counter the running timeout
- * Class Game (implement the game logic like flip cards...)
+ * Class Game: implement the game logic like flip cards...
  * PART 2: GAME START WITH MOUSE CLICK:
  * A global function: function runGame(evt) is called at first
  * mouse click on the board of cards. The function tracks the mouse
  * event through evt.
  * PART 3: GAME EXTRA INTERACTION (BUTTONS, ZOOM IN...)
  * In the end you have a simple implementation of the functionality for
- * the buttons (zoom in, sidenav, increase board, restart...)
+ * the buttons: zoom in, sidenav, increase board, restart...
  * @summary Memory Game concise functionality description.
  */
 /**
