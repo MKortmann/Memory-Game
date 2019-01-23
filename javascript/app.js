@@ -60,8 +60,10 @@ class Board {
   /**Get random cards of the containerIcons in accord of the number of cards
   The idea is not to let the game repetitive with always the same icons*/
 	genArrayIcons() {
+    /*this first line populates the array (arrayIcons) with 8 items randomly from the containerIcons*/
 		this.arrayIcons = this.containerIcons.splice(Math.floor(Math.random() * (this.containerIcons.length - (this.totalCards / 2))), this.totalCards / 2);
-		for (let index = (this.totalCards / 2); index < this.totalCards; index++) {
+    /*populates the rest of the array (arrayIcons) with 8 items randomly from the containerIcons*/
+    for (let index = (this.totalCards / 2); index < this.totalCards; index++) {
 			this.arrayIcons[index] = this.arrayIcons[index - (this.totalCards / 2)];
 		};
 	}
@@ -73,9 +75,8 @@ class Board {
 			this.arraySpan[index] = getSpan;
 		};
 	}
-	/**Creating random numbers array (arraysIconsRandom). It will be populate with
-  the arrayIcons.length and then duplicated again*/
-  /***/
+	/**Creating a random array (arraysIconsRandom). It will be randomly populate from
+  the arrayIcons.*/
 	genRandom() {
 		/*from ES6 you can instead write: genRandom : function () write as it written*/
 		/*this.arrayIcons = arrayIcons;Only for testing*/
@@ -85,7 +86,7 @@ class Board {
 			this.arrayIcons.splice(this.randomNumber, 1); /*to make sure it will keep the same elements-so remove the used element*/
 		};
 	}
-	/*Check how many cards we need and then increase the board*/
+	/**Check how many cards we need and then increase or decrease the board*/
 	updateHtmlElements() {
 		let numbersOfDivs = document.body.children["grid-container"].children.length;
 		/*Adding or removing div*/
@@ -327,7 +328,7 @@ class Game {
 }
 /*Global variables & objects*/
 const numberOfCards = 16;
-let oBoardInit = new Board;
+let oBoardInit = new Board(numberOfCards);
 let oMemoryGame = new Game(numberOfCards);
 /**
  * Main Function that Starts the Game at First Mouse Click

@@ -108,6 +108,7 @@ h2 {
   position: relative;
   display: block;
 }
+
 .tip .tip-text {
   visibility: hidden;
   width: auto;
@@ -143,6 +144,7 @@ h2 {
 .stars {
   text-align: center;
 }
+
 .stars > img {
   max-width: 48px;
   max-height: 48px;
@@ -185,6 +187,7 @@ h2 {
   padding-left: 4px;
   padding-right: 3px;
 }
+
 @-webkit-keyframes swing-error/*for internet explorer*/
 {
   15%
@@ -218,6 +221,7 @@ h2 {
       transform: translateX(0);
   }
 }
+
 @keyframes swing-error/*for other browsers*/
 {
   15%
@@ -354,6 +358,7 @@ h2 {
     display: none;
   }
 }
+
 @media screen and (max-width: 1000px) {
   h1 {
     font-size: 2.8em;
@@ -426,6 +431,7 @@ h2 {
     max-height: 24px;
   }
 }
+
 /*Responsive Design*/
 @media screen and (max-width: 600px) {
   h1 {
