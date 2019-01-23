@@ -414,7 +414,12 @@ h2 {
   }
   .sidenav.open {
     line-height: normal;
-      font-size: 1em;
+    font-size: 1.6em;
+    right: 0;
+  }
+  .sidenav {
+    /*padding-top: 0;*/
+    width: 100%;
   }
   .c-stars {
     max-width: 24px;

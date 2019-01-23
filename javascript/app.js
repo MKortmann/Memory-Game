@@ -1,7 +1,31 @@
 "use strict";
-
-/*Board Construction Initialization*/
+/**
+ * The code is composed and written in the order below:
+ * PART 1: INITIALIZATION/SETUP/LOGIC:
+ * Class Board (create the board with cards)
+ * oTimer: literal object that counter the running timeout
+ * Class Game (implement the game logic like flip cards...)
+ * PART 2: GAME START WITH MOUSE CLICK:
+ * A global function: function runGame(evt) is called at first
+ * mouse click on the board of cards. The function tracks the mouse
+ * event through evt.
+ * PART 3: GAME EXTRA INTERACTION (BUTTONS, ZOOM IN...)
+ * In the end you have a simple implementation of the functionality for
+ * the buttons (zoom in, sidenav, increase board, restart...)
+ * @summary Memory Game concise functionality description.
+ */
+/**
+ * Creates a new game BOARD with the respective
+ * amount of cards.
+ * @class
+ */
 class Board {
+	/**
+	* @description Represent The Board Of Cards
+	* @constructor
+	* @param {number} numberOfCards - The number of cards the board has. It can
+	be from 16 (standard) up to 56 cards! In fact, it expand without limits.
+	*/
 	constructor(numberOfCards) {
 		this.totalCards = numberOfCards;
 		this.standardNumberofCards = 16;
@@ -24,7 +48,7 @@ class Board {
 			"invert_colors", "line_weight", "loyalty", "backup",
 			"scanner", "school", "router", "ring_volume",
 			"report_problem", "repeat_one", "all_out", "radio_button_checked");
-		/*Setting the Board*/
+		/**Setting the Board of Cards*/
 		numberOfCards > 16 ? document.querySelector("#grid-container").classList.add("wide") :
 			document.querySelector("#grid-container").classList.remove("wide")
 		this.updateHtmlElements();
@@ -33,13 +57,15 @@ class Board {
 		this.genRandom(); /*generate an array of random numbers*/
 		this.gridInit(); /*write the respective cards to the board*/
 	};
+  /**Get random cards of the containerIcons in accord of the number of cards
+  The idea is not to let the game repetitive with always the same icons*/
 	genArrayIcons() {
-		/*do not let the game repetitive with the same icons*/
 		this.arrayIcons = this.containerIcons.splice(Math.floor(Math.random() * (this.containerIcons.length - (this.totalCards / 2))), this.totalCards / 2);
 		for (let index = (this.totalCards / 2); index < this.totalCards; index++) {
 			this.arrayIcons[index] = this.arrayIcons[index - (this.totalCards / 2)];
 		};
 	}
+  /**Populate the arraySpan (number of spans = cards)*/
 	genSpanArray() {
 		let getSpan;
 		for (let index = 0; index <= this.totalCards - 1; index++) {
@@ -47,7 +73,9 @@ class Board {
 			this.arraySpan[index] = getSpan;
 		};
 	}
-	/*Creating random numbers array (arraysIconsRandom) using this forLoop and Math function*/
+	/**Creating random numbers array (arraysIconsRandom). It will be populate with
+  the arrayIcons.length and then duplicated again*/
+  /***/
 	genRandom() {
 		/*from ES6 you can instead write: genRandom : function () write as it written*/
 		/*this.arrayIcons = arrayIcons;Only for testing*/
@@ -87,7 +115,11 @@ class Board {
 		};
 	}
 }
-/*oTimer Literal Object*/
+/**
+ * Creates a new timer to track the
+ * game elapsed time.
+ * @class
+ */
 let oTimer = {
 	timeNow: 0,
 	timeGameStart: 0,
@@ -111,7 +143,10 @@ let oTimer = {
 
 	}
 };
-/*Game*/
+/**
+ * Creates a new game functionality with the correct number of cards
+ * @class
+ */
 class Game {
 	constructor(numberOfCards) {
 		/*Game variables*/
@@ -294,8 +329,14 @@ class Game {
 const numberOfCards = 16;
 let oBoardInit = new Board;
 let oMemoryGame = new Game(numberOfCards);
-
-/*Main Function Important To Track Mouse Event*/
+/**
+ * Main Function that Starts the Game at First Mouse Click
+ * @class
+ */
+ /**
+* @description runGame func. called at first mouse click on the board of cards.
+* @param {mouse event} evt
+*/
 function runGame(evt) {
 
 	if (!oMemoryGame.flagstartTimer) {
@@ -413,6 +454,18 @@ document.querySelector("#b-restart-sidenav-24").addEventListener("click", functi
 });
 document.querySelector("#b-restart-sidenav-16").addEventListener("click", function(){
 	location.reload();
+});
+/*Button turn music on*/
+document.querySelector("#b-sound-on").addEventListener("click", function() {
+	oMemoryGame.flagMusicTurnOff = false;
+	document.querySelector("#musicBackground").play();
+  document.getElementById("id-sidenav-2").classList.toggle("open");
+});
+/*Button turn music off*/
+document.querySelector("#b-sound-off").addEventListener("click", function() {
+	oMemoryGame.flagMusicTurnOff = true;
+	document.querySelector("#musicBackground").pause();
+	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 document.querySelector("#b-cancel-sidenav-2").addEventListener("click", function(){
 	document.getElementById("id-sidenav-2").classList.toggle("open");
