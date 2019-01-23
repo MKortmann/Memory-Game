@@ -136,7 +136,6 @@ class Game {
 	destructor() {
 		/*Total Reset for oMemoryGame*/
 		/*Restart Hits, Miss and Flippped*/
-
 		document.querySelectorAll(".span-flipped").forEach(function(val){
 			val = 0;
 		});
@@ -146,8 +145,6 @@ class Game {
 		document.querySelectorAll(".span-miss").forEach(function(val){
 			val = 0;
 		});
-
-
 		/*restart music buttons*/
 		document.querySelector("#buttonTurnMusicOn").classList.add("active");
 		document.querySelector("#buttonTurnMusicOff").classList.remove("active");
@@ -165,7 +162,6 @@ class Game {
 		let containerStars = document.querySelector(".container-stars");
 		let index = 1;
 		containerStars.querySelectorAll("img").forEach(function(star){
-
 			if (index <= 3) {
 				star.classList.remove("hide"); /*show yellow stars*/
 			} else if (index <= 11) {
@@ -180,11 +176,9 @@ class Game {
 		document.querySelectorAll(".span-timer-m").forEach(function(val){
 			val.textContent = 0;
 		});
-
 		document.querySelectorAll(".span-timer-s").forEach(function(val){
 			val.textContent = 0;
 		});
-
 	}
 	/*Effect change of Element*/
 	effectError() {
@@ -254,7 +248,6 @@ class Game {
 		document.querySelectorAll(".span-hits").forEach(function(val) {
 			val.textContent = local_object.flipCorrectIndex;
 		});
-
 		this.effectCorrect();
 		this.reset();
 	}
@@ -263,7 +256,6 @@ class Game {
 		clearTimeout(oTimer.elapsedTimer);
 		document.querySelector("#musicBackground").pause();
 		document.querySelector("#musicWin").play();
-
 		/*I want to show the number of stars that he has*/
 		let numberOfYellowStars = this.arrayIdStars.length; /*I got the number*/
 		let containerStars = document.querySelector(".container-stars-sidenav"); /*I get the sidenav container*/
@@ -271,12 +263,9 @@ class Game {
 		for (let i = 0; i < numberOfYellowStars; i++) {
 			listStars[i].classList.remove("hide"); /*showing*/
 		};
-
 		document.getElementById("id-sidenav-win").classList.toggle("open");
 		document.getElementById("id-hamburger-win").classList.toggle("open");
-
 	}
-
 	showCards() {
 		setTimeout(() => {
 			document.getElementById(this.arraySpanIdFlipped[this.flipIndex]).classList.toggle("material-icons"); /*display element*/
@@ -306,7 +295,6 @@ const numberOfCards = 16;
 let oBoardInit = new Board;
 let oMemoryGame = new Game(numberOfCards);
 
-
 /*Main Function Important To Track Mouse Event*/
 function runGame(evt) {
 
@@ -331,10 +319,8 @@ function runGame(evt) {
 		oMemoryGame.showCards();
 	}
 }
-
 /*GAME START AT FIRST CLICK*/
 document.querySelector("#grid-container").addEventListener("click", runGame, true);
-
 /*Homepage Buttons*/
 /*Button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function() {
@@ -398,22 +384,40 @@ document.querySelector("#buttonLevelEasy").addEventListener("click", function() 
 		oMemoryGame = new Game(16);
 	}
 });
-
-/*sidenav*/
-function openNav() {
-  document.getElementById("id-sidenav-win").classList.toggle("open");
-  document.getElementById("id-hamburger-win").classList.toggle("open");
-}
-function closeNav() {
-  document.getElementById("id-sidenav-win").classList.toggle("open");
-  document.getElementById("id-hamburger-win").classList.toggle("open");
-}
-/*Button refresh page*/
+/*Button refresh <!--SIDENAV: WIN GAME MENU-->*/
 document.querySelector("#b-restart").addEventListener("click", function() {
 	location.reload();
 });
-/*Button close side nav*/
+/*Button close side nav <!--SIDENAV: WIN GAME MENU-->*/
 document.querySelector("#b-cancel").addEventListener("click", function() {
 	document.getElementById("id-sidenav-win").classList.toggle("open");
-	document.getElementById("id-hamburger-win").classList.toggle("open");
+});
+
+/*<!--SIDENAV 2: OPEN AND CLOSE-->*/
+function openNav() {
+  document.getElementById("id-sidenav-2").classList.toggle("open");
+}
+function closeNav() {
+  document.getElementById("id-sidenav-2").classList.toggle("open");
+}
+/*<!--SIDENAV 2: BUTTONS-->*/
+document.querySelector("#b-restart-sidenav-48").addEventListener("click", function(){
+	clearTimeout(oTimer.elapsedTimer);
+	oMemoryGame = new Game(48);
+	document.getElementById("id-sidenav-2").classList.toggle("open");
+});
+document.querySelector("#b-restart-sidenav-24").addEventListener("click", function(){
+	clearTimeout(oTimer.elapsedTimer);
+	oMemoryGame = new Game(24);
+	document.getElementById("id-sidenav-2").classList.toggle("open");
+});
+document.querySelector("#b-restart-sidenav-16").addEventListener("click", function(){
+	location.reload();
+});
+document.querySelector("#b-cancel-sidenav-2").addEventListener("click", function(){
+	document.getElementById("id-sidenav-2").classList.toggle("open");
+});
+/*<!--SIDENAV 2: Hamburger and close buttons-->*/
+document.querySelector("#id-hamburger-sidenav-2").addEventListener("click", function(){
+	openNav();
 });
