@@ -412,6 +412,14 @@ h2 {
   #musicBackground {
     max-width: 250px;
   }
+  .sidenav.open {
+    line-height: normal;
+      font-size: 1em;
+  }
+  .c-stars {
+    max-width: 24px;
+    max-height: 24px;
+  }
 }
 /*Responsive Design*/
 @media screen and (max-width: 600px) {
