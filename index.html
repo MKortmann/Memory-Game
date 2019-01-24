@@ -1,180 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"><!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
-    <meta charset="utf-8">
-    <meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Memory Game</title>
-  </head>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
+	<meta charset="utf-8">
+	<meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<title>Memory Game</title>
+</head>
 
-  <body>
-      <header>
-        <h1>
-          <span class="big-font">M</span>emory <span class="big-font">G</span>ame
-        </h1>
-        <h2>
-            <span class="big-font">H</span>its: <span class=span-hits class="big-font">0</span>
-            <span class="big-font">M</span>iss: <span class=span-miss class="big-font">0</span>
-            <span class="big-font">F</span>lipped: <span class=span-flipped class="big-font">0</span>
-        </h2>
-      </header>
+<body>
+	<header>
+		<h1>
+			<span class="big-font">M</span>emory <span class="big-font">G</span>ame
+		</h1>
+		<h2>
+			<span class="big-font">H</span>its: <span class="span-hits big-font">0</span>
+			<span class="big-font">M</span>iss: <span class="span-miss big-font">0</span>
+			<span class="big-font">F</span>lipped: <span class="span-flipped big-font">0</span>
+		</h2>
+	</header>
 
-      <!--SIDENAV: WIN GAME MENU-->
-      <div id="id-sidenav-win" class="sidenav"> <!--id for javascript-->
-        <p class="big-font-sidenav">CONGRATULATIONS<p>
-        <div class="container-stars-sidenav">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-          <img class="hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        </div>
-        <!--Hits, Miss, Cards flipped-->
-        <p>
-          <span class="big-font-sidenav">H</span>its: <span class=span-hits class="big-font-sidenav">0</span>
-        </p>
-        <p>
-          <span class="big-font-sidenav">M</span>iss: <span class=span-miss class="big-font-sidenav">0</span>
-        </p>
-        <p>
-          <span class="big-font-sidenav">F</span>lipped: <span class=span-flipped class="big-font-sidenav">0</span>
-        </p>
-        <!--Time-->
-        <div>
-          <span class="big-font-sidenav">E</span>lapsed <span class="big-font-sidenav">T</span>ime:
-          <span class=span-timer-m class="big-font-sidenav">0</span> m <span class=span-timer-s class="big-font-sidenav">0</span> s
-        </div>
-        <div>
-          <p>
-            <button class="button-sidenav" id="b-restart">restart game</button>
-          </p>
-          <p>
-            <button class="button-sidenav" id="b-cancel">cancel</button>
-          </p>
-        </div>
-      </div>
+	<!--SIDENAV: WIN GAME MENU-->
+	<div id="id-sidenav-win" class="sidenav">
+		<p class="big-font-sidenav">CONGRATULATIONS<p>
+				<div class="container-stars-sidenav">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
+				</div>
+				<!--Hits, Miss, Cards flipped-->
+				<p>
+					<span class="big-font-sidenav">H</span>its: <span class="span-hits big-font-sidenav">0</span>
+				</p>
+				<p>
+					<span class="big-font-sidenav">M</span>iss: <span class="span-miss big-font-sidenav">0</span>
+				</p>
+				<p>
+					<span class="big-font-sidenav">F</span>lipped: <span class="span-flipped big-font-sidenav">0</span>
+				</p>
+				<!--Time-->
+				<div>
+					<span class="big-font-sidenav">E</span>lapsed <span class="big-font-sidenav">T</span>ime:
+					<span class="span-timer-m big-font-sidenav">0</span> m <span class="span-timer-s big-font-sidenav">0</span> s
+				</div>
+				<div>
+					<p>
+						<button class="button-sidenav" id="b-restart">restart game</button>
+					</p>
+					<p>
+						<button class="button-sidenav" id="b-cancel">cancel</button>
+					</p>
+				</div>
+	</div>
 
-      <!--SIDENAV 2-->
-      <div id="id-sidenav-2" class="sidenav"> <!--id for javascript-->
-        <p>
-          <button class="button-sidenav" id="b-restart-sidenav-48">48 cards</button>
-        </p>
-        <p>
-          <button class="button-sidenav" id="b-restart-sidenav-24">24 cards</button>
-        </p>
-        <p>
-          <button class="button-sidenav" id="b-restart-sidenav-16">16 cards</button>
-        </p>
-        <p>
-          <span>
-            <button class="button-sidenav" id="b-sound-on">sound on</button>
-            <button class="button-sidenav" id="b-sound-off">sound off</button>
-          </span>
-        </p>
-        <p>
-          <button class="button-sidenav" id="b-cancel-sidenav-2">cancel</button>
-        </p>
-        </div>
-      </div>
-      <!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
-      <div class="hamburger" id="id-hamburger-sidenav-2">&#9776;</div>
+	<!--SIDENAV 2-->
+	<div id="id-sidenav-2" class="sidenav">
+		<p>
+			<button class="button-sidenav" id="b-restart-sidenav-48">48 cards</button>
+		</p>
+		<p>
+			<button class="button-sidenav" id="b-restart-sidenav-24">24 cards</button>
+		</p>
+		<p>
+			<button class="button-sidenav" id="b-restart-sidenav-16">16 cards</button>
+		</p>
+		<p>
+			<span>
+				<button class="button-sidenav" id="b-sound-on">sound on</button>
+				<button class="button-sidenav" id="b-sound-off">sound off</button>
+			</span>
+		</p>
+		<p>
+			<button class="button-sidenav" id="b-cancel-sidenav-2">cancel</button>
+		</p>
+	</div>
 
-      <div class="container-buttons">
-        <button id="buttonTurnMusicOn" class="active">
-          <span class="material-icons button-size">music_note</span>
-        </button>
-        <button id="buttonZoomIn" class="style-background">
-          <span class="material-icons button-size">zoom_in</span>
-        </button>
-        <button id="buttonLevelHard" class="tip style-background-red">
-          <span class="material-icons button-size">trending_up</span>
-          <span class="tip-text">Increase cards up to 56</span>
-        </button>
-        <button id="buttonRestart" class="tip style-background">
-          <span class="material-icons button-size">refresh</span>
-          <span class="tip-text">Refresh</span>
-        </button>
-        <button id="buttonLevelEasy" class="tip style-background-green">
-          <span class="material-icons button-size">trending_down</span>
-          <span class="tip-text">Decrease cards down to 48</span>
-        </button>
-        <button id="buttonZoomOut" class="style-background">
-          <span class="material-icons button-size">zoom_out</span>
-        </button>
-        <button id="buttonTurnMusicOff">
-          <span class="material-icons button-size">music_off</span>
-        </button>
-      </div>
+	<!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
+	<div class="hamburger" id="id-hamburger-sidenav-2">&#9776;</div>
 
-      <div class="container-stars">
-        <img class="star1 c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star2 c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star3 c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star4 hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star5 hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star6 hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star7 hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star8 hide c-stars"  src="./img/star6.svg" alt="Yellow star">
-        <img class="star1b hide c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star2b hide c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star3b hide c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star4b hide c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star5b c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star6b c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star7b c-stars" src="./img/star6b.svg" alt="Black star">
-        <img class="star8b c-stars" src="./img/star6b.svg" alt="Black star">
-      </div>
+	<div class="container-buttons">
+		<button id="buttonTurnMusicOn" class="active">
+			<span class="material-icons button-size">music_note</span>
+		</button>
+		<button id="buttonZoomIn" class="style-background">
+			<span class="material-icons button-size">zoom_in</span>
+		</button>
+		<button id="buttonLevelHard" class="tip style-background-red">
+			<span class="material-icons button-size">trending_up</span>
+			<span class="tip-text">Increase cards up to 56</span>
+		</button>
+		<button id="buttonRestart" class="tip style-background">
+			<span class="material-icons button-size">refresh</span>
+			<span class="tip-text">Refresh</span>
+		</button>
+		<button id="buttonLevelEasy" class="tip style-background-green">
+			<span class="material-icons button-size">trending_down</span>
+			<span class="tip-text">Decrease cards down to 48</span>
+		</button>
+		<button id="buttonZoomOut" class="style-background">
+			<span class="material-icons button-size">zoom_out</span>
+		</button>
+		<button id="buttonTurnMusicOff">
+			<span class="material-icons button-size">music_off</span>
+		</button>
+	</div>
 
-      <div id="grid-container">
-        <div id="div-0"><span class="hide icon-size" id="span-0"></span></div>
-        <div id="div-1"><span class="hide icon-size" id="span-1"></span></div>
-        <div id="div-2"><span class="hide icon-size" id="span-2"></span></div>
-        <div id="div-3"><span class="hide icon-size" id="span-3"></span></div>
-        <div id="div-4"><span class="hide icon-size" id="span-4"></span></div>
-        <div id="div-5"><span class="hide icon-size" id="span-5"></span></div>
-        <div id="div-6"><span class="hide icon-size" id="span-6"></span></div>
-        <div id="div-7"><span class="hide icon-size" id="span-7"></span></div>
-        <div id="div-8"><span class="hide icon-size" id="span-8"></span></div>
-        <div id="div-9"><span class="hide icon-size" id="span-9"></span></div>
-        <div id="div-10"><span class="hide icon-size" id="span-10"></span></div>
-        <div id="div-11"><span class="hide icon-size" id="span-11"></span></div>
-        <div id="div-12"><span class="hide icon-size" id="span-12"></span></div>
-        <div id="div-13"><span class="hide icon-size" id="span-13"></span></div>
-        <div id="div-14"><span class="hide icon-size" id="span-14"></span></div>
-        <div id="div-15"><span class="hide icon-size" id="span-15"></span></div>
-      </div>
+	<div class="container-stars">
+		<img class="star1 c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star2 c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star3 c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star4 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star5 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star6 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star7 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star8 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+		<img class="star1b hide c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star2b hide c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star3b hide c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star4b hide c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star5b c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star6b c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star7b c-stars" src="./img/star6b.svg" alt="Black star">
+		<img class="star8b c-stars" src="./img/star6b.svg" alt="Black star">
+	</div>
 
-      <h2>
-        <span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
-        <span class=span-timer-m class="big-font">0</span> m <span class=span-timer-s class="big-font">0</span> s
-      </h2>
+	<div id="grid-container">
+		<div id="div-0"><span class="hide icon-size" id="span-0"></span></div>
+		<div id="div-1"><span class="hide icon-size" id="span-1"></span></div>
+		<div id="div-2"><span class="hide icon-size" id="span-2"></span></div>
+		<div id="div-3"><span class="hide icon-size" id="span-3"></span></div>
+		<div id="div-4"><span class="hide icon-size" id="span-4"></span></div>
+		<div id="div-5"><span class="hide icon-size" id="span-5"></span></div>
+		<div id="div-6"><span class="hide icon-size" id="span-6"></span></div>
+		<div id="div-7"><span class="hide icon-size" id="span-7"></span></div>
+		<div id="div-8"><span class="hide icon-size" id="span-8"></span></div>
+		<div id="div-9"><span class="hide icon-size" id="span-9"></span></div>
+		<div id="div-10"><span class="hide icon-size" id="span-10"></span></div>
+		<div id="div-11"><span class="hide icon-size" id="span-11"></span></div>
+		<div id="div-12"><span class="hide icon-size" id="span-12"></span></div>
+		<div id="div-13"><span class="hide icon-size" id="span-13"></span></div>
+		<div id="div-14"><span class="hide icon-size" id="span-14"></span></div>
+		<div id="div-15"><span class="hide icon-size" id="span-15"></span></div>
+	</div>
 
-      <div>
-        <audio id="musicBackground" controls="controls">
-          <source src="./sounds/background-music.mp3" type="audio/mp3"/>
-        </audio>
-      </div>
+	<h2>
+		<span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
+		<span class="span-timer-m big-font">0</span> m <span class="span-timer-s big-font">0</span> s
+	</h2>
 
-      <div class="hide">
-        <audio id="musicMatch">
-          <source src="./sounds/match-sound.mp3" type="audio/mp3"/>
-        </audio>
-        <audio id="musicError">
-          <source src="./sounds/error.wav" type="audio/wav"/>
-        </audio>
-        <audio id="musicWin">
-          <source src="./sounds/end-game-sound.mp3" type="audio/mp3"/>
-        </audio>
-      </div>
+	<div>
+		<audio id="musicBackground" controls="controls">
+			<source src="./sounds/background-music.mp3" type="audio/mp3" />
+		</audio>
+	</div>
 
-      <script src="./javascript/app.js"></script>
+	<div class="hide">
+		<audio id="musicMatch">
+			<source src="./sounds/match-sound.mp3" type="audio/mp3" />
+		</audio>
+		<audio id="musicError">
+			<source src="./sounds/error.wav" type="audio/wav" />
+		</audio>
+		<audio id="musicWin">
+			<source src="./sounds/end-game-sound.mp3" type="audio/mp3" />
+		</audio>
+	</div>
 
-  </body>
+	<footer>Developed by Marcelo Kortmann - 01.2019</footer>
+
+	<script src="./javascript/app.js"></script>
+
+</body>
+
 </html>
