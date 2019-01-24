@@ -6,7 +6,7 @@ This game enclosed many amazing features:
 
   - Work in many different browsers as _Google Chrome, Edge and Firefox_
   - **Responsive Design**
-  - **Dinamically Board Cards** can be increased from 16 up to **48 cards**!
+  - **Dinamically Board Cards** can be increased from 16 up to **56 cards**!
   - The cards are _randomly pick up_ to avoid repetitive cards
   - Packed with **Sounds** and **Animations**
 
