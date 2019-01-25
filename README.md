@@ -9,6 +9,10 @@ This game enclosed many amazing features:
   - **Dinamically Board Cards** can be increased from 16 up to **56 cards**!
   - The cards are _randomly pick up_ to avoid repetitive cards
   - Packed with **Sounds** and **Animations**
+  
+## How to play the game?
+
+Click here: https://mkortmann.github.io/Memory-Game/
 
 ## New Features!
 
