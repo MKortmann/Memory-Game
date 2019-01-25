@@ -314,7 +314,7 @@ class Game {
 	/**Win the game called by function showCards*/
 	winGame() {
 		clearTimeout(oTimer.elapsedTimer);
-		document.querySelector("#musicBackground").pause();
+		document.querySelector(".music-background").pause();
 		document.querySelector("#musicWin").play();
 		/**Showing the number of stars that he has*/
 		/**Getting the number*/
@@ -323,7 +323,7 @@ class Game {
 		let containerStars = document.querySelector(".container-stars-sidenav");
 		let listStars = containerStars.querySelectorAll("img");
 		for (let i = 0; i < numberOfYellowStars; i++) {
-			listStars[i].classList.remove("hide"); 
+			listStars[i].classList.remove("hide");
 		};
 		document.getElementById("id-sidenav-win").classList.toggle("open");
 		document.getElementById("id-hamburger-win").classList.toggle("open");
@@ -336,12 +336,12 @@ class Game {
 			document.getElementById(this.arraySpanIdFlipped[this.flipIndex]).classList.toggle("hide");
 			document.getElementById(this.arrayDivIdFlipped[this.flipIndex]).classList.toggle("effect-rotate");
 			this.flipIndex++;
-			if (this.flipIndex == 2) {
+			if (this.flipIndex === 2) {
 				if ((this.arrayIconsFlipped[0] === this.arrayIconsFlipped[1]) && (this.arrayDivIdFlipped[0] != this.arrayDivIdFlipped[1])) {
 					this.matchCards();
-					document.querySelector("#musicBackground").pause();
+					document.querySelector(".music-background").pause();
 					document.querySelector("#musicMatch").play();
-					if (this.flipCorrectIndex == (oBoardInit.totalCards / 2)) {
+					if (this.flipCorrectIndex === (oBoardInit.totalCards / 2)) {
 						this.winGame();
 					}
 				} else {
@@ -373,7 +373,7 @@ function runGame(evt) {
 	document.querySelectorAll(".span-flipped").forEach(function(val) {
 		val.textContent = oMemoryGame.flipped;
 	});
-	oMemoryGame.flagMusicTurnOff === false ? document.querySelector("#musicBackground").play() : document.querySelector("#musicBackground").pause()
+	oMemoryGame.flagMusicTurnOff === false ? document.querySelector(".music-background").play() : document.querySelector(".music-background").pause()
 	/**get the name of element flipped*/
 	oMemoryGame.arrayIconsFlipped[oMemoryGame.flipIndex] = evt.target.textContent;
 	/**avoid errors when clicking at same element*/
@@ -395,28 +395,28 @@ document.querySelector("#buttonRestart").addEventListener("click", function() {
 /**button turn music off*/
 document.querySelector("#buttonTurnMusicOff").addEventListener("click", function() {
 	oMemoryGame.flagMusicTurnOff = true;
-	document.querySelector("#musicBackground").pause();
+	document.querySelector(".music-background").pause();
 	document.querySelector("#buttonTurnMusicOn").classList.remove("active");
 	document.querySelector("#buttonTurnMusicOff").classList.add("active");
 })
 /**button turn music on*/
 document.querySelector("#buttonTurnMusicOn").addEventListener("click", function() {
 	oMemoryGame.flagMusicTurnOff = false;
-	document.querySelector("#musicBackground").play();
+	document.querySelector(".music-background").play();
 	document.querySelector("#buttonTurnMusicOn").classList.add("active");
 	document.querySelector("#buttonTurnMusicOff").classList.remove("active");
 })
 /**button zoomIn*/
 document.querySelector("#buttonZoomIn").addEventListener("click", function() {
 	document.body.style.zoom = 1.0; /*this line is compatible only with chrome and edge*/
-	document.querySelector("body").classList.add("zoomIn");
-	document.querySelector("body").classList.remove("zoomOut");
+	document.querySelector("body").classList.add("zoom-in");
+	document.querySelector("body").classList.remove("zoom-out");
 });
 /**button zoomOut*/
 document.querySelector("#buttonZoomOut").addEventListener("click", function() {
 	document.body.style.zoom = 0.7; /*this line is compatible only with chrome and edge*/
-	document.querySelector("body").classList.add("zoomOut");
-	document.querySelector("body").classList.remove("zoomIn");
+	document.querySelector("body").classList.add("zoom-out");
+	document.querySelector("body").classList.remove("zoom-in");
 });
 /**button increase board and restart game*/
 document.querySelector("#buttonLevelHard").addEventListener("click", function() {
@@ -481,19 +481,19 @@ document.querySelector("#b-restart-sidenav-16").addEventListener("click", functi
 /**button turn music on*/
 document.querySelector("#b-sound-on").addEventListener("click", function() {
 	oMemoryGame.flagMusicTurnOff = false;
-	document.querySelector("#musicBackground").play();
+	document.querySelector(".music-background").play();
 	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 /**button turn music off*/
 document.querySelector("#b-sound-off").addEventListener("click", function() {
 	oMemoryGame.flagMusicTurnOff = true;
-	document.querySelector("#musicBackground").pause();
+	document.querySelector(".music-background").pause();
 	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 document.querySelector("#b-cancel-sidenav-2").addEventListener("click", function() {
 	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 /**<!--SIDENAV 2: Hamburger and close buttons-->*/
-document.querySelector("#id-hamburger-sidenav-2").addEventListener("click", function() {
+document.querySelector(".id-hamburger-sidenav-2").addEventListener("click", function() {
 	openNav();
 });

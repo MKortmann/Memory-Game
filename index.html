@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
+	<!--According to Microsoft, when using the X-UA-Compatible tag, it should be
+	as high as possible in your document head.-->
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!--According to Microsoft, when using the X-UA-Compatible tag, it should be as high as possible in your document head.-->
 	<meta charset="utf-8">
 	<meta name="MemoryGame" content="MemoryGame Udacity Project" property="Marcelo Kortmann">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
+	<!--Google icons used in the Main Card Grid and for some buttons styles-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>Memory Game</title>
 </head>
@@ -19,12 +21,12 @@
 		</h1>
 		<h2>
 			<span class="big-font">H</span>its: <span class="span-hits big-font">0</span>
-			<span class="big-font">M</span>iss: <span class="span-miss big-font">0</span>
+			<span class="big-font">M</span>isses: <span class="span-miss big-font">0</span>
 			<span class="big-font">F</span>lipped: <span class="span-flipped big-font">0</span>
 		</h2>
 	</header>
 
-	<!--SIDENAV: WIN GAME MENU-->
+	<!--SIDENAV: WIN GAME MENU (Congratulations Popup)-->
 	<div id="id-sidenav-win" class="sidenav">
 		<p class="big-font-sidenav">CONGRATULATIONS<p>
 				<div class="container-stars-sidenav">
@@ -42,7 +44,7 @@
 					<span class="big-font-sidenav">H</span>its: <span class="span-hits big-font-sidenav">0</span>
 				</p>
 				<p>
-					<span class="big-font-sidenav">M</span>iss: <span class="span-miss big-font-sidenav">0</span>
+					<span class="big-font-sidenav">M</span>isses: <span class="span-miss big-font-sidenav">0</span>
 				</p>
 				<p>
 					<span class="big-font-sidenav">F</span>lipped: <span class="span-flipped big-font-sidenav">0</span>
@@ -52,6 +54,7 @@
 					<span class="big-font-sidenav">E</span>lapsed <span class="big-font-sidenav">T</span>ime:
 					<span class="span-timer-m big-font-sidenav">0</span> m <span class="span-timer-s big-font-sidenav">0</span> s
 				</div>
+				<!--Buttons-->
 				<div>
 					<p>
 						<button class="button-sidenav" id="b-restart">restart game</button>
@@ -62,7 +65,7 @@
 				</div>
 	</div>
 
-	<!--SIDENAV 2-->
+	<!--SIDENAV 2: Menu for screens smaller than 1000px wide-->
 	<div id="id-sidenav-2" class="sidenav">
 		<p>
 			<button class="button-sidenav" id="b-restart-sidenav-48">48 cards</button>
@@ -85,35 +88,35 @@
 	</div>
 
 	<!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
-	<div class="hamburger" id="id-hamburger-sidenav-2">&#9776;</div>
-
+	<div class="hamburger id-hamburger-sidenav-2">&#9776;</div>
+	<!--Buttons (body)-->
 	<div class="container-buttons">
 		<button id="buttonTurnMusicOn" class="active">
 			<span class="material-icons button-size">music_note</span>
 		</button>
-		<button id="buttonZoomIn" class="style-background">
+		<button id="buttonZoomIn" class="btn-background">
 			<span class="material-icons button-size">zoom_in</span>
 		</button>
-		<button id="buttonLevelHard" class="tip style-background-red">
+		<button id="buttonLevelHard" class="tip btn-hard-level">
 			<span class="material-icons button-size">trending_up</span>
 			<span class="tip-text">Increase cards up to 56</span>
 		</button>
-		<button id="buttonRestart" class="tip style-background">
+		<button id="buttonRestart" class="tip btn-background">
 			<span class="material-icons button-size">refresh</span>
 			<span class="tip-text">Refresh</span>
 		</button>
-		<button id="buttonLevelEasy" class="tip style-background-green">
+		<button id="buttonLevelEasy" class="tip btn-easy-level">
 			<span class="material-icons button-size">trending_down</span>
 			<span class="tip-text">Decrease cards down to 48</span>
 		</button>
-		<button id="buttonZoomOut" class="style-background">
+		<button id="buttonZoomOut" class="btn-background">
 			<span class="material-icons button-size">zoom_out</span>
 		</button>
 		<button id="buttonTurnMusicOff">
 			<span class="material-icons button-size">music_off</span>
 		</button>
 	</div>
-
+	<!--Stars (body)-->
 	<div class="container-stars">
 		<img class="star1 c-stars" src="./img/star6.svg" alt="Yellow star">
 		<img class="star2 c-stars" src="./img/star6.svg" alt="Yellow star">
@@ -132,8 +135,8 @@
 		<img class="star7b c-stars" src="./img/star6b.svg" alt="Black star">
 		<img class="star8b c-stars" src="./img/star6b.svg" alt="Black star">
 	</div>
-
-	<div id="grid-container">
+	<!--Main Card Grid-->
+	<div id="grid-container" class="grid-container">
 		<div id="div-0"><span class="hide icon-size" id="span-0"></span></div>
 		<div id="div-1"><span class="hide icon-size" id="span-1"></span></div>
 		<div id="div-2"><span class="hide icon-size" id="span-2"></span></div>
@@ -158,24 +161,24 @@
 	</h2>
 
 	<div>
-		<audio id="musicBackground" controls="controls">
-			<source src="./sounds/background-music.mp3" type="audio/mp3" />
+		<audio class="music-background" controls="controls">
+			<source src="./sounds/background-music.mp3" type="audio/mp3">
 		</audio>
 	</div>
 
 	<div class="hide">
 		<audio id="musicMatch">
-			<source src="./sounds/match-sound.mp3" type="audio/mp3" />
+			<source src="./sounds/match-sound.mp3" type="audio/mp3">
 		</audio>
 		<audio id="musicError">
-			<source src="./sounds/error.wav" type="audio/wav" />
+			<source src="./sounds/error.wav" type="audio/wav">
 		</audio>
 		<audio id="musicWin">
-			<source src="./sounds/end-game-sound.mp3" type="audio/mp3" />
+			<source src="./sounds/end-game-sound.mp3" type="audio/mp3">
 		</audio>
 	</div>
 
-	<footer>Developed by Marcelo Kortmann - 01.2019</footer>
+	<footer>Developed by Marcelo Kortmann - 2019</footer>
 
 	<script src="./javascript/app.js"></script>
 
