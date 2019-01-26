@@ -95,8 +95,9 @@ class Board {
 	/**Check how many cards we need and then increase or decrease the board*/
 	updateHtmlElements() {
 		/**important to use labels as "grid-container" instead of numbers because
-		the number will change with the number of elements in HTML.*/
-		let numbersOfDivs = document.body.children["grid-container"].children.length;
+		the number will change with the number of elements in HTML.
+		let numbersOfDivs = document.body.children["grid-container"].children.length;*/
+    let numbersOfDivs = document.body.children["main"].children["grid-container"].children.length;
 		/**ADDING div/span. Plus the respective class attribute*/
 		/**VERY IMPORTANT!!!: IF YOU ALWAYS to add the new ones and delete the
 		old divs. If NOT you will receive an error:
@@ -390,7 +391,8 @@ document.querySelector("#grid-container").addEventListener("click", runGame, tru
 /**homepage buttons HTML(body elements)*/
 /**button refresh page*/
 document.querySelector("#buttonRestart").addEventListener("click", function() {
-	location.reload();
+  clearTimeout(oTimer.elapsedTimer);
+  oMemoryGame = new Game(16);
 });
 /**button turn music off*/
 document.querySelector("#buttonTurnMusicOff").addEventListener("click", function() {
@@ -476,7 +478,9 @@ document.querySelector("#b-restart-sidenav-24").addEventListener("click", functi
 	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 document.querySelector("#b-restart-sidenav-16").addEventListener("click", function() {
-	location.reload();
+  clearTimeout(oTimer.elapsedTimer);
+	oMemoryGame = new Game(16);
+	document.getElementById("id-sidenav-2").classList.toggle("open");
 });
 /**button turn music on*/
 document.querySelector("#b-sound-on").addEventListener("click", function() {
