@@ -48,6 +48,21 @@ class Board {
 			"invert_colors", "line_weight", "loyalty", "backup",
 			"scanner", "school", "router", "ring_volume",
 			"report_problem", "repeat_one", "all_out", "radio_button_checked");
+      /*this.containerIcons = new Array("face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face",
+        "face", "face", "face", "face");*/
 		/**Get random set of cards of the containerIcons*/
 		this.genArrayIcons();
 		/**Populate the arraySpan (number of spans = cards)*/
@@ -154,13 +169,31 @@ let oTimer = {
 	displayTimer() {
 		this.elapsedTotalTime = Date.now() - oTimer.timeGameStart;
 		let timeElapsedSec = Math.floor(this.elapsedTotalTime / 1000);
+    this.elapsedSec = timeElapsedSec - (Math.floor(timeElapsedSec / 60) * 60);
 		document.querySelectorAll(".span-timer-m").forEach(function(val) {
 			val.textContent = Math.floor(timeElapsedSec / 60);
 		});
 		document.querySelectorAll(".span-timer-s").forEach(function(val) {
 			val.textContent = timeElapsedSec - (Math.floor(timeElapsedSec / 60) * 60);
 		});
-	}
+	},
+  /**return the current date*/
+  date() {
+    let timeNow = new Date();
+    let day = timeNow.getDate();
+    let month = timeNow.getMonth()+1 //January is 0!
+    let year = timeNow.getFullYear();
+    return (day + "/" + month + "/" + year);
+  },
+  /**return the current time*/
+  time() {
+    let timeNow = new Date();
+    let hours = timeNow.getHours();
+    let minutes = timeNow.getMinutes();
+    let seconds = timeNow.getSeconds();
+
+    return (hours + ":" + minutes + ":" + seconds);
+  }
 };
 /**
  * Creates a new game functionality with the correct number of cards
@@ -179,8 +212,6 @@ class Game {
 		oBoardInit = new Board(numberOfCards);
 		/**track the flip cards*/
 		this.flipIndex = 0;
-		/**track the number of flipped cards at html(body)*/
-		this.flipped = 0;
 		/**store the name of icons to compare*/
 		this.arrayIconsFlipped = new Array("none", "none-1");
 		/**store the id of span elements flipped*/
@@ -195,6 +226,8 @@ class Game {
 		this.flipCorrectIndex = 0;
 		/**to track misses*/
 		this.flipMissIndex = 0;
+    /**track the number of flipped cards at html(body)*/
+    this.flipped = 0;
 		this.destructor();
 	}
 	/**called only by constructor(): total Reset for oMemoryGame*/
@@ -237,7 +270,6 @@ class Game {
 			}
 			index++;
 		});
-		console.log(index);
 		/**restart html(body: time)*/
 		document.querySelectorAll(".span-timer-m").forEach(function(val) {
 			val.textContent = 0;
@@ -294,6 +326,29 @@ class Game {
 		document.getElementById(this.arrayDivIdFlipped[0]).classList.add("effect-correct");
 		document.getElementById(this.arrayDivIdFlipped[1]).classList.add("effect-correct");
 	}
+  /**saving the result in local storage*/
+  savingResults() {
+    //TotalNumberOfCards, Misses, Flipped, Time,
+    /*
+    localStorage.totalNumberOfCards = localStorage.totalNumberOfCards + "," + numberOfCards;
+    localStorage.flipped = localStorage.flipped + "," + this.flipped;
+    localStorage.misses = localStorage.misses + "," + this.flipMissIndex;
+    localStorage.elapsedTimeMin = localStorage.elapsedTimeMin + "," + document.querySelector(".span-timer-m").textContent;
+    localStorage.elapsedTimeSec = localStorage.elapsedTimeSec + "," + document.querySelector(".span-timer-s").textContent;
+    localStorage.currentDate = localStorage.currentDate + "," + oTimer.date();
+    localStorage.currentTime = localStorage.currentTime + "," + oTimer.time();
+
+    console.log("The total number of cards: " + localStorage.getItem("totalNumberOfCards"));
+    console.log("The total number of flipped cards: " + localStorage.getItem("flipped"));
+    console.log("The total number of missed cards: " + localStorage.getItem("misses"));
+    console.log("The total time in min: " + localStorage.getItem("elapsedTimeMin"));
+    console.log("The total time in sec: " + localStorage.getItem("elapsedTimeSec"));
+    console.log("The current date is: " + localStorage.getItem("currentDate"));
+    console.log("The current time is: " + localStorage.getItem("currentTime"));
+
+    /*window.localStorage.clear();*/
+
+  }
 	/**called by function showCards() when the flipped cards match*/
 	matchCards() {
 		this.flipCorrectIndex++;
@@ -327,7 +382,8 @@ class Game {
 			listStars[i].classList.remove("hide");
 		};
 		document.getElementById("id-sidenav-win").classList.toggle("open");
-		document.getElementById("id-hamburger-win").classList.toggle("open");
+    /*local storage*/
+    this.savingResults();
 	}
 	/**Main logic function of this class that call other functions!*/
 	showCards() {
