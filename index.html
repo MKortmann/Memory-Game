@@ -23,6 +23,12 @@
 			<span class="big-font">H</span>its: <span class="span-hits big-font">0</span>
 			<span class="big-font">M</span>isses: <span class="span-miss big-font">0</span>
 			<span class="big-font">F</span>lipped: <span class="span-flipped big-font">0</span>
+			<!--Button to open the results-->
+			<span>
+				<button class="b-description">
+					<span class="material-icons button-size">description</span>
+				</button>
+			</span>
 		</h2>
 	</header>
 
@@ -77,6 +83,9 @@
 			<button class="button-sidenav" id="b-restart-sidenav-16">16 cards</button>
 		</p>
 		<p>
+			<button class="button-sidenav" id="b-results-sidenav-2">results</button>
+		</p>
+		<p>
 			<span>
 				<button class="button-sidenav" id="b-sound-on">sound on</button>
 				<button class="button-sidenav" id="b-sound-off">sound off</button>
@@ -89,6 +98,61 @@
 
 	<!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
 	<div class="hamburger id-hamburger-sidenav-2">&#9776;</div>
+
+	<!--SIDENAV 3: TO DISPLAY THE RESULTS -->
+	<div id="id-sidenav-3" class="sidenav">
+		<div id="id-table" class="contain-table"> <!--I have used two methods from responsive table
+			learned by udacity: hidden columns together with contained scrolling.
+			table>-->
+			<span>
+			<p>
+				<button class="button-sidenav" id="b-cancel-sidenav-3">close</button>
+			</p>
+			<p>
+				<button class="button-sidenav" id="b-clear-results">clear results</button>
+			</p>
+			</span>
+
+			<table id="id-table-inside">
+				<caption>Memory Game<br> Results</caption>
+					<thead>
+						<tr>
+							<th>
+									<span class="longName">Date</span>
+									<span class="shortName">Date</span>
+							</th>
+							<th>
+									<span class="longName">Time</span>
+									<span class="shortName">Time</span>
+							</th>
+							<th>
+									<span class="longName">Cards</span>
+									<span class="shortName">C.</span>
+							</th>
+							<th>
+									<span class="longName">Flipped</span>
+									<span class="shortName">F.</span>
+							</th>
+							<th>
+									<span class="longName">Misses</span>
+									<span class="shortName">M.</span>
+							</th>
+							<th>
+									<span class="longName">Elapsed Time</span>
+									<span class="shortName">Elapsed Time</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="table-row">
+						<!--<tr id="table-row">
+							<!--<td>
+									<span>28/01/2019</span>
+							</td>
+						</tr>-->
+					<tbody>
+			</table>
+		</div>
+</div>
 	<!--Buttons (body)-->
 	<div class="container-buttons">
 		<button id="buttonTurnMusicOn" class="active">

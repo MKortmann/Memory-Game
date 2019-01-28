@@ -33,7 +33,7 @@ class Board {
 		this.arrayIconsRandom = new Array();
 		this.arrayIcons = new Array();
 		this.arraySpan = new Array();
-		this.containerIcons = new Array("format_shapes", "bubble_chart", "border_right", "attach_money",
+		/*this.containerIcons = new Array("format_shapes", "bubble_chart", "border_right", "attach_money",
 			"graphic_eq", "waves", "delete_sweep", "duo",
 			"contact_phone", "business", "sort_by_alpha", "snooze",
 			"queue_music", "note", "library_books", "games",
@@ -47,8 +47,8 @@ class Board {
 			"pets", "pan_tool", "motorcycle", "language",
 			"invert_colors", "line_weight", "loyalty", "backup",
 			"scanner", "school", "router", "ring_volume",
-			"report_problem", "repeat_one", "all_out", "radio_button_checked");
-      /*this.containerIcons = new Array("face", "face", "face", "face",
+			"report_problem", "repeat_one", "all_out", "radio_button_checked");*/
+      this.containerIcons = new Array("face", "face", "face", "face",
         "face", "face", "face", "face",
         "face", "face", "face", "face",
         "face", "face", "face", "face",
@@ -62,7 +62,7 @@ class Board {
         "face", "face", "face", "face",
         "face", "face", "face", "face",
         "face", "face", "face", "face",
-        "face", "face", "face", "face");*/
+        "face", "face", "face", "face");
 		/**Get random set of cards of the containerIcons*/
 		this.genArrayIcons();
 		/**Populate the arraySpan (number of spans = cards)*/
@@ -192,7 +192,11 @@ let oTimer = {
     let minutes = timeNow.getMinutes();
     let seconds = timeNow.getSeconds();
 
-    return (hours + ":" + minutes + ":" + seconds);
+    let minutes2 = (minutes < 10) ? "0"+minutes : minutes;
+    let seconds2 = (seconds < 10) ? "0"+seconds : seconds;
+    console.log(hours + ":" + minutes2 + ":" + seconds2);
+    return (hours + ":" + minutes2 + ":" + seconds2);
+
   }
 };
 /**
@@ -329,7 +333,7 @@ class Game {
   /**saving the result in local storage*/
   savingResults() {
     //TotalNumberOfCards, Misses, Flipped, Time,
-    /*
+
     localStorage.totalNumberOfCards = localStorage.totalNumberOfCards + "," + numberOfCards;
     localStorage.flipped = localStorage.flipped + "," + this.flipped;
     localStorage.misses = localStorage.misses + "," + this.flipMissIndex;
@@ -337,17 +341,69 @@ class Game {
     localStorage.elapsedTimeSec = localStorage.elapsedTimeSec + "," + document.querySelector(".span-timer-s").textContent;
     localStorage.currentDate = localStorage.currentDate + "," + oTimer.date();
     localStorage.currentTime = localStorage.currentTime + "," + oTimer.time();
-
+    /*
     console.log("The total number of cards: " + localStorage.getItem("totalNumberOfCards"));
     console.log("The total number of flipped cards: " + localStorage.getItem("flipped"));
     console.log("The total number of missed cards: " + localStorage.getItem("misses"));
     console.log("The total time in min: " + localStorage.getItem("elapsedTimeMin"));
     console.log("The total time in sec: " + localStorage.getItem("elapsedTimeSec"));
     console.log("The current date is: " + localStorage.getItem("currentDate"));
-    console.log("The current time is: " + localStorage.getItem("currentTime"));
+    console.log("The current time is: " + localStorage.getItem("currentTime"));*/
 
     /*window.localStorage.clear();*/
+    this.displayResults();
+  }
 
+  displayResults() {
+    /*transform everything in an array*/
+    if (localStorage.length > 1) {
+
+      let arrayCurrentDate = localStorage.currentDate.split(",");
+      let currentTime = localStorage.currentTime.split(",");
+      let totalNumberOfCards = localStorage.totalNumberOfCards.split(",");
+      let elapsedTimeMin = localStorage.elapsedTimeMin.split(",");
+      let elapsedTimeSec = localStorage.elapsedTimeSec.split(",");
+      let misses = localStorage.misses.split(",");
+      let flipped = localStorage.flipped.split(",");
+
+      const fragment = document.createDocumentFragment();
+      /*for (let i = arrayCurrentDate.length-1; i >= 1; i--) {*/
+        const newLine = document.createElement("tr");
+        const newColumn = document.createElement("td");
+        const newColumn2 = document.createElement("td");
+        const newColumn3 = document.createElement("td");
+        const newColumn4 = document.createElement("td");
+        const newColumn5 = document.createElement("td");
+        const newColumn6 = document.createElement("td");
+        const newSpan = document.createElement("span");
+        const newSpan2 = document.createElement("span");
+        const newSpan3 = document.createElement("span");
+        const newSpan4 = document.createElement("span");
+        const newSpan5 = document.createElement("span");
+        const newSpan6 = document.createElement("span");
+        newSpan.textContent = arrayCurrentDate[i];
+        newSpan2.textContent = currentTime[i];
+        newSpan3.textContent = totalNumberOfCards[i];
+        newSpan4.textContent = flipped[i];
+        newSpan5.textContent = misses[i];
+        newSpan6.textContent = elapsedTimeMin[i] + " m " + elapsedTimeSec[i] + " s";
+        fragment.appendChild(newLine);
+        newLine.appendChild(newColumn);
+        newColumn.appendChild(newSpan);
+        newLine.appendChild(newColumn2);
+        newColumn2.appendChild(newSpan2);
+        newLine.appendChild(newColumn3);
+        newColumn3.appendChild(newSpan3);
+        newLine.appendChild(newColumn4);
+        newColumn4.appendChild(newSpan4);
+        newLine.appendChild(newColumn5);
+        newColumn5.appendChild(newSpan5);
+        newLine.appendChild(newColumn6);
+        newColumn6.appendChild(newSpan6);
+  /*    };
+      /** reflow and repaint here -- once (Optimized)!*/
+      document.getElementById("table-row").appendChild(fragment);
+    }
   }
 	/**called by function showCards() when the flipped cards match*/
 	matchCards() {
@@ -556,4 +612,21 @@ document.querySelector("#b-cancel-sidenav-2").addEventListener("click", function
 /**<!--SIDENAV 2: Hamburger and close buttons-->*/
 document.querySelector(".id-hamburger-sidenav-2").addEventListener("click", function() {
 	openNav();
+});
+/**--SIDENAV 3: OPEN AND CLOSE-->*/
+/*icon to open*/
+document.querySelector(".b-description").addEventListener("click", function() {
+	document.getElementById("id-sidenav-3").classList.toggle("open-3");
+});
+/*button at sidenav 2 to open the results sidenav 03*/
+document.querySelector("#b-results-sidenav-2").addEventListener("click", function() {
+	document.getElementById("id-sidenav-3").classList.toggle("open-3");
+});
+/*button cancel to close the sidenav 03*/
+document.querySelector("#b-cancel-sidenav-3").addEventListener("click", function() {
+	document.getElementById("id-sidenav-3").classList.toggle("open-3");
+});
+
+document.querySelector("#b-clear-results").addEventListener("click", function() {
+	window.localStorage.clear();
 });
