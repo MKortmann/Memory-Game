@@ -150,6 +150,38 @@ class Board {
 	}
 }
 /**
+ * Randomly change the music source
+ * @class
+ */
+let oMusic = {
+  arrayMusic: new Array("./sounds/background-music.mp3",
+"./sounds/background-music-2.mp3",
+"./sounds/background-music-3.mp3",
+"./sounds/background-music-4.mp3",
+"./sounds/background-music-5.mp3",
+"./sounds/background-music-6.mp3",
+"./sounds/background-music-7.mp3",
+"./sounds/background-music-8.mp3",
+"./sounds/background-music-9.mp3",
+"./sounds/background-music-10.mp3",
+"./sounds/background-music-11.mp3",
+"./sounds/background-music-12.mp3",
+"./sounds/background-music-13.mp3",
+"./sounds/background-music-14.mp3",
+"./sounds/background-music-15.mp3",
+"./sounds/background-music-16.mp3",
+"./sounds/background-music-17.mp3",
+"./sounds/background-music-18.mp3",
+"./sounds/background-music-19.mp3",
+"./sounds/background-music-20.mp3"),
+  radomNumber: 0,
+  musicShuffle() {
+			this.randomNumber = Math.floor(Math.random() * this.arrayMusic.length-1);
+      let source = document.querySelector(".music-background");
+      source.src = this.arrayMusic[this.randomNumber];
+	}
+};
+/**
  * Creates a new timer to track the
  * game elapsed time.
  * @class
@@ -210,6 +242,7 @@ class Game {
 	be from 16 (standard) up to 56 cards! In fact, it can expand up to 2x times
 	the size   of the this.containerIcons array. However, I keep it fixed to 56.*/
 	constructor(numberOfCards) {
+    oMusic.musicShuffle();
 		this.flagMusicTurnOff = false;
 		this.flagstartTimer = false;
 		oBoardInit = new Board(numberOfCards);
@@ -439,7 +472,6 @@ class Game {
 	/**Win the game called by function showCards*/
 	winGame() {
 		clearTimeout(oTimer.elapsedTimer);
-		document.querySelector(".music-background").pause();
 		document.querySelector("#musicWin").play();
 		/**Showing the number of stars that he has*/
 		/**Getting the number*/
@@ -465,7 +497,6 @@ class Game {
 			if (this.flipIndex === 2) {
 				if ((this.arrayIconsFlipped[0] === this.arrayIconsFlipped[1]) && (this.arrayDivIdFlipped[0] != this.arrayDivIdFlipped[1])) {
 					this.matchCards();
-					document.querySelector(".music-background").pause();
 					document.querySelector("#musicMatch").play();
 					if (this.flipCorrectIndex === (oBoardInit.totalCards / 2)) {
 						this.winGame();

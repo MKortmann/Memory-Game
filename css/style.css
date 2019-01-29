@@ -354,7 +354,7 @@ h2 {
 
 .sidenav.open {
 	top: 0;
-	padding-top: 10px;
+	padding-top: 0;
 	right: 25%;
 	background: linear-gradient(to bottom right, #39f 0%, #0f9 100%);
 	color: white;
