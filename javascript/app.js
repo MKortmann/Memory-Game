@@ -33,7 +33,7 @@ class Board {
 		this.arrayIconsRandom = new Array();
 		this.arrayIcons = new Array();
 		this.arraySpan = new Array();
-		/*this.containerIcons = new Array("format_shapes", "bubble_chart", "border_right", "attach_money",
+		this.containerIcons = new Array("format_shapes", "bubble_chart", "border_right", "attach_money",
 			"graphic_eq", "waves", "delete_sweep", "duo",
 			"contact_phone", "business", "sort_by_alpha", "snooze",
 			"queue_music", "note", "library_books", "games",
@@ -47,8 +47,8 @@ class Board {
 			"pets", "pan_tool", "motorcycle", "language",
 			"invert_colors", "line_weight", "loyalty", "backup",
 			"scanner", "school", "router", "ring_volume",
-			"report_problem", "repeat_one", "all_out", "radio_button_checked");*/
-		this.containerIcons = new Array("face", "face", "face", "face",
+			"report_problem", "repeat_one", "all_out", "radio_button_checked");
+		/*this.containerIcons = new Array("face", "face", "face", "face",
 			"face", "face", "face", "face",
 			"face", "face", "face", "face",
 			"face", "face", "face", "face",
@@ -62,7 +62,7 @@ class Board {
 			"face", "face", "face", "face",
 			"face", "face", "face", "face",
 			"face", "face", "face", "face",
-			"face", "face", "face", "face");
+			"face", "face", "face", "face");*/
 		/**Get random set of cards of the containerIcons*/
 		this.genArrayIcons();
 		/**Populate the arraySpan (number of spans = cards)*/
