@@ -48,6 +48,7 @@ class Board {
 			"invert_colors", "line_weight", "loyalty", "backup",
 			"scanner", "school", "router", "ring_volume",
 			"report_problem", "repeat_one", "all_out", "radio_button_checked");
+      /**Used to debug:*/
 		/*this.containerIcons = new Array("face", "face", "face", "face",
 			"face", "face", "face", "face",
 			"face", "face", "face", "face",
@@ -278,13 +279,13 @@ class Game {
 	destructor() {
 		/**reset the html (body: hits, miss and flipped cards)*/
 		document.querySelectorAll(".span-flipped").forEach(function(val) {
-			val = 0;
+			val.textContent = 0;
 		});
 		document.querySelectorAll(".span-hits").forEach(function(val) {
-			val = 0;
+			val.textContent = 0;
 		});
 		document.querySelectorAll(".span-miss").forEach(function(val) {
-			val = 0;
+			val.textContent = 0;
 		});
 		/**reset the music flag*/
 		document.querySelector("#buttonTurnMusicOn").classList.add("active");
@@ -612,7 +613,8 @@ document.querySelector("#b-results-sidenav-1").addEventListener("click", functio
 });
 /**button refresh <!--SIDENAV 1: WIN GAME MENU-->*/
 document.querySelector("#b-restart-sidenav-1").addEventListener("click", function() {
-	oMemoryGame = new Game(16);
+  clearTimeout(oTimer.elapsedTimer);
+  oMemoryGame = new Game(16);
 	document.getElementById("id-sidenav-1").classList.toggle("open");
 });
 /**button close side nav <!--SIDENAV: WIN GAME MENU-->*/
