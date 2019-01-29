@@ -31,9 +31,8 @@
 			</span>
 		</h2>
 	</header>
-
-	<!--SIDENAV: WIN GAME MENU (Congratulations Popup)-->
-	<div id="id-sidenav-win" class="sidenav">
+	<!--SIDENAV 1: WIN GAME MENU (Congratulations Popup)-->
+	<div id="id-sidenav-1" class="sidenav">
 		<p class="big-font-sidenav">CONGRATULATIONS<p>
 				<div class="container-stars-sidenav">
 					<img class="hide c-stars" src="./img/star6.svg" alt="Yellow star">
@@ -63,14 +62,17 @@
 				<!--Buttons-->
 				<div>
 					<p>
-						<button class="button-sidenav" id="b-restart">restart game</button>
+						<button class="button-sidenav" id="b-results-sidenav-1">results</button>
 					</p>
 					<p>
-						<button class="button-sidenav" id="b-cancel">cancel</button>
+						<button class="button-sidenav" id="b-restart-sidenav-1">restart game</button>
+					</p>
+					<p>
+						<button class="button-sidenav" id="b-cancel-sidenav-1">cancel</button>
 					</p>
 				</div>
 	</div>
-
+	<!--END OF SIDENAV 1-->
 	<!--SIDENAV 2: Menu for screens smaller than 1000px wide-->
 	<div id="id-sidenav-2" class="sidenav">
 		<p>
@@ -95,64 +97,60 @@
 			<button class="button-sidenav" id="b-cancel-sidenav-2">cancel</button>
 		</p>
 	</div>
-
+	<!--END OF SIDENAV 2: -->
 	<!--&#9776 Results in Chinese glyph (the trigram for heaven or "hamburger" in western)-->
 	<div class="hamburger id-hamburger-sidenav-2">&#9776;</div>
 
-	<!--SIDENAV 3: TO DISPLAY THE RESULTS -->
+	<!--SIDENAV 3: TABLE TO DISPLAY THE RESULTS -->
 	<div id="id-sidenav-3" class="sidenav">
-		<div id="id-table" class="contain-table"> <!--I have used two methods from responsive table
-			learned by udacity: hidden columns together with contained scrolling.
-			table>-->
-			<span>
-			<p>
-				<button class="button-sidenav" id="b-cancel-sidenav-3">close</button>
-			</p>
-			<p>
-				<button class="button-sidenav" id="b-clear-results">clear results</button>
-			</p>
-			</span>
+		<span>
+			<button class="button-sidenav" id="b-cancel-sidenav-3">close</button>
+			<button class="button-sidenav" id="b-clear-results">clear results</button>
+		</span>
 
-			<table id="id-table-inside">
-				<caption>Memory Game<br> Results</caption>
-					<thead>
-						<tr>
-							<th>
-									<span class="longName">Date</span>
-									<span class="shortName">Date</span>
-							</th>
-							<th>
-									<span class="longName">Time</span>
-									<span class="shortName">Time</span>
-							</th>
-							<th>
-									<span class="longName">Cards</span>
-									<span class="shortName">C.</span>
-							</th>
-							<th>
-									<span class="longName">Flipped</span>
-									<span class="shortName">F.</span>
-							</th>
-							<th>
-									<span class="longName">Misses</span>
-									<span class="shortName">M.</span>
-							</th>
-							<th>
-									<span class="longName">Elapsed Time</span>
-									<span class="shortName">Elapsed Time</span>
-							</th>
-						</tr>
-					</thead>
-					<tbody id="table-row">
-						<!--<tr id="table-row">
-							<!--<td>
+		<table id="id-table-inside">
+			<caption>Memory Game<br> Results</caption>
+			<thead>
+				<tr>
+					<th>
+						<span class="longName">Date</span>
+						<span class="shortName">Date</span>
+					</th>
+					<th>
+						<span class="longName">Time</span>
+						<span class="shortName">Time</span>
+					</th>
+					<th>
+						<span class="longName">Cards</span>
+						<span class="shortName">C.</span>
+					</th>
+					<th>
+						<span class="longName">Flipped</span>
+						<span class="shortName">F.</span>
+					</th>
+					<th>
+						<span class="longName">Misses</span>
+						<span class="shortName">M.</span>
+					</th>
+					<th>
+						<span class="longName">Elapsed Time</span>
+						<span class="shortName">Elapsed Time</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody id="table-row">
+				<!--The data will be dinamically insert in this table in <thead>
+							way showen below:
+						</thead>
+						<tr id="table-row">
+								<td>
 									<span>28/01/2019</span>
-							</td>
+								</td>
 						</tr>-->
-					<tbody>
-			</table>
-		</div>
-</div>
+			<tbody>
+		</table>
+	</div>
+	<!--END OF SIDENAV 3-->
 	<!--Buttons (body)-->
 	<div class="container-buttons">
 		<button id="buttonTurnMusicOn" class="active">
@@ -182,46 +180,46 @@
 	</div>
 
 	<main id="main">
-	<!--Stars (body)-->
-	<div class="container-stars">
-		<img class="star1 c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star2 c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star3 c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star4 hide c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star5 hide c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star6 hide c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star7 hide c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star8 hide c-stars" src="./img/star6.svg" alt="Yellow star">
-		<img class="star1b hide c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star2b hide c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star3b hide c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star4b hide c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star5b c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star6b c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star7b c-stars" src="./img/star6b.svg" alt="Black star">
-		<img class="star8b c-stars" src="./img/star6b.svg" alt="Black star">
-	</div>
-	<!--Main Card Grid-->
-	<div id="grid-container" class="grid-container">
-		<div id="div-0"><span class="hide icon-size" id="span-0"></span></div>
-		<div id="div-1"><span class="hide icon-size" id="span-1"></span></div>
-		<div id="div-2"><span class="hide icon-size" id="span-2"></span></div>
-		<div id="div-3"><span class="hide icon-size" id="span-3"></span></div>
-		<div id="div-4"><span class="hide icon-size" id="span-4"></span></div>
-		<div id="div-5"><span class="hide icon-size" id="span-5"></span></div>
-		<div id="div-6"><span class="hide icon-size" id="span-6"></span></div>
-		<div id="div-7"><span class="hide icon-size" id="span-7"></span></div>
-		<div id="div-8"><span class="hide icon-size" id="span-8"></span></div>
-		<div id="div-9"><span class="hide icon-size" id="span-9"></span></div>
-		<div id="div-10"><span class="hide icon-size" id="span-10"></span></div>
-		<div id="div-11"><span class="hide icon-size" id="span-11"></span></div>
-		<div id="div-12"><span class="hide icon-size" id="span-12"></span></div>
-		<div id="div-13"><span class="hide icon-size" id="span-13"></span></div>
-		<div id="div-14"><span class="hide icon-size" id="span-14"></span></div>
-		<div id="div-15"><span class="hide icon-size" id="span-15"></span></div>
-	</div>
+		<!--Stars (body)-->
+		<div class="container-stars">
+			<img class="star1 c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star2 c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star3 c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star4 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star5 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star6 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star7 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star8 hide c-stars" src="./img/star6.svg" alt="Yellow star">
+			<img class="star1b hide c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star2b hide c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star3b hide c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star4b hide c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star5b c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star6b c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star7b c-stars" src="./img/star6b.svg" alt="Black star">
+			<img class="star8b c-stars" src="./img/star6b.svg" alt="Black star">
+		</div>
+		<!--Main Card Grid-->
+		<div id="grid-container" class="grid-container">
+			<div id="div-0"><span class="hide icon-size" id="span-0"></span></div>
+			<div id="div-1"><span class="hide icon-size" id="span-1"></span></div>
+			<div id="div-2"><span class="hide icon-size" id="span-2"></span></div>
+			<div id="div-3"><span class="hide icon-size" id="span-3"></span></div>
+			<div id="div-4"><span class="hide icon-size" id="span-4"></span></div>
+			<div id="div-5"><span class="hide icon-size" id="span-5"></span></div>
+			<div id="div-6"><span class="hide icon-size" id="span-6"></span></div>
+			<div id="div-7"><span class="hide icon-size" id="span-7"></span></div>
+			<div id="div-8"><span class="hide icon-size" id="span-8"></span></div>
+			<div id="div-9"><span class="hide icon-size" id="span-9"></span></div>
+			<div id="div-10"><span class="hide icon-size" id="span-10"></span></div>
+			<div id="div-11"><span class="hide icon-size" id="span-11"></span></div>
+			<div id="div-12"><span class="hide icon-size" id="span-12"></span></div>
+			<div id="div-13"><span class="hide icon-size" id="span-13"></span></div>
+			<div id="div-14"><span class="hide icon-size" id="span-14"></span></div>
+			<div id="div-15"><span class="hide icon-size" id="span-15"></span></div>
+		</div>
 
-</main>
+	</main>
 
 	<h2>
 		<span class="big-font">E</span>lapsed <span class="big-font">T</span>ime:
