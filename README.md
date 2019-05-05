@@ -1,7 +1,7 @@
 # Memory Game
 
 Memory Game (known as Concentration) is a complete browser-based matching game cloud-enabled. 
-In order to show the knowledge in HTML, CSS and Javascript the game was done completely from **scratch**! 
+In order to show the knowledge in **HTML, CSS and Javascript** the game was done completely from **scratch**! 
 This game enclosed many amazing features:
 
   - Work in many different browsers as _Google Chrome, Edge and Firefox_
@@ -12,7 +12,8 @@ This game enclosed many amazing features:
   
 ## How to play the game?
 
-Click here: https://mkortmann.github.io/Memory-Game/
+> You can play it using any device such as smartphone, computer and tablet. 
+> Click here: https://mkortmann.github.io/Memory-Game/
 
 ## New Features!
 
@@ -21,7 +22,7 @@ Click here: https://mkortmann.github.io/Memory-Game/
 
 ## How the game work?
 
- "The game board consists of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down. The gameplay rules are very simple: flip over two hidden cards at a time to locate the ones that match!""
+ "The game board consists of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. The cards are arranged randomly on the grid with the symbol face down. The gameplay rules are very simple: flip over two hidden cards at a time to locate the ones that match!"
 
 **Each turn:**
 
@@ -36,13 +37,14 @@ You can also:
   - Export documents as Markdown, HTML and PDF
 ## Documentation
 
-TODO!
+* [ ] TODO!
 
-## Installation
+## Download the game in your local computer
 
-1. First you have to create a directory in the desire location
-2. git init
-3. git clone <address from git hub> 
+1. Create a directory in any desire location
+1. Open the directory with the Git Bash
+1. Type: _git init_
+1. Type: _git clone "paste the address of my git hub memory game"_
 
 ### More Information
 
