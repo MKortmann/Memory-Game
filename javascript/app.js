@@ -155,6 +155,7 @@ class Board {
  * @class
  */
 let oMusic = {
+  // removing some mp3 because we do not have so much space in github
   arrayMusic: new Array("./sounds/background-music.mp3",
 "./sounds/background-music-2.mp3",
 "./sounds/background-music-3.mp3",
@@ -684,3 +685,5 @@ document.querySelector("#b-clear-results").addEventListener("click", function() 
 	window.localStorage.clear();
 	oMemoryGame.clearResults();
 });
+
+console.log("Hello World");
