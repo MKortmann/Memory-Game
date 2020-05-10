@@ -48,9 +48,9 @@ You can also:
 
 ### More Information
 
-This project is a part from a Nanodegree Program done by Udacity (www.udacity.com). For any extra information, please, feel free to contact me.
+For any extra information, please, feel free to contact me.
 
 ### Contributions
 
-The game was done completely by me. I have not even seen the examples provided by Udacity. I have not even used the static files also provided by Udacity.
+The game was done completely by me. 
 
